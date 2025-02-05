@@ -1,6 +1,7 @@
 // Import the necessary Firebase modules
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
+import { getFirestore } from 'firebase/firestore';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -22,5 +23,7 @@ if (typeof window !== 'undefined') {
   analytics = getAnalytics(app);
 }
 
+const db = getFirestore(app);
+
 // Export the initialized app
-export { app, analytics };
+export { app, analytics, db };
