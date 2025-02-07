@@ -1,15 +1,21 @@
-import { app } from './firebase/firebase';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CardProvider } from './context/SnapshotContext'; // Import the context provider
+import DisplayComponent from './pages/SnapshotInfoPage/SnapshotInfoPage'; // Component to display card data
 
 function App() {
-  useEffect(() => {
-    console.log('Firebase App Initialized:', app);
-  }, []);
-
   return (
-    <h1 className=" bg-red-500">
-      Check the console for Firebase connection status!
-    </h1>
+    <CardProvider>
+      {/* Wrap the app with CardProvider */}
+      <Router>
+        <Routes>
+          {/* Define route for user card page */}
+          <Route
+            path="/users/:userId/cards/:cardId"
+            element={<DisplayComponent />} // Display the card data based on userId and cardId
+          />
+        </Routes>
+      </Router>
+    </CardProvider>
   );
 }
 
