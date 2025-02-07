@@ -8,10 +8,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/Profile" element={<ProfilePage />}></Route>
+        <Route path="/users/:userid/Profile" element={<ProfilePage />}></Route>
         <Route path="/SnapshotInfo" element={<SnapshotInfoPage />}></Route>
-        <Route path="/CreateSnapshot" element={<CreateSnapshotPage />}></Route>
-        <Route path="/Snapshot" element={<SnapshotPage />}></Route>
+        <Route
+          path="/users/:userid/CreateSnapshot"
+          element={<CreateSnapshotPage />}
+        ></Route>
+        <Route
+          path="/users/:userid/Snapshot"
+          element={<SnapshotPage />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
