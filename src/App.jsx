@@ -1,5 +1,6 @@
 import { app } from './firebase/firebase';
 import { useEffect } from 'react';
+import Snapshot from './components/Snapshot/Snapshot';
 
 function App() {
   useEffect(() => {
@@ -7,9 +8,12 @@ function App() {
   }, []);
 
   return (
-    <h1 className=" bg-red-500">
-      Check the console for Firebase connection status!
-    </h1>
+    <>
+      <h1 className=" bg-red-500">
+        Check the console for Firebase connection status!
+      </h1>
+      <Snapshot />
+    </>
   );
 }
 
