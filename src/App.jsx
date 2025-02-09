@@ -1,21 +1,30 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CardProvider } from './context/SnapshotContext';
 import SnapshotInfoPage from './pages/SnapshotInfoPage/SnapshotInfoPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import CreateSnapshotPage from './pages/CreateSnapshotPage/CreateSnapshotPage';
+import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
+        <Route path="/users/:userid/Profile" element={<ProfilePage />} />
+        <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
+        <Route
+          path="/users/:userid/CreateSnapshot"
+          element={<CreateSnapshotPage />}
+        />
         <Route
           path="/users/:userId/cards/:cardId"
           element={
             <CardProvider>
-              <SnapshotInfoPage />
+              <SnapshotPage />
             </CardProvider>
           }
         />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
