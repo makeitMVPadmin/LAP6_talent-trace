@@ -1,4 +1,4 @@
 const SnapshotPage = () => {
-  return <></>;
+  return <>SnapshotPage</>;
 };
 export default SnapshotPage;
