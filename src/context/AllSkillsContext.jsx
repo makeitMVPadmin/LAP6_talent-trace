@@ -11,7 +11,8 @@ export const useSkills = () => {
 };
 
 // Provider component
-export const SkillsProvider = ({ categoryId, children }) => {
+export const SkillsProvider = ({ children }) => {
+  const [categoryId, setCategoryId] = useState(''); // Store selected category
   const [skills, setSkills] = useState([]);
   const [error, setError] = useState(null);
 
@@ -31,7 +32,9 @@ export const SkillsProvider = ({ categoryId, children }) => {
   }, [categoryId]);
 
   return (
-    <SkillsContext.Provider value={{ skills, error }}>
+    <SkillsContext.Provider
+      value={{ skills, error, categoryId, setCategoryId }}
+    >
       {children}
     </SkillsContext.Provider>
   );
@@ -39,7 +42,6 @@ export const SkillsProvider = ({ categoryId, children }) => {
 
 // Prop types validation
 SkillsProvider.propTypes = {
-  categoryId: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
