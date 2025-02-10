@@ -1,10 +1,13 @@
 import './Snapshot.css';
 import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 function Snapshot() {
   return (
     <div className="snapshot h-[900px] w-[1200px] border-2 border-black rounded-[20px] flex flex-row justify-between">
+      {/* Left Column */}
       <div className="snapshot__left my-[32px] ml-[32px] flex flex-col justify-between">
+        {/* Left Top Box */}
         <div className="snapshot__box h-[386px] w-[262px] bg-[url('/src/assets/images/snapshot_box_frame.png')] flex flex-col">
           <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
             Collaborator
@@ -34,6 +37,7 @@ function Snapshot() {
             </Badge>
           </div>
         </div>
+        {/* Left Bottom Box */}
         <div className="snapshot__box h-[386px] w-[262px] bg-[url('/src/assets/images/snapshot_box_frame.png')]">
           <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
             Analytical
@@ -64,7 +68,9 @@ function Snapshot() {
           </div>
         </div>
       </div>
+      {/* Center Columns */}
       <div className="snapshot__center flex-1 bg-[url('/src/assets/images/snapshot_center_frame.png')] bg-no-repeat bg-center flex flex-col justify-between items-center">
+        {/* Center Top Box */}
         <div className="snapshot__top w-[556px] h-[240px] mt-[32px] pt-[15px] px-[45px] flex flex-col items-center">
           <h1 className="snapshot__name font-serif text-[28px] pt-[32px]">
             Vidushi Pandey
@@ -90,6 +96,12 @@ function Snapshot() {
             </Badge>
           </div>
         </div>
+        {/* Avatar Box  */}
+        <Avatar className="snapshot__avatar h-[270px] w-[270px] border-2 border-neutral-500">
+          <AvatarImage src="/src/assets/images/placeholder_image.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        {/* Center Bottom Box */}
         <div className="snapshot__bot w-[556px] h-[240px] mb-[32px] pb-[15px] px-[45px] flex flex-row">
           <div className="snapshot__botinfo">
             <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
@@ -122,7 +134,9 @@ function Snapshot() {
           </div>
         </div>
       </div>
+      {/* Right Column  */}
       <div className="snapshot__right my-[32px] mr-[32px] flex flex-col justify-between">
+        {/* Right Top Box */}
         <div className="snapshot__box h-[386px] w-[262px] bg-[url('/src/assets/images/snapshot_box_frame.png')]">
           <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
             Empathetic
@@ -152,6 +166,7 @@ function Snapshot() {
             </Badge>
           </div>
         </div>
+        {/* Right Bottom Box */}
         <div className="snapshot__box h-[386px] w-[262px] bg-[url('/src/assets/images/snapshot_box_frame.png')]">
           <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
             Animator

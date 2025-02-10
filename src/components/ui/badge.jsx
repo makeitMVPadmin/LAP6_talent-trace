@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* Above line prevents eslint from triggering pre-commit errors */
 
 // import * as React from "react"
 import { cva } from 'class-variance-authority';
