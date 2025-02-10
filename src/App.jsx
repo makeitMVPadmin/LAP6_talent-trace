@@ -1,27 +1,30 @@
-import { useEffect } from 'react';
-import { SkillsProvider, useSkills } from './context/AllSkillsContext';
-
-const SkillsLogger = () => {
-  const { skills, error } = useSkills();
-
-  useEffect(() => {
-    if (error) {
-      console.error('Error fetching skills:', error);
-    } else {
-      console.log('Fetched skills:', skills);
-    }
-  }, [skills, error]);
-
-  return null; // No UI, just logging skills
-};
+import { CardProvider } from './context/SnapshotContext';
+import SnapshotInfoPage from './pages/SnapshotInfoPage/SnapshotInfoPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import CreateSnapshotPage from './pages/CreateSnapshotPage/CreateSnapshotPage';
+import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 
 function App() {
-  const categoryId = 'veBZ4UWxf1xfpQphmcEY'; // Example category ID
-
   return (
-    <SkillsProvider categoryId={categoryId}>
-      <SkillsLogger />
-    </SkillsProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/users/:userid/Profile" element={<ProfilePage />} />
+        <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
+        <Route
+          path="/users/:userid/CreateSnapshot"
+          element={<CreateSnapshotPage />}
+        />
+        <Route
+          path="/users/:userId/cards/:cardId"
+          element={
+            <CardProvider>
+              <SnapshotPage />
+            </CardProvider>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
