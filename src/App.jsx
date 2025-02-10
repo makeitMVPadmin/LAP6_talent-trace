@@ -1,6 +1,6 @@
 import { CardProvider } from './context/SnapshotContext';
 import SnapshotInfoPage from './pages/SnapshotInfoPage/SnapshotInfoPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import CreateSnapshotPage from './pages/CreateSnapshotPage/CreateSnapshotPage';
 import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
@@ -11,6 +11,10 @@ function App() {
     <BrowserRouter>
       <SkillsProvider>
         <Routes>
+          <Route
+            path="/"
+            element={<Navigate to={'/users/:userid/Profile'} replace />}
+          />
           <Route path="/users/:userid/Profile" element={<ProfilePage />} />
           <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
           <Route
