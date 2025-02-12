@@ -7,10 +7,12 @@ import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 import { SkillsProvider } from './context/AllSkillsContext';
 import { CardsProvider } from './context/AllSnapshotsContext';
 import { CategoriesProvider } from './context/AllCategoriesContext';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <CategoriesProvider>
         <SkillsProvider>
           <Routes>
