@@ -9,26 +9,24 @@ import './Header.css';
 function Header() {
   return (
     <div className="header">
-      <a href="/">
-        <img className="header__logo" src={logo} alt="communiti logo" />
-      </a>
+      <img className="header__logo" src={logo} alt="communiti logo" />
       <nav className="header__nav">
-        <a className="header__nav-link" href="/">
+        <p className="header__nav-link">
           <img className="header__nav-img" src={home} alt="home" />
           Home
-        </a>
-        <a className="header__nav-link" href="/">
+        </p>
+        <p className="header__nav-link">
           <img
             className="header__nav-img"
             src={communities}
             alt="communities"
           />
           Communities
-        </a>
-        <a className="header__nav-link" href="/">
+        </p>
+        <p className="header__nav-link">
           <img className="header__nav-img" src={coffeeChat} alt="coffee chat" />
           Coffee Chat
-        </a>
+        </p>
         <a className="header__nav-link" href="/">
           <img
             className="header__nav-img"
