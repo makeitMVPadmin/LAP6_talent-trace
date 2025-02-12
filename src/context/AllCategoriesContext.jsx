@@ -18,7 +18,6 @@ export const CategoriesProvider = ({ children }) => {
     const getData = async () => {
       try {
         const result = await fetchAllCategories();
-        console.log('Fetched Data:', result); // Log data to console
         setData(result);
       } catch (error) {
         setError(error.message);
