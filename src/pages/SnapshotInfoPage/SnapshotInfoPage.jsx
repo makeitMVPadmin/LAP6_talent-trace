@@ -1,10 +1,4 @@
-import { CardWithForm } from '@/components/Question/Question';
-
 const SnapshotInfoPage = () => {
-  return (
-    <>
-      <CardWithForm />
-    </>
-  );
+  return <></>;
 };
 export default SnapshotInfoPage;
