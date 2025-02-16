@@ -1,35 +1,29 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-function Buttons() {
-  // const [selectedBtn, setSelectedBtn] = useState(null);
-  const [isDisabled, setIsDisabled] = useState(true);
+function Buttons({ variant, children }) {
+  const buttonClass = classNames(
+    'relative mt-4 px-4 py-2 rounded-md transition-all duration-200',
+    {
+      'bg-gray-400 text-gray-700 cursor-not-allowed': variant === 'disabled', // Disabled styles
+      'bg-blue-500 hover:bg-blue-600 text-white': variant === 'primary', // Primary styles
+    }
+  );
 
   return (
-    <div className="grid grid-cols-3 w-full text-center">
-      <button
-        className={classNames(
-          'relative mt-4 px-4 py-2 rounded-md transition-all duration-200',
-          {
-            'bg-gray-400 text-gray-700 cursor-not-allowed': isDisabled, // Disabled styles
-            'bg-blue-500 hover:bg-blue-600 text-white': !isDisabled, // Primary styles
-          }
-        )}
-        type="button"
-        disabled={isDisabled} // Disabling the button when `isDisabled` is true
-      >
-        Submit!
-      </button>
-
-      {/* Toggle button to enable/disable the submit button */}
-      <button
-        className="mt-4 ml-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
-        onClick={() => setIsDisabled(!isDisabled)}
-      >
-        Toggle Enable/Disable
-      </button>
-    </div>
+    <button
+      className={buttonClass}
+      type="button"
+      disabled={variant === 'disabled'}
+    >
+      {children}
+    </button>
   );
 }
+
+Buttons.propTypes = {
+  variant: PropTypes.oneOf(['primary', 'disabled']).isRequired, // Ensure only 'primary' or 'disabled' are used
+  children: PropTypes.node.isRequired, // Ensure children are passed
+};
 
 export default Buttons;
