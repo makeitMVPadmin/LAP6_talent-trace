@@ -2,6 +2,7 @@ import { createContext, useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchUserSnapshots } from '../firebase/RetrieveAllSnapshots'; // Import the fetching function
+import { deleteUserCard } from '../firebase/DeleteSnapshot'; //Import the delete function
 
 // Create Context
 const CardsContext = createContext();
@@ -32,8 +33,18 @@ export const CardsProvider = ({ children }) => {
     }
   }, [userId]);
 
+  //delete card
+  const handleDeleteCard = async (cardId) => {
+    try {
+      await deleteUserCard(cardId);
+      setCards(cards.filter((card) => card.id !== cardId));
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
-    <CardsContext.Provider value={{ cards, error }}>
+    <CardsContext.Provider value={{ cards, error, handleDeleteCard }}>
       {children}
     </CardsContext.Provider>
   );
