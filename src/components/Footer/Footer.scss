@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  padding: 73px 80px;
+  padding-bottom: 100px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  background: #0054ab;
+
+  &__logo {
+    margin-bottom: 26px;
+  }
+
+  &__socials {
+    display: flex;
+    width: 248px;
+    align-items: flex-end;
+    align-content: flex-end;
+    gap: 26px 20px;
+    flex-wrap: wrap;
+  }
+}
