@@ -1,18 +1,14 @@
 import { db } from './firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 
-// Function to fetch skills by categoryId
-export const fetchSkillsByCategory = async (categoryId) => {
+// Function to fetch all skills (not just by category)
+export const fetchAllSkills = async () => {
   try {
-    // Query Firestore for skills where categoryId matches
-    const skillsQuery = query(
-      collection(db, 'skills'),
-      where('categoryId', '==', categoryId)
-    );
+    const skillsQuery = collection(db, 'skills');
     const skillsSnap = await getDocs(skillsQuery);
 
     if (skillsSnap.empty) {
-      throw new Error('No skills found for this category!');
+      throw new Error('No skills found!');
     }
 
     // Extract skills data
@@ -20,8 +16,6 @@ export const fetchSkillsByCategory = async (categoryId) => {
       id: doc.id,
       ...doc.data(),
     }));
-
-    console.log('Fetched skills:', skills); // Log skills to console
 
     return skills;
   } catch (error) {
