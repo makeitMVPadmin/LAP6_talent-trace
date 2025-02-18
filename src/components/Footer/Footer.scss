@@ -20,4 +20,62 @@
     gap: 26px 20px;
     flex-wrap: wrap;
   }
+
+  /* === Tablet (1024px and below) === */
+  @media (max-width: 1024px) {
+    padding: 2rem 50px;
+    padding-bottom: 80px;
+
+    &__logo {
+      width: 120px; 
+    }
+
+    &__socials {
+      width: auto;
+    }
+
+    &__socials a svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  /* === Mobile (768px and below) === */
+  @media (max-width: 768px) {
+    padding: 50px 30px;
+    padding-bottom: 60px;
+
+    &__logo {
+      width: 100px; // Reduce logo size for mobile
+    }
+
+    &__socials {
+      width: 100%;
+      gap: 15px;
+    }
+
+    &__socials a svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  /* === Small Mobile (480px and below) === */
+  @media (max-width: 480px) {
+    padding: 40px 20px;
+    padding-bottom: 50px;
+
+    &__logo {
+      width: 90px;
+    }
+
+    &__socials {
+      gap: 10px;
+    }
+
+    &__socials a svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
 }

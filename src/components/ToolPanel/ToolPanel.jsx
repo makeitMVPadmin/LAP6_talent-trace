@@ -1,0 +1,74 @@
+/* eslint-disable react/prop-types */
+/* Above line prevents eslint from triggering pre-commit errors */
+
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Badge } from '../ui/badge';
+
+function ToolPanel({ name }) {
+  const tools = [
+    'logo_figma.svg',
+    'logo_photoshop.svg',
+    'logo_illustrator.svg',
+    'logo_premiere.svg',
+    'logo_notion.svg',
+    'logo_meet.svg',
+  ];
+
+  return (
+    <>
+      <Card className="profile__tools w-full mt-[1rem] pb-[1.5rem] rounded-[1.5rem] h-[13.75rem]">
+        <CardHeader>
+          <CardTitle className="profile__card-title text-[1.5rem]">
+            {name}
+          </CardTitle>
+        </CardHeader>
+        <div className="profile__tools-bar flex flex-row justify-evenly">
+          <div className="profile__tools-left flex flex-col items-center -mt-[1.438rem]">
+            <Badge
+              className="profile__tools-badge text-white rounded-[500px] relative top-3"
+              variant="secondary"
+            >
+              Code
+            </Badge>
+            <Card className="profile__code bg-primary border-card-foreground w-[13.5rem] h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
+              <CardContent className="flex flex-row gap-[0.75rem] flex-wrap py-0">
+                {tools.map(function (tool) {
+                  return (
+                    <img
+                      src={'/src/assets/icons/' + `${tool}`}
+                      className="profile__icon"
+                      key={tool}
+                    />
+                  );
+                })}
+              </CardContent>
+            </Card>
+          </div>
+          <div className="profile__tools-right flex flex-col items-center -mt-[1.438rem]">
+            <Badge
+              className="profile__tools-badge text-white rounded-[500px] relative top-3"
+              variant="secondary"
+            >
+              Design
+            </Badge>
+            <Card className="profile__design bg-primary border-card-foreground w-[13.5rem] h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
+              <CardContent className="flex flex-row gap-[0.75rem] flex-wrap py-0">
+                {tools.map(function (tool) {
+                  return (
+                    <img
+                      src={'/src/assets/icons/' + `${tool}`}
+                      className="profile__icon"
+                      key={tool}
+                    />
+                  );
+                })}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </Card>
+    </>
+  );
+}
+
+export default ToolPanel;
