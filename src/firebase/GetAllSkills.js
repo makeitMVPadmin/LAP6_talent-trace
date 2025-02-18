@@ -16,7 +16,6 @@ export const fetchAllSkills = async () => {
       id: doc.id,
       ...doc.data(),
     }));
-
     return skills;
   } catch (error) {
     throw new Error('Error fetching skills: ' + error.message);

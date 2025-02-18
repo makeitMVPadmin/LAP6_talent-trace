@@ -5,6 +5,11 @@ const SelectSkills = () => {
   const { categories, skillsByCategory, loading, error } = useSkills();
   const [selectedSkills, setSelectedSkills] = useState([]); // Store selected skill IDs
 
+  // Function to capitalize the first letter of each word
+  const capitalizeFirstLetter = (text) => {
+    return text.replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading data: {error}</p>;
 
@@ -19,52 +24,42 @@ const SelectSkills = () => {
       }
     }
   };
-  console.log(setSelectedSkills);
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Select Skills by Category</h2>
-      {categories.length === 0 ? (
-        <p>No categories available.</p>
-      ) : (
-        categories.map((category) => {
-          const categorySkills = skillsByCategory[category.id]?.skills || [];
+      {categories
+        .filter(
+          (category) => (skillsByCategory[category.id]?.skills || []).length > 0
+        ) // Exclude categories with no skills
+        .map((category) => {
+          const categorySkills = skillsByCategory[category.id].skills;
 
           return (
             <div className="flex flex-col mb-6" key={category.id}>
-              <h3 className="text-blue-950 text-lg font-semibold mb-2">
-                {category.name}
+              <h3 className="text-customBlue font-montserrat text-lg font-medium leading-6 mb-2 mt-2">
+                {capitalizeFirstLetter(category.name)}
               </h3>
-              {categorySkills.length > 0 ? (
-                <ul className="flex flex-wrap space-x-4">
-                  {categorySkills.map((skill) => {
-                    // Check if the skill is selected
-                    const isSelected = selectedSkills.includes(skill.id);
-                    return (
-                      <li
-                        key={skill.id}
-                        className={`border px-2 py-1 rounded cursor-pointer ${
-                          isSelected
-                            ? 'bg-yellow-500 text-white' // Change color to yellow when selected
-                            : 'bg-gray-100'
-                        }`}
-                        onClick={() => handleSkillClick(skill.id)}
-                      >
-                        {skill.skillName}
-                      </li>
-                    );
-                  })}
-                </ul>
-              ) : (
-                <p className="italic text-gray-500">
-                  No skills available for this category
-                </p>
-              )}
+              <ul className="flex flex-wrap gap-2">
+                {categorySkills.map((skill) => {
+                  const isSelected = selectedSkills.includes(skill.id);
+                  return (
+                    <li
+                      key={skill.id}
+                      className={`px-4 py-2 text-customDark font-montserrat text-sm font-medium leading-4 rounded-full cursor-pointer border transition-all capitalize ${
+                        isSelected
+                          ? 'border-customBlue border-b-4 bg-customYellow' // Selected styling
+                          : 'border border-gray-200 bg-customGray' // Unselected styling
+                      }`}
+                      onClick={() => handleSkillClick(skill.id)}
+                    >
+                      {capitalizeFirstLetter(skill.skillName)}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           );
-        })
-      )}
-      <p className="mt-4">You can select up to 5 skills.</p>
+        })}
     </div>
   );
 };
