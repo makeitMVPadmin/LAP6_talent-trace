@@ -8,14 +8,14 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card: 46 100% 94%;
+    --card-foreground: 206 100% 19%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --primary: 41 100% 62%;
+    --primary-foreground: 206 100% 19%; 
+    --secondary: 206 100% 19%;
+    --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
     --accent: 0 0% 96.1%;
