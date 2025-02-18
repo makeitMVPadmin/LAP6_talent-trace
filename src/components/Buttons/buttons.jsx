@@ -5,7 +5,7 @@ function Buttons({ variant, children }) {
   const buttonClass = classNames(
     'relative mt-4 px-4 py-2 rounded-md transition-all duration-200',
     {
-      'bg-white text-customText cursor-not-allowed': variant === 'disabled', // Disabled styles
+      'bg-white border border-black cursor-not-allowed': variant === 'disabled', // Disabled styles
       'bg-customBlue text-white': variant === 'primary', // Primary styles
     }
   );
