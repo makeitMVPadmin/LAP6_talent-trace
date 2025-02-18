@@ -7,6 +7,7 @@ import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 import { SkillsProvider } from './context/AllSkillsContext';
 import { CardsProvider } from './context/AllSnapshotsContext';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           />
         </Routes>
       </SkillsProvider>
+      <Footer />
     </BrowserRouter>
   );
 }
