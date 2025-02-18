@@ -44,7 +44,7 @@ const slides = [
   {
     title: 'Add Photos',
     description:
-      ' You also have the option to add photos to further personalize your Snapshot and visually highlight your skills.',
+      ' You also have the option to add a photo that best represents your answer to further personalize your Snapshot and visually highlight your skills.',
     image: img5,
   },
   {
