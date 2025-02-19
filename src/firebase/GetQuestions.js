@@ -27,7 +27,3 @@ export const getQuestion = async (skillsId) => {
 
   return [{ id: questionSnap.id, ...questionSnap.data() }];
 };
-
-getQuestion('0XPsm9IRlBahDAU4AZal').then((question) => {
-  console.log(question);
-});
