@@ -1,4 +1,5 @@
-const SnapshotInfoPage = () => {
-  return <></>;
-};
+function SnapshotInfoPage() {
+  return <div>SnapshotInfoPage</div>;
+}
+
 export default SnapshotInfoPage;
