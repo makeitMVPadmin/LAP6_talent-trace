@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from '@/components/ui/cardForm';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
