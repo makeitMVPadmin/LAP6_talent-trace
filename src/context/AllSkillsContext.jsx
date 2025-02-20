@@ -13,8 +13,7 @@ export const useSkills = () => {
 
 // Provider Component
 export const SkillsProvider = ({ children }) => {
-  const [categories, setCategories] = useState([]); // Store categories
-  const [skills, setSkills] = useState([]); // Store all skills
+  const [data, setData] = useState({ categories: [], skills: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -23,9 +22,7 @@ export const SkillsProvider = ({ children }) => {
       try {
         const categoriesData = await fetchAllCategories();
         const skillsData = await fetchAllSkills();
-
-        setCategories(categoriesData);
-        setSkills(skillsData);
+        setData({ categories: categoriesData, skills: skillsData });
       } catch (err) {
         setError(err.message);
       } finally {
@@ -39,18 +36,18 @@ export const SkillsProvider = ({ children }) => {
   // Memoize skills grouped by category
   const skillsByCategory = useMemo(() => {
     const groupedSkills = {};
-    categories.forEach((category) => {
+    data.categories.forEach((category) => {
       groupedSkills[category.id] = {
         name: category.name,
-        skills: skills.filter((skill) => skill.categoryId === category.id),
+        skills: data.skills.filter((skill) => skill.categoryId === category.id),
       };
     });
     return groupedSkills;
-  }, [categories, skills]);
+  }, [data]); // Only re-run when `data` changes
 
   return (
     <SkillsContext.Provider
-      value={{ categories, skillsByCategory, loading, error }}
+      value={{ categories: data.categories, skillsByCategory, loading, error }}
     >
       {children}
     </SkillsContext.Provider>

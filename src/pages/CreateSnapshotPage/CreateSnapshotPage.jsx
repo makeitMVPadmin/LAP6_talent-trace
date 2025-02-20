@@ -4,7 +4,7 @@ const CreateSnapshotPage = () => {
   return (
     <>
       <h1>Create Snapshot</h1>
-      <SelectSkills /> {/* Ensure this is within CategoriesProvider */}
+      <SelectSkills />
     </>
   );
 };
