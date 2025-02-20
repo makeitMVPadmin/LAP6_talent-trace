@@ -7,7 +7,7 @@ function Learn() {
   const [showTutorial, setShowTutorial] = useState(false);
 
   return (
-    <div className="w-full flex items-center justify-center bg-blue-700 px-4 md:px-0">
+    <div className="w-full h-[80vh] flex flex-shrink-0 relative overflow-hidden bg-blue-700 px-4 md:px-0">
       {showTutorial ? (
         <Tutorial />
       ) : (
