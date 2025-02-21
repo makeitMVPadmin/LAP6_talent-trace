@@ -40,7 +40,7 @@ export function Question() {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <Card className="w-[400px]">
+    <Card className="w-[400px] mx-auto sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px]">
       <CardHeader>
         <CardDescription>
           Question 1 - {skillName} ({categoryName})

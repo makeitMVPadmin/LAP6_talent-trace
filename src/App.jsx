@@ -32,7 +32,7 @@ function App() {
           />
           <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
           <Route
-            path="/users/:userid/CreateSnapshot"
+            path="/skills/:categoryId/:skillId"
             element={
               <QuestionProvider>
                 <CreateSnapshotPage />
