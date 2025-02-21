@@ -1,10 +1,10 @@
-import SelectSkills from '@/components/SelectSkills/SelectSkills';
+import SkillsMenuCard from '@/components/SkillsMenu/SkillsMenu';
 
 const CreateSnapshotPage = () => {
   return (
     <>
       <h1>Create Snapshot</h1>
-      <SelectSkills />
+      <SkillsMenuCard />
     </>
   );
 };
