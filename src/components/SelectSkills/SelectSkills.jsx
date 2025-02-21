@@ -36,10 +36,10 @@ const SelectSkills = React.memo(() => {
 
           return (
             <div className="flex flex-col mb-6" key={category.id}>
-              <h3 className="text-customBlue font-montserrat text-lg font-medium leading-6 mb-2 mt-2">
+              <h3 className="text-customBlue font-montserrat text-lg font-medium leading-6 mb-4 mt-2">
                 {capitalizeFirstLetter(category.name)}
               </h3>
-              <ul className="flex flex-wrap gap-2">
+              <ul className="flex flex-wrap gap-y-4 gap-x-3 mb-6">
                 {categorySkills.map((skill) => {
                   const isSelected = selectedSkills.includes(skill.id);
                   return (
