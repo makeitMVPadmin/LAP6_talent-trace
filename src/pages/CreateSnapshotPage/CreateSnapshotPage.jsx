@@ -2,10 +2,9 @@ import SkillsMenuCard from '@/components/SkillsMenu/SkillsMenu';
 
 const CreateSnapshotPage = () => {
   return (
-    <>
-      <h1>Create Snapshot</h1>
+    <div className="flex flex-row m-32 justify-center">
       <SkillsMenuCard />
-    </>
+    </div>
   );
 };
 
