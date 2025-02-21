@@ -13,7 +13,6 @@ export const fetchAllCategories = async () => {
       id: doc.id,
       ...doc.data(),
     }));
-
     return categories;
   } catch (error) {
     throw new Error('Error fetching categories: ' + error.message);
