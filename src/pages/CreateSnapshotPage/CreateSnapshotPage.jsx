@@ -1,9 +1,4 @@
-import { Question } from '@/components/Question/Question';
 const CreateSnapshotPage = () => {
-  return (
-    <>
-      <Question></Question>
-    </>
-  );
+  return <></>;
 };
 export default CreateSnapshotPage;
