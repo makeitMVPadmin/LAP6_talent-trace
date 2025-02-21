@@ -14,7 +14,7 @@ function Learn() {
         <div className="flex flex-col md:flex-row items-center md:items-stretch w-full max-w-screen-2xl mx-auto">
           {/* Instructions Section */}
           <div className="flex flex-col justify-center bg-blue-700 text-white p-10 md:p-20 w-full md:w-1/2 md:border md:border-blue-500">
-            <h2 className="text-2xl md:text-5xl font-[Fraunces] leading-snug tracking-tight text-left">
+            <h2 className="text-4xl md:text-5xl font-[Fraunces] leading-snug tracking-tight text-left">
               Learn more about how to highlight your skills through our snapshot
             </h2>
             <Button
