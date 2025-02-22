@@ -2,7 +2,7 @@ import { db } from './firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
 export const writeUserData = async (
-    skillId,
+  skillId,
   questionId,
   answerId,
   answer,
@@ -14,7 +14,7 @@ export const writeUserData = async (
     return;
   }
 
-  const answerRef = doc(db, 'answers', answerId, );
+  const answerRef = doc(db, 'answers', answerId);
   try {
     await setDoc(
       answerRef,
@@ -23,7 +23,7 @@ export const writeUserData = async (
         image: imageUrl,
         additionalSkills: relatedSkills,
         questionId,
-        skillId
+        skillId,
       },
       { merge: true }
     );

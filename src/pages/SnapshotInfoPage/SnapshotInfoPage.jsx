@@ -1,5 +1,11 @@
+import Learn from '../../components/Learn/Learn.jsx';
+
 function SnapshotInfoPage() {
-  return <div>SnapshotInfoPage</div>;
+  return (
+    <div>
+      <Learn />
+    </div>
+  );
 }
 
 export default SnapshotInfoPage;
