@@ -4,30 +4,30 @@ import { Badge } from '../ui/badge';
 function ProjectPanel() {
   return (
     <>
-      <Card className="profile__current w-[50rem]   rounded-[1.5rem] px-[1rem] mt-[1rem]">
-        <CardHeader className="profile__current-header font-serif font-semibold text-[2.25rem]">
+      <Card className="profile__current rounded-[1.5rem] px-[1rem] mt-[1rem]">
+        <CardHeader className="profile__current-header font-serif font-semibold xl:text-[2.25rem] max-xl:p-4">
           What I’m currently working on...
         </CardHeader>
         <CardContent>
           <img
             src="/src/assets/images/current_project.png"
-            className="profile__current-image w-full object-cover h-[24rem] rounded-[1.5rem]"
+            className="profile__current-image w-full object-cover h-[12rem] xl:h-[24rem] rounded-[1.5rem]"
           />
-          <ul className="profile__current-details list-disc pl-6 pt-6">
-            <li className="profile__current-list font-medium">
+          <ul className="profile__current-details list-disc pl-4 pt-4 xl:pl-6 xl:pt-6">
+            <li className="profile__current-list font-medium max-xl:text-xs">
               Development of internal projects from scratch, product design of
               brands
             </li>
-            <li className="profile__current-list font-medium">
+            <li className="profile__current-list font-medium max-xl:text-xs">
               Landing page, web apps and hybrid app
             </li>
-            <li className="profile__current-list font-medium">
+            <li className="profile__current-list font-medium max-xl:text-xs">
               Coordinating with outside agencies, art services, web designer,
               marketing, printers, and colleagues as necessary
             </li>
           </ul>
-          <Badge className="profile__current-badge rounded-[500px] mt-6 border-none shadow-none">
-            Badge
+          <Badge className="profile__current-badge rounded-[500px] mt-4 xl:mt-6 xl:border-none shadow-none">
+            Web Development
           </Badge>
         </CardContent>
       </Card>

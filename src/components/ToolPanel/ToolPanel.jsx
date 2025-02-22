@@ -16,9 +16,9 @@ function ToolPanel({ name }) {
 
   return (
     <>
-      <Card className="profile__tools w-full mt-[1rem] pb-[1.5rem] rounded-[1.5rem] h-[13.75rem]">
+      <Card className="profile__tools w-full mt-[1rem] pb-[1.5rem] rounded-[1.5rem] xl:h-[13.75rem]">
         <CardHeader>
-          <CardTitle className="profile__card-title text-[1.5rem]">
+          <CardTitle className="profile__card-title text-sm xl:text-[1.5rem]">
             {name}
           </CardTitle>
         </CardHeader>
@@ -30,13 +30,13 @@ function ToolPanel({ name }) {
             >
               Code
             </Badge>
-            <Card className="profile__code bg-primary border-card-foreground w-[13.5rem] h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
-              <CardContent className="flex flex-row gap-[0.75rem] flex-wrap py-0">
+            <Card className="profile__code bg-primary border-card-foreground w-[8.75rem] h-[3.125rem] xl:w-[13.5rem] xl:h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
+              <CardContent className="flex flex-row gap-[0.5rem] xl:gap-[0.75rem] max-xl:px-2 flex-wrap py-0">
                 {tools.map(function (tool) {
                   return (
                     <img
                       src={'/src/assets/icons/' + `${tool}`}
-                      className="profile__icon"
+                      className="profile__icon max-xl:h-[10px]"
                       key={tool}
                     />
                   );
@@ -51,13 +51,13 @@ function ToolPanel({ name }) {
             >
               Design
             </Badge>
-            <Card className="profile__design bg-primary border-card-foreground w-[13.5rem] h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
-              <CardContent className="flex flex-row gap-[0.75rem] flex-wrap py-0">
+            <Card className="profile__design bg-primary border-card-foreground w-[8.75rem] h-[3.125rem] xl:w-[13.5rem] xl:h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
+              <CardContent className="flex flex-row gap-[0.5rem] xl:gap-[0.75rem] max-xl:px-2 flex-wrap py-0">
                 {tools.map(function (tool) {
                   return (
                     <img
                       src={'/src/assets/icons/' + `${tool}`}
-                      className="profile__icon"
+                      className="profile__icon max-xl:h-[10px]"
                       key={tool}
                     />
                   );

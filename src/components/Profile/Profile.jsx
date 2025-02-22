@@ -9,18 +9,20 @@ import ViewerPanel from '../ViewerPanel/ViewerPanel';
 function Profile() {
   return (
     <>
-      <div className="profile flex flex-row justify-center gap-[2rem] py-[4rem]">
-        <div className="profile__left w-[33rem]">
+      <div className="profile flex flex-col items-center xl:flex-row xl:justify-center xl:items-start xl:gap-[2rem] py-[4rem]">
+        <div className="profile__left w-[22rem] xl:w-[33rem]">
           <GreetingPanel /> {/* Picture and Intro Cards  */}
+          <ViewerPanel display={'xl:hidden'} /> {/* View my Snapshot */}
           <SoftPanel /> {/* Soft Skills  */}
           <HardPanel /> {/* Hard Skills  */}
           <ToolPanel name={'Tools'} /> {/* Tools Card  */}
           <ToolPanel name={'Certifications'} /> {/* Certifications Card  */}
-          <ContactPanel /> {/* Contact Card  */}
+          <ContactPanel display={'max-xl:hidden'} /> {/* Contact Card  */}
         </div>
-        <div className="profile__right w-[50rem] h-[1000px]">
-          <ViewerPanel /> {/* View my Snapshot */}
+        <div className="profile__right w-[22rem] xl:w-[50rem]">
+          <ViewerPanel display={'max-xl:hidden'} /> {/* View my Snapshot */}
           <ProjectPanel /> {/* What I'm Working On Card  */}
+          <ContactPanel display={'xl:hidden'} /> {/* Contact Card  */}
         </div>
       </div>
     </>
