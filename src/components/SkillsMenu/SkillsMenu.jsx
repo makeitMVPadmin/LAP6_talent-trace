@@ -20,7 +20,7 @@ function SkillsMenuCard() {
             (Select up to 5 of your top skills)
           </CardDescription>
         </CardHeader>
-        <CardContent className="h-[90%] flex flex-col justify-center">
+        <CardContent className="Skills_Menu-content h-[90%] flex flex-col justify-center">
           <SelectSkills />
         </CardContent>
         <CardFooter className="bg-purple-300"></CardFooter>
