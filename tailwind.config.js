@@ -10,7 +10,14 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
       colors: {
+        customYellow: '#FFC02C',
+        customGray: '#D0DCE3',
+        customBlue: '#003660',
+        customDark: '#28363F',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         customBlue: '#0264D4',
