@@ -1,10 +1,12 @@
-import SkillsMenuCard from '@/components/SkillsMenu/SkillsMenu';
-
+import SelectSkills from '@/components/SelectSkills/SelectSkills';
+import { Question } from '@/components/Question/Question';
 const CreateSnapshotPage = () => {
   return (
-    <div className="flex flex-row m-32 justify-center">
-      <SkillsMenuCard />
-    </div>
+    <>
+      <h1>Create Snapshot</h1>
+      <SelectSkills />
+      <Question></Question>
+    </>
   );
 };
 
