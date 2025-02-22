@@ -3,7 +3,6 @@ function SnapshotInfoPage() {
   return (
     <div>
       <Hero></Hero>
-      SnapshotInfoPage
     </div>
   );
 }
