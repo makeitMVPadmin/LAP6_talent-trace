@@ -1,10 +1,10 @@
 import ContactPanel from '../ContactPanel/ContactPanel';
-import CreatorPanel from '../CreatorPanel/CreatorPanel';
 import GreetingPanel from '../GreetingPanel/GreetingPanel';
 import HardPanel from '../HardPanel/HardPanel';
 import ProjectPanel from '../ProjectPanel/ProjectPanel';
 import SoftPanel from '../SoftPanel/SoftPanel';
 import ToolPanel from '../ToolPanel/ToolPanel';
+import ViewerPanel from '../ViewerPanel/ViewerPanel';
 
 function Profile() {
   return (
@@ -19,7 +19,7 @@ function Profile() {
           <ContactPanel /> {/* Contact Card  */}
         </div>
         <div className="profile__right w-[50rem] h-[1000px]">
-          <CreatorPanel /> {/* Create Snapshot Card  */}
+          <ViewerPanel /> {/* View my Snapshot */}
           <ProjectPanel /> {/* What I'm Working On Card  */}
         </div>
       </div>

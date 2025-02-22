@@ -2,9 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 function HardPanel() {
   const hardskills = [
-    { name: 'C++', bar: '85' },
-    { name: 'Java', bar: '70' },
-    { name: 'HTML', bar: '25' },
+    { name: 'C++', bar: 'w-[85%]' },
+    { name: 'Java', bar: 'w-[70%]' },
+    { name: 'HTML', bar: 'w-[25%]' },
   ];
 
   return (
@@ -27,9 +27,8 @@ function HardPanel() {
                 </p>
                 <div
                   className={
-                    'profile__skill-slider bg-amber-400 h-[0.75rem] rounded-[3px] border border-b-2 border-r-2 border-card-foreground self-center w-[' +
-                    skill.bar +
-                    '%]'
+                    'profile__skill-slider bg-amber-400 h-[0.75rem] rounded-[3px] border border-b-2 border-r-2 border-card-foreground self-center ' +
+                    skill.bar
                   }
                 ></div>
               </div>
