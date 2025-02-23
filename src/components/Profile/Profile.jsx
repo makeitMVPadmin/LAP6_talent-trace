@@ -9,20 +9,20 @@ import ViewerPanel from '../ViewerPanel/ViewerPanel';
 function Profile() {
   return (
     <>
-      <div className="profile flex flex-col items-center xl:flex-row xl:justify-center xl:items-start xl:gap-[2rem] py-[4rem]">
+      <div className="profile flex flex-col items-center md:flex-row md:justify-center md:items-start md:gap-[2rem] py-[4rem]">
         <div className="profile__left w-[22rem] xl:w-[33rem]">
           <GreetingPanel /> {/* Picture and Intro Cards  */}
-          <ViewerPanel display={'xl:hidden'} /> {/* View my Snapshot */}
+          <ViewerPanel display={'md:hidden'} /> {/* View my Snapshot */}
           <SoftPanel /> {/* Soft Skills  */}
           <HardPanel /> {/* Hard Skills  */}
           <ToolPanel name={'Tools'} /> {/* Tools Card  */}
           <ToolPanel name={'Certifications'} /> {/* Certifications Card  */}
-          <ContactPanel display={'max-xl:hidden'} /> {/* Contact Card  */}
+          <ContactPanel display={'max-md:hidden'} /> {/* Contact Card  */}
         </div>
-        <div className="profile__right w-[22rem] xl:w-[50rem]">
-          <ViewerPanel display={'max-xl:hidden'} /> {/* View my Snapshot */}
+        <div className="profile__right w-[22rem] lg:w-[33rem] xl:w-[50rem]">
+          <ViewerPanel display={'max-md:hidden'} /> {/* View my Snapshot */}
           <ProjectPanel /> {/* What I'm Working On Card  */}
-          <ContactPanel display={'xl:hidden'} /> {/* Contact Card  */}
+          <ContactPanel display={'md:hidden'} /> {/* Contact Card  */}
         </div>
       </div>
     </>

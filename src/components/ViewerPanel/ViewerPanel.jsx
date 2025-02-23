@@ -6,14 +6,14 @@ function ViewerPanel({ display }) {
     <>
       <div
         className={
-          'profile__view rounded-3xl border border-b-4 border-r-4 box-border border-sky-800 text-white shadow-md bg-[#0264d4] mt-[1rem] xl:mt-0 ' +
+          'profile__view rounded-3xl border border-b-4 border-r-4 box-border border-sky-800 text-white shadow-md bg-[#0264d4] mt-[1rem] md:mt-0 ' +
           display
         }
       >
         <div className="profile__view-row flex flex-row p-[1rem] xl:p-[2.5rem] gap-[1.25rem]">
           <img
             src="/src/assets/images/camera_enhance.png"
-            className="profile__view-icon size-[35px]"
+            className="profile__view-icon size-[35px] xl:size-auto"
           />
           <div className="profile__view-text flex flex-col xl:gap-[4px] grow">
             <div className="profile__view-top flex flex-row justify-between items-center">
