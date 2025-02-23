@@ -6,6 +6,7 @@ import {
   CardDescription,
   CardContent,
 } from '../ui/card';
+import { Button } from '../ui/button';
 import SelectSkills from '../SelectSkills/SelectSkills';
 
 function SkillsMenuCard() {
@@ -23,7 +24,14 @@ function SkillsMenuCard() {
         <CardContent className="Skills_Menu-content h-[90%] flex flex-col justify-center">
           <SelectSkills />
         </CardContent>
-        <CardFooter className="bg-purple-300"></CardFooter>
+        <CardFooter className="Skills_Menu-footer bg-purple-300 flex justify-end">
+          <Button
+            className="Skills_Menu-button w-32 h-10 pl-4 pr-4"
+            variant="muted"
+          >
+            Next
+          </Button>
+        </CardFooter>
       </Card>
     </>
   );
