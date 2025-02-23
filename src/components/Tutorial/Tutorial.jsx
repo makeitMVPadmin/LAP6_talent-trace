@@ -60,10 +60,10 @@ function Tutorial() {
           >
             {/* Desktop & Tablet Styling */}
             <div className="hidden md:flex flex-col justify-center bg-blue-700 text-white p-12 md:p-16 w-full md:w-[45%]">
-              <h2 className="text-4xl md:text-5xl font-Fraunces leading-snug tracking-tight text-left mb-10">
+              <h2 className="text-4xl md:text-5xl font-[Fraunces] leading-snug tracking-tight text-left mb-10">
                 {slide.title}
               </h2>
-              <p className="text-base md:text-lg text-gray-200">
+              <p className="text-base md:text-lg text-gray-200 font-light">
                 {slide.description}
               </p>
               {/* Desktop/Tablet Navigation Arrows */}
