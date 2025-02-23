@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
-/* Above line prevents eslint from triggering pre-commit errors */
-
 import * as React from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
 
@@ -49,6 +47,22 @@ const Button = React.forwardRef(
     );
   }
 );
+
 Button.displayName = 'Button';
+
+// Add PropTypes validation to fix ESLint errors
+Button.propTypes = {
+  className: PropTypes.string,
+  variant: PropTypes.oneOf([
+    'default',
+    'destructive',
+    'outline',
+    'secondary',
+    'ghost',
+    'link',
+  ]),
+  size: PropTypes.oneOf(['default', 'sm', 'lg', 'icon']),
+  asChild: PropTypes.bool,
+};
 
 export { Button, buttonVariants };
