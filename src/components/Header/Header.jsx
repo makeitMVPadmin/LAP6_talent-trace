@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import logo from '../../assets/logos/Vector.svg';
+import logo from '../../assets/logos/logo.svg';
 import profile from '../../assets/icons/profile.svg';
 import home from '../../assets/icons/house.svg';
 import communities from '../../assets/icons/groups.svg';
