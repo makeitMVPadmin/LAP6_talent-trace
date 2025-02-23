@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader } from '../ui/card';
 import { Badge } from '../ui/badge';
+import currentProject from '../../assets/images/current_project.png';
 
 function ProjectPanel() {
   return (
@@ -10,7 +11,7 @@ function ProjectPanel() {
         </CardHeader>
         <CardContent>
           <img
-            src="/src/assets/images/current_project.png"
+            src={currentProject}
             className="profile__current-image w-full object-cover h-[12rem] xl:h-[24rem] rounded-[1.5rem]"
           />
           <ul className="profile__current-details list-disc pl-4 pt-4 xl:pl-6 xl:pt-6">

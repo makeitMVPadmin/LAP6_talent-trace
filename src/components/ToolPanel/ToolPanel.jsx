@@ -3,15 +3,21 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
+import logoFigma from '../../assets/icons/logo_figma.svg';
+import logoPhotoshop from '../../assets/icons/logo_photoshop.svg';
+import logoIllustrator from '../../assets/icons/logo_illustrator.svg';
+import logoPremiere from '../../assets/icons/logo_premiere.svg';
+import logoNotion from '../../assets/icons/logo_notion.svg';
+import logoMeet from '../../assets/icons/logo_meet.svg';
 
 function ToolPanel({ name }) {
   const tools = [
-    'logo_figma.svg',
-    'logo_photoshop.svg',
-    'logo_illustrator.svg',
-    'logo_premiere.svg',
-    'logo_notion.svg',
-    'logo_meet.svg',
+    logoFigma,
+    logoPhotoshop,
+    logoIllustrator,
+    logoPremiere,
+    logoNotion,
+    logoMeet,
   ];
 
   return (
@@ -35,7 +41,7 @@ function ToolPanel({ name }) {
                 {tools.map(function (tool) {
                   return (
                     <img
-                      src={'/src/assets/icons/' + `${tool}`}
+                      src={tool}
                       className="profile__icon max-xl:h-[10px]"
                       key={tool}
                     />
@@ -56,7 +62,7 @@ function ToolPanel({ name }) {
                 {tools.map(function (tool) {
                   return (
                     <img
-                      src={'/src/assets/icons/' + `${tool}`}
+                      src={tool}
                       className="profile__icon max-xl:h-[10px]"
                       key={tool}
                     />

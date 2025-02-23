@@ -1,4 +1,5 @@
 import { Card, CardContent } from '../ui/card';
+import flowerGirl from '../../assets/images/flower_girl.png';
 
 function GreetingPanel() {
   return (
@@ -7,7 +8,7 @@ function GreetingPanel() {
         {/* Profile Picture  */}
         <Card className="profile__picbox w-[9.5rem] h-[7rem] xl:w-[15.5rem] xl:h-[12.5rem] rounded-[1.5rem]">
           <img
-            src="/src/assets/images/flower_girl.png"
+            src={flowerGirl}
             className="profile__picture object-cover h-full w-full rounded-[1.5rem]"
           />
         </Card>

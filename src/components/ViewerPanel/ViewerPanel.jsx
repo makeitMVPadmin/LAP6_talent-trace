@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 /* Above line prevents eslint from triggering pre-commit errors */
 
+import cameraEnhance from '../../assets/images/camera_enhance.png';
+
 function ViewerPanel({ display }) {
   return (
     <>
@@ -12,7 +14,7 @@ function ViewerPanel({ display }) {
       >
         <div className="profile__view-row flex flex-row p-[1rem] xl:p-[2.5rem] gap-[1.25rem]">
           <img
-            src="/src/assets/images/camera_enhance.png"
+            src={cameraEnhance}
             className="profile__view-icon size-[35px] xl:size-auto"
           />
           <div className="profile__view-text flex flex-col xl:gap-[4px] grow">

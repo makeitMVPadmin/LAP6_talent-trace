@@ -2,6 +2,10 @@
 /* Above line prevents eslint from triggering pre-commit errors */
 
 import { CardContent } from '../ui/card';
+import logoWebsite from '../../assets/images/logo_website.png';
+import logoGmail from '../../assets/images/logo_gmail.png';
+import logoGithub from '../../assets/images/logo_github.png';
+import logoLinkedin from '../../assets/images/logo_linkedin.png';
 
 function ContactPanel({ display }) {
   return (
@@ -18,7 +22,7 @@ function ContactPanel({ display }) {
           </h2>
           <div className="profile__contact-bar flex flex-row mt-[0.5rem] items-center">
             <img
-              src="/src/assets/images/logo_website.png"
+              src={logoWebsite}
               className="profile__picture max-xl:h-[18px]"
             />
             <p className="profile__contact-detail text-[0.625rem] xl:text-[0.875rem] font-semibold">
@@ -26,17 +30,14 @@ function ContactPanel({ display }) {
             </p>
           </div>
           <div className="profile__contact-bar flex flex-row mt-[0.5rem] items-center">
-            <img
-              src="/src/assets/images/logo_gmail.png"
-              className="profile__picture max-xl:h-[18px]"
-            />
+            <img src={logoGmail} className="profile__picture max-xl:h-[18px]" />
             <p className="profile__contact-detail text-[0.625rem] xl:text-[0.875rem] font-semibold">
               diannedeveloper@gmail.com
             </p>
           </div>
           <div className="profile__contact-bar flex flex-row mt-[0.5rem] items-center">
             <img
-              src="/src/assets/images/logo_github.png"
+              src={logoGithub}
               className="profile__picture max-xl:h-[18px]"
             />
             <p className="profile__contact-detail text-[0.625rem] xl:text-[0.875rem] font-semibold">
@@ -45,7 +46,7 @@ function ContactPanel({ display }) {
           </div>
           <div className="profile__contact-bar flex flex-row mt-[0.5rem] items-center">
             <img
-              src="/src/assets/images/logo_linkedin.png"
+              src={logoLinkedin}
               className="profile__picture max-xl:h-[18px]"
             />
             <p className="profile__contact-detail text-[0.625rem] xl:text-[0.875rem] font-semibold">
