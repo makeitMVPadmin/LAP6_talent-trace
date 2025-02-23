@@ -10,6 +10,9 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      boxShadow: {
+        customShadow: '0px 2px 1px -1px rgba(0, 0, 0, 0.20)',
+      },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
         fraunces: ['Fraunces', 'sans-serif'],
