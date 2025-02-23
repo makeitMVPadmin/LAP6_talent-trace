@@ -24,9 +24,9 @@ function SkillsMenuCard() {
         <CardContent className="Skills_Menu-content h-[90%] flex flex-col justify-center">
           <SelectSkills />
         </CardContent>
-        <CardFooter className="Skills_Menu-footer bg-purple-300 flex justify-end">
+        <CardFooter className="Skills_Menu-footer flex justify-end">
           <Button
-            className="Skills_Menu-button w-32 h-10 pl-4 pr-4"
+            className="Skills_Menu-button w-32 h-10 pl-4 pr-4 rounded-[0.625rem] border-t border-l border-r-2 border-b-4 border-customBlue justify-center items-center gap-2 inline-flex"
             variant="muted"
           >
             Next
