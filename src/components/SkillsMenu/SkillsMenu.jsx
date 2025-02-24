@@ -11,7 +11,7 @@ import { Button } from '../ui/button';
 import SelectSkills from '../SelectSkills/SelectSkills';
 import { SelectedSkillsContext } from '@/context/SelectedSkillsContext';
 
-function SkillsMenuCard() {
+function SkillsMenuCard({ onButtonClick }) {
   const { selectedSkills } = useContext(SelectedSkillsContext);
 
   return (
@@ -33,7 +33,7 @@ function SkillsMenuCard() {
             className={`Skills_Menu-button w-32 h-10 pl-4 pr-4 rounded-[0.625rem] border-t border-l border-r-2 border-b-4 border-customBlue justify-center items-center gap-2 inline-flex ${selectedSkills.length === 5 ? 'button-enabled' : 'button-disabled'} ${selectedSkills.length === 5 ? 'cursor-pointer' : 'cursor-not-allowed'} disabled:opacity-100`}
             variant="ghost"
             disabled={selectedSkills.length != 5}
-            /*onclick={handleNextClick}*/
+            onClick={onButtonClick}
           >
             <div className="Skills_Menu-button-text text-center text-white text-[1.125rem] font-montserrat font-semibold leading-[1.625rem]">
               Next
