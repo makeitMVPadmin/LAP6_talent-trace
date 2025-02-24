@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useSkills } from '../../context/AllSkillsContext';
+import { SelectedSkillsContext } from '@/context/SelectedSkillsContext';
 
 // Memoized component to prevent unnecessary re-renders
 const SelectSkills = React.memo(() => {
   const { categories, skillsByCategory, loading, error } = useSkills();
-  const [selectedSkills, setSelectedSkills] = useState([]);
+  const { selectedSkills, handleSkillClick } = useContext(
+    SelectedSkillsContext
+  );
 
   // Helper function to capitalize the first letter of each word in a string
   const capitalizeFirstLetter = (text) => {
@@ -12,18 +15,6 @@ const SelectSkills = React.memo(() => {
   };
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading data: {error}</p>;
-
-  // Event handler for skill selection/deselection
-  const handleSkillClick = (skillId) => {
-    if (selectedSkills.includes(skillId)) {
-      setSelectedSkills((prev) => prev.filter((id) => id !== skillId));
-    } else {
-      // Only allow selecting if there are fewer than 5 selected skills
-      if (selectedSkills.length < 5) {
-        setSelectedSkills((prev) => [...prev, skillId]);
-      }
-    }
-  };
 
   return (
     <div>
