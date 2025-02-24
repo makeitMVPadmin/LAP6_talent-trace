@@ -19,14 +19,14 @@ function SnapBox({ content }) {
             className="snapshot__img h-[118px] w-[249px] rounded-[10px] border border-black object-cove"
           />
         </div>
-        <div className="snapshot__skills mx-[20px] flex flex-row flex-wrap gap-[9px]">
+        <div className="snapshot__skills mx-[20px] flex flex-row flex-wrap gap-[9px] overflow-hidden">
           {content.relatedSkills.map(function (skill) {
             return (
               <Badge
                 className="snapshot__badge text-xs h-[20px] border-b"
                 key={skill}
               >
-                Test
+                {skill.length < 20 ? skill : <h1>Test</h1>}
               </Badge>
             );
           })}

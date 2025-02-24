@@ -1,4 +1,5 @@
 import Snapshot from '@/components/Snapshot/Snapshot';
+import SnapStatic from '@/components/SnapStatic/SnapStatic';
 import {
   Carousel,
   CarouselContent,
@@ -50,7 +51,7 @@ function SnapshotPage() {
         <Carousel className="max-w-[1200px]">
           <CarouselContent>
             <CarouselItem className="flex self-center justify-center">
-              <Snapshot />
+              <SnapStatic />
             </CarouselItem>
             <CarouselItem className="flex self-center justify-center">
               <Snapshot />

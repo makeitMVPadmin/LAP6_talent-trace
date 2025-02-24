@@ -1,56 +1,81 @@
-import './Snapshot.css';
 import SnapMain from '../SnapMain/SnapMain';
 import SnapBox from '../SnapBox/SnapBox';
 
-function Snapshot() {
+function SnapStatic() {
   const folio = {
     name: 'Dianne Surname',
     role: 'UX/UI Designer',
     skills: [
-      'Communicative',
-      'Analytical',
-      'Collaborative',
-      'Adaptable',
-      'Fast Learner',
+      {
+        id: 1,
+        skillName: 'Communicative',
+      },
+      {
+        id: 2,
+        skillName: 'Analytical',
+      },
+      {
+        id: 3,
+        skillName: 'Collaborative',
+      },
+      {
+        id: 4,
+        skillName: 'Adaptable',
+      },
+      {
+        id: 5,
+        skillName: 'Fast Learner',
+      },
     ],
   };
 
   const data = [
     {
-      question:
-        'Building Sleek, User-Friendly Websites that Work on Any Device',
+      question: {
+        question:
+          'Building Sleek, User-Friendly Websites that Work on Any Device',
+      },
       answer:
         'I use flexible layouts and media queries to ensure the site adapts seamlessly across devices. Accessibility is key—so I prioritize clear navigation and screen-reader compatibility for all users.',
-      image: 'css_grid_1.png',
-      badges: ['CSS Grid', 'WCAG'],
+      image: '/src/assets/images/css_grid_1.png',
+      relatedSkills: ['CSS Grid', 'WCAG'],
     },
     {
-      question: 'Maintaining Smooth Performance in Complex Backend Development',
+      question: {
+        question:
+          'Maintaining Smooth Performance in Complex Backend Development',
+      },
       answer:
         'I optimise performance by streamlining database queries and using caching tools like Redis to speed up repetitive tasks. For scalability, I implement load balancing and monitor performance metrics regularly.',
-      image: 'redis_3.jpg',
-      badges: ['SQL', 'Redis/Memcahced'],
+      image: '/src/assets/images/redis_3.jpg',
+      relatedSkills: ['SQL', 'Redis/Memcahced'],
     },
     {
-      question: 'How I Stay on Top of My To-Do List When Time is Running Out',
+      question: {
+        question: 'How I Stay on Top of My To-Do List When Time is Running Out',
+      },
       answer:
         'I break tasks into smaller, manageable chunks using Kanban boards like Trello to visualize my workflow. I prioritize high-impact tasks first and allocate specific time blocks for focus work.',
-      image: 'trello.png',
-      badges: ['Trello', 'Prioritzation'],
+      image: '/src/assets/images/trello.png',
+      relatedSkills: ['Trello', 'Prioritzation'],
     },
     {
-      question: 'Staying Agile When a Project Takes an Unexpected Turn',
+      question: {
+        question: 'Staying Agile When a Project Takes an Unexpected Turn',
+      },
       answer:
         'I stay agile and quickly reassess the scope. Daily stand-ups with the team help ensure everyone is on the same page. I adapt my workflow, re-prioritise tasks, and communicate changes clearly.',
-      image: 'agile.png',
-      badges: ['Agile', 'Communicative'],
+      image: '/src/assets/images/agile.png',
+      relatedSkills: ['Agile', 'Communicative'],
     },
     {
-      question: 'Using data to make developmental decisions',
+      question: {
+        question: 'Using data to make developmental decisions',
+      },
       answer:
         'I dive into user behavior data from Google Analytics and run A/B tests to measure feature effectiveness. The data helps me identify areas for improvement and adjust features to solve user pain points.',
-      image: 'tableau.png',
-      badges: ['A/B Testing', 'Tableau'],
+      image: '/src/assets/images/tableau.png',
+      relatedSkills: ['A/B Testing', 'Tableau'],
     },
   ];
 
@@ -68,7 +93,7 @@ function Snapshot() {
         </div>
       </div>
       {/* Center Columns */}
-      <SnapMain id={folio} content={data[2]} />
+      <SnapMain id={folio} badges={folio.skills} content={data[2]} />
       {/* Right Column  */}
       <div className="snapshot__right mr-[22px] flex flex-col justify-center">
         {/* Right Top Box */}
@@ -84,4 +109,4 @@ function Snapshot() {
   );
 }
 
-export default Snapshot;
+export default SnapStatic;

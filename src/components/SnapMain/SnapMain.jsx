@@ -62,7 +62,7 @@ function SnapMain({ id, badges, content }) {
                   className="snapshot__badge text-xs h-[20px] border-b"
                   key={skill}
                 >
-                  Test
+                  {skill.length < 20 ? skill : <h1>Test</h1>}
                 </Badge>
               );
             })}
