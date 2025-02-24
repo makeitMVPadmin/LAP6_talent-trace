@@ -10,7 +10,7 @@ function ProgressBar({ isProgressing }) {
   );
 }
 
-ProgressBar.PropTypes = {
+ProgressBar.propTypes = {
   isProgressing: PropTypes.bool.isRequired,
 };
 
