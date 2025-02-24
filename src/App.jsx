@@ -7,6 +7,7 @@ import CreateSnapshotPage from './pages/CreateSnapshotPage/CreateSnapshotPage';
 import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 import { SkillsProvider } from './context/AllSkillsContext';
 import { CardsProvider } from './context/AllSnapshotsContext';
+import { UsersProvider } from './context/AllUserDetailContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -14,39 +15,41 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <SkillsProvider>
-        <Routes>
-          <Route
-            path="/"
-            element={<Navigate to={'/users/:userid/Profile'} replace />}
-          />
-          <Route
-            path="/users/:userId/Profile"
-            element={
-              <CardsProvider>
-                <ProfilePage />
-              </CardsProvider>
-            }
-          />
-          <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
-          <Route
-            path="/users/:userid/CreateSnapshot"
-            element={
-              <QuestionProvider>
-                <CreateSnapshotPage />
-              </QuestionProvider>
-            }
-          />
-          <Route
-            path="/users/:userId/cards/:cardId"
-            element={
-              <CardProvider>
-                <SnapshotPage />
-              </CardProvider>
-            }
-          />
-        </Routes>
-      </SkillsProvider>
+      <UsersProvider>
+        <SkillsProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={<Navigate to={'/users/:userid/Profile'} replace />}
+            />
+            <Route
+              path="/users/:userId/Profile"
+              element={
+                <CardsProvider>
+                  <ProfilePage />
+                </CardsProvider>
+              }
+            />
+            <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
+            <Route
+              path="/users/:userid/CreateSnapshot"
+              element={
+                <QuestionProvider>
+                  <CreateSnapshotPage />
+                </QuestionProvider>
+              }
+            />
+            <Route
+              path="/users/:userId/cards/:cardId"
+              element={
+                <CardProvider>
+                  <SnapshotPage />
+                </CardProvider>
+              }
+            />
+          </Routes>
+        </SkillsProvider>
+      </UsersProvider>
       <Footer />
     </BrowserRouter>
   );
