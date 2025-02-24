@@ -10,7 +10,7 @@ function SoftPanel() {
     'Adaptable',
     'Critical Thinker',
     'Accountable',
-    'Attentative',
+    'Attentive',
   ];
 
   return (

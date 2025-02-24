@@ -2,15 +2,18 @@
 /* Above line prevents eslint from triggering pre-commit errors */
 
 import cameraEnhance from '../../assets/images/camera_enhance.png';
+import { useNavigate } from 'react-router-dom';
 
 function ViewerPanel({ display }) {
+  const navigate = useNavigate();
   return (
     <>
-      <div
+      <button
         className={
-          'profile__view rounded-3xl border border-b-4 border-r-4 box-border border-sky-800 text-white shadow-md bg-[#0264d4] mt-[1rem] md:mt-0 ' +
+          'profile__view w-full rounded-3xl border border-b-4 border-r-4 box-border border-sky-800 text-white shadow-md bg-[#0264d4] mt-[1rem] md:mt-0 ' +
           display
         }
+        onClick={() => navigate('/users/:userId/cards/:cardId')}
       >
         <div className="profile__view-row flex flex-row p-[1rem] xl:p-[2.5rem] gap-[1.25rem]">
           <img
@@ -27,12 +30,12 @@ function ViewerPanel({ display }) {
                 className="profile__view-arrow h-[12px] xl:h-auto"
               />
             </div>
-            <p className="profile__view-body font-medium text-[0.625rem] xl:text-[1.125rem] font-sans">
+            <p className="profile__view-body font-medium text-[0.625rem] xl:text-[1.125rem] text-left font-sans">
               share your snapshot to increase your hiring chances
             </p>
           </div>
         </div>
-      </div>
+      </button>
     </>
   );
 }
