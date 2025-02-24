@@ -4,7 +4,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-function SnapMain({ id, content }) {
+function SnapMain({ id, badges, content }) {
   return (
     <>
       <div className="snapshot__center flex-1 bg-[url('/src/assets/images/snapshot_center_frame_2.png')] bg-no-repeat bg-center flex flex-col justify-between items-center">
@@ -17,13 +17,13 @@ function SnapMain({ id, content }) {
             {id.role}
           </h3>
           <div className="snapshot__skills--all flex flex-row gap-[6px] w-[380px] pt-[32px] justify-center flex-wrap">
-            {id.skills.map(function (skill) {
+            {badges.map(function (skill) {
               return (
                 <Badge
                   className="snapshot__badge text-xs w-[119px] h-[33px] px-[10px] py-[4px] justify-center"
-                  key={skill}
+                  key={skill.id}
                 >
-                  {skill}
+                  {skill.skillName}
                 </Badge>
               );
             })}
@@ -41,7 +41,7 @@ function SnapMain({ id, content }) {
         <div className="snapshot__bot w-[508px] h-[240px] mb-[32px] pb-[15px] px-[27px] flex flex-col text-card-foreground">
           <div className="snapshot__bot-header">
             <h2 className="snapshot__heading font-serif font-semibold">
-              {content.question}
+              {content.question.question}
             </h2>
           </div>
           <div className="snapshot__bot-main flex flex-row py-[9px] gap-[20px]">
@@ -50,19 +50,19 @@ function SnapMain({ id, content }) {
             </p>
             <div className="snapshot__media w-[240px]">
               <img
-                src={'/src/assets/images/' + content.image}
+                src={content.image}
                 className="snapshot__img h-[118px] w-[240px] rounded-[10px] border border-black"
               />
             </div>
           </div>
           <div className="snapshot__skills flex flex-row gap-[9px]">
-            {content.badges.map(function (badge) {
+            {content.relatedSkills.map(function (skill) {
               return (
                 <Badge
                   className="snapshot__badge text-xs h-[20px] border-b"
-                  key={badge}
+                  key={skill}
                 >
-                  {badge}
+                  Test
                 </Badge>
               );
             })}
