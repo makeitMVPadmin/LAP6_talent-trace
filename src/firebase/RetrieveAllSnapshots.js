@@ -12,7 +12,7 @@ export const fetchUserSnapshots = async (userId) => {
     const cardsSnap = await getDocs(cardsQuery);
 
     if (cardsSnap.empty) {
-      throw new Error('No snapshots found for this user!');
+      return null;
     }
 
     // Extract array of snapshots
