@@ -139,23 +139,21 @@ export function Question() {
                   (optional; URL link)
                 </span>
               </Label>
-              <div className="relative">
-                <Input
-                  className="rounded-[8px] border-t border-l border-[#003660] border-r-2 border-b-2 bg-white"
-                  style={{
-                    borderTop: '1px solid var(--Blue-Blue12, #003660)',
-                    borderRight: '2px solid var(--Blue-Blue12, #003660)',
-                    borderBottom: '2px solid var(--Blue-Blue12, #003660)',
-                    borderLeft: '1px solid var(--Blue-Blue12, #003660)',
-                    background: 'var(--White, #FFF)',
-                  }}
-                  type="text"
-                  placeholder="Enter image URL"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                />
-                <Plus className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer w-5 h-5" />
-              </div>
+
+              <Input
+                className="rounded-[8px] border-t border-l border-[#003660] border-r-2 border-b-2 bg-white"
+                style={{
+                  borderTop: '1px solid var(--Blue-Blue12, #003660)',
+                  borderRight: '2px solid var(--Blue-Blue12, #003660)',
+                  borderBottom: '2px solid var(--Blue-Blue12, #003660)',
+                  borderLeft: '1px solid var(--Blue-Blue12, #003660)',
+                  background: 'var(--White, #FFF)',
+                }}
+                type="text"
+                placeholder="Enter image URL"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+              />
             </div>
           </div>
         </form>
