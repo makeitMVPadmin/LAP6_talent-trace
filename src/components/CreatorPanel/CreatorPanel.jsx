@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardFooter } from '../ui/card';
+import { useNavigate } from 'react-router-dom';
 
 function CreatorPanel() {
+  const navigate = useNavigate();
   return (
     <>
       <Card className="profile__creator w-[50rem]   rounded-[1.5rem] flex flex-col items-center">
@@ -17,7 +19,10 @@ function CreatorPanel() {
           </p>
         </CardContent>
         <CardFooter>
-          <button className="profile__creator-button bg-blue-600 h-[2.5rem] w-[14.5rem] text-[1.125rem] font-semibold rounded-[0.625rem] text-white shadow">
+          <button
+            className="profile__creator-button bg-blue-600 h-[2.5rem] w-[14.5rem] text-[1.125rem] font-semibold rounded-[0.625rem] text-white shadow"
+            onClick={() => navigate('/SnapshotInfo')}
+          >
             Create my Snapshot
           </button>
         </CardFooter>
