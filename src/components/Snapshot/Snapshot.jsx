@@ -1,200 +1,83 @@
 import './Snapshot.css';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import SnapMain from '../SnapMain/SnapMain';
+import SnapBox from '../SnapBox/SnapBox';
 
 function Snapshot() {
+  const folio = {
+    name: 'Dianne Surname',
+    role: 'UX/UI Designer',
+    skills: [
+      'Communicative',
+      'Analytical',
+      'Collaborative',
+      'Adaptable',
+      'Fast Learner',
+    ],
+  };
+
+  const data = [
+    {
+      question:
+        'Building Sleek, User-Friendly Websites that Work on Any Device',
+      answer:
+        'I use flexible layouts and media queries to ensure the site adapts seamlessly across devices. Accessibility is key—so I prioritize clear navigation and screen-reader compatibility for all users.',
+      image: 'css_grid_1.png',
+      badges: ['CSS Grid', 'WCAG'],
+    },
+    {
+      question: 'Maintaining Smooth Performance in Complex Backend Development',
+      answer:
+        'I optimise performance by streamlining database queries and using caching tools like Redis to speed up repetitive tasks. For scalability, I implement load balancing and monitor performance metrics regularly.',
+      image: 'redis_3.jpg',
+      badges: ['SQL', 'Redis/Memcahced'],
+    },
+    {
+      question: 'How I Stay on Top of My To-Do List When Time is Running Out',
+      answer:
+        'I break tasks into smaller, manageable chunks using Kanban boards like Trello to visualize my workflow. I prioritize high-impact tasks first and allocate specific time blocks for focus work.',
+      image: 'trello.png',
+      badges: ['Trello', 'Prioritzation'],
+    },
+    {
+      question: 'Staying Agile When a Project Takes an Unexpected Turn',
+      answer:
+        'I stay agile and quickly reassess the scope. Daily stand-ups with the team help ensure everyone is on the same page. I adapt my workflow, re-prioritise tasks, and communicate changes clearly.',
+      image: 'agile.png',
+      badges: ['Agile', 'Communicative'],
+    },
+    {
+      question: 'Using data to make developmental decisions',
+      answer:
+        'I dive into user behavior data from Google Analytics and run A/B tests to measure feature effectiveness. The data helps me identify areas for improvement and adjust features to solve user pain points.',
+      image: 'tableau.png',
+      badges: ['A/B Testing', 'Tableau'],
+    },
+  ];
+
   return (
-    <div className="snapshot h-[900px] w-[1200px] border-2 border-black rounded-[20px] flex flex-row justify-between">
+    <div className="snapshot h-[900px] w-[1200px] border border-b-2 border-r-2 border-slate-300 rounded-[20px] flex flex-row justify-between bg-primary">
       {/* Left Column */}
-      <div className="snapshot__left my-[32px] ml-[32px] flex flex-col justify-between">
+      <div className="snapshot__left ml-[22px] flex flex-col justify-center">
         {/* Left Top Box */}
-        <div className="snapshot__box h-[386px] w-[262px] bg-[url('/src/assets/images/snapshot_box_frame.png')] flex flex-col">
-          <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
-            Collaborator
-          </h2>
-          <p className="snapshot__text font-sans text-xs mx-[28px]">
-            This is where the answer will go for approximately 200 characters
-            long. I will answer this question in about 40 words as that is the
-            conversion. I need about 20 more words to go until I hit the
-            capacity.{' '}
-          </p>
-          <div className="snapshot__media my-[30px] ml-[30px] flex flex-row gap-[9px]">
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-          </div>
-          <div className="snapshot__skills ml-[30px] flex flex-row gap-[9px]">
-            <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-              Figma
-            </Badge>
-            <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-              Collaboration
-            </Badge>
-          </div>
+        <div className="snapshot__frame h-[406px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_2.png')] flex flex-col">
+          <SnapBox content={data[0]} />
         </div>
         {/* Left Bottom Box */}
-        <div className="snapshot__box h-[386px] w-[262px] bg-[url('/src/assets/images/snapshot_box_frame.png')]">
-          <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
-            Analytical
-          </h2>
-          <p className="snapshot__text font-sans text-xs mx-[28px]">
-            This is where the answer will go for approximately 200 characters
-            long. I will answer this question in about 40 words as that is the
-            conversion. I need about 20 more words to go until I hit the
-            capacity.{' '}
-          </p>
-          <div className="snapshot__media my-[30px] ml-[30px] flex flex-row gap-[9px]">
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-          </div>
-          <div className="snapshot__skills ml-[30px] flex flex-row gap-[9px]">
-            <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-              Figma
-            </Badge>
-            <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-              Collaboration
-            </Badge>
-          </div>
+        <div className="snapshot__frame h-[416px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_3.png')] flex flex-col">
+          <SnapBox content={data[1]} />
         </div>
       </div>
       {/* Center Columns */}
-      <div className="snapshot__center flex-1 bg-[url('/src/assets/images/snapshot_center_frame.png')] bg-no-repeat bg-center flex flex-col justify-between items-center">
-        {/* Center Top Box */}
-        <div className="snapshot__top w-[556px] h-[240px] mt-[32px] pt-[15px] px-[45px] flex flex-col items-center">
-          <h1 className="snapshot__name font-serif text-[28px] pt-[32px]">
-            Vidushi Pandey
-          </h1>
-          <h3 className="snapshot__role font-serif text-[20px] pt-[15px]">
-            UX/UI Designer
-          </h3>
-          <div className="snapshot__skills--all flex flex-row gap-[20px] w-[380px] pt-[32px] justify-center flex-wrap">
-            <Badge className="snapshot__badge text-xs h-[20px] bg-gray-800 text-white">
-              Creativity
-            </Badge>
-            <Badge className="snapshot__badge text-xs h-[20px] bg-gray-800 text-white">
-              Collaboration
-            </Badge>
-            <Badge className="snapshot__badge text-xs h-[20px] bg-gray-800 text-white">
-              Creativity
-            </Badge>
-            <Badge className="snapshot__badge text-xs h-[20px] bg-gray-800 text-white">
-              Collaboration
-            </Badge>
-            <Badge className="snapshot__badge text-xs h-[20px] bg-gray-800 text-white">
-              Collaboration
-            </Badge>
-          </div>
-        </div>
-        {/* Avatar Box  */}
-        <Avatar className="snapshot__avatar h-[270px] w-[270px] border-2 border-neutral-500">
-          <AvatarImage src="/src/assets/images/placeholder_image.png" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        {/* Center Bottom Box */}
-        <div className="snapshot__bot w-[556px] h-[240px] mb-[32px] pb-[15px] px-[45px] flex flex-row">
-          <div className="snapshot__botinfo">
-            <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
-              Analytical
-            </h2>
-            <p className="snapshot__text font-sans text-xs mx-[28px]">
-              This is where the answer will go for approximately 200 characters
-              long. I will answer this question in about 40 words as that is the
-              conversion. I need about 20 more words to go until I hit the
-              capacity.{' '}
-            </p>
-            <div className="snapshot__skills ml-[28px] my-[30px] flex flex-row gap-[9px]">
-              <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-                Figma
-              </Badge>
-              <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-                Collaboration
-              </Badge>
-            </div>
-          </div>
-          <div className="snapshot__media flex flex-col min-w-[80px] gap-[9px]">
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-          </div>
-        </div>
-      </div>
+      <SnapMain id={folio} content={data[2]} />
       {/* Right Column  */}
-      <div className="snapshot__right my-[32px] mr-[32px] flex flex-col justify-between">
+      <div className="snapshot__right mr-[22px] flex flex-col justify-center">
         {/* Right Top Box */}
-        <div className="snapshot__box h-[386px] w-[262px] bg-[url('/src/assets/images/snapshot_box_frame.png')]">
-          <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
-            Empathetic
-          </h2>
-          <p className="snapshot__text font-sans text-xs mx-[28px]">
-            This is where the answer will go for approximately 200 characters
-            long. I will answer this question in about 40 words as that is the
-            conversion. I need about 20 more words to go until I hit the
-            capacity.{' '}
-          </p>
-          <div className="snapshot__media my-[30px] ml-[30px] flex flex-row gap-[9px]">
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-          </div>
-          <div className="snapshot__skills ml-[30px] flex flex-row gap-[9px]">
-            <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-              Figma
-            </Badge>
-            <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-              Collaboration
-            </Badge>
-          </div>
+        <div className="snapshot__frame h-[406px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_2.png')] flex flex-col">
+          <SnapBox content={data[3]} />
         </div>
         {/* Right Bottom Box */}
-        <div className="snapshot__box h-[386px] w-[262px] bg-[url('/src/assets/images/snapshot_box_frame.png')]">
-          <h2 className="snapshot__heading font-serif text-[28px] mt-[28px] mx-[28px]">
-            Animator
-          </h2>
-          <p className="snapshot__text font-sans text-xs mx-[28px]">
-            This is where the answer will go for approximately 200 characters
-            long. I will answer this question in about 40 words as that is the
-            conversion. I need about 20 more words to go until I hit the
-            capacity.{' '}
-          </p>
-          <div className="snapshot__media my-[30px] ml-[30px] flex flex-row gap-[9px]">
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-            <img
-              src="/src/assets/images/placeholder_image.png"
-              className="snapshot__img h-[80px] w-[80px] rounded-[10px]"
-            />
-          </div>
-          <div className="snapshot__skills ml-[30px] flex flex-row gap-[9px]">
-            <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-              Figma
-            </Badge>
-            <Badge className="snapshot__badge text-xs h-[20px] bg-slate-200 text-black">
-              Collaboration
-            </Badge>
-          </div>
+        <div className="snapshot__frame h-[416px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_3.png')] flex flex-col">
+          <SnapBox content={data[4]} />
         </div>
       </div>
     </div>
