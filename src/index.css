@@ -14,9 +14,9 @@
     --popover-foreground: 0 0% 3.9%;
     --primary: 41 100% 62%;
     --primary-foreground: 206 100% 19%; 
-    --secondary: 206 100% 19%;
+    --secondary:206 100% 19%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 96.1%;
+    --muted: 198, 24%, 75%;
     --muted-foreground: 0 0% 45.1%;
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
@@ -66,5 +66,16 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components{
+  
+  .button-enabled{
+    @apply bg-customButtonBlue;
+  }
+
+  .button-disabled{
+    @apply bg-customLightBlue;
   }
 }
