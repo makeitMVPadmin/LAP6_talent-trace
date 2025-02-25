@@ -24,6 +24,8 @@ export default {
         customDark: '#28363F',
         customButtonBlue: '#0099FF',
         customLightBlue: '#AABFCC',
+        customProgressYellow: '#FFC107',
+        customProgressGray: '#D9D9D9',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
