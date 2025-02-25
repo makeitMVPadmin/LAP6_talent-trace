@@ -1,11 +1,8 @@
 import './Snapshot.css';
 import SnapMain from '../SnapMain/SnapMain';
 import SnapBox from '../SnapBox/SnapBox';
-import { useCard } from '../../context/SnapshotContext';
 
-function Snapshot() {
-  const info = useCard().card;
-
+function Snapshot({ info }) {
   const folio = {
     name: 'Dianne Surname',
     role: 'UX/UI Designer',
@@ -17,45 +14,6 @@ function Snapshot() {
       'Fast Learner',
     ],
   };
-
-  // const data = [
-  //   {
-  //     question:
-  //       'Building Sleek, User-Friendly Websites that Work on Any Device',
-  //     answer:
-  //       'I use flexible layouts and media queries to ensure the site adapts seamlessly across devices. Accessibility is key—so I prioritize clear navigation and screen-reader compatibility for all users.',
-  //     image: 'css_grid_1.png',
-  //     badges: ['CSS Grid', 'WCAG'],
-  //   },
-  //   {
-  //     question: 'Maintaining Smooth Performance in Complex Backend Development',
-  //     answer:
-  //       'I optimise performance by streamlining database queries and using caching tools like Redis to speed up repetitive tasks. For scalability, I implement load balancing and monitor performance metrics regularly.',
-  //     image: 'redis_3.jpg',
-  //     badges: ['SQL', 'Redis/Memcahced'],
-  //   },
-  //   {
-  //     question: 'How I Stay on Top of My To-Do List When Time is Running Out',
-  //     answer:
-  //       'I break tasks into smaller, manageable chunks using Kanban boards like Trello to visualize my workflow. I prioritize high-impact tasks first and allocate specific time blocks for focus work.',
-  //     image: 'trello.png',
-  //     badges: ['Trello', 'Prioritzation'],
-  //   },
-  //   {
-  //     question: 'Staying Agile When a Project Takes an Unexpected Turn',
-  //     answer:
-  //       'I stay agile and quickly reassess the scope. Daily stand-ups with the team help ensure everyone is on the same page. I adapt my workflow, re-prioritise tasks, and communicate changes clearly.',
-  //     image: 'agile.png',
-  //     badges: ['Agile', 'Communicative'],
-  //   },
-  //   {
-  //     question: 'Using data to make developmental decisions',
-  //     answer:
-  //       'I dive into user behavior data from Google Analytics and run A/B tests to measure feature effectiveness. The data helps me identify areas for improvement and adjust features to solve user pain points.',
-  //     image: 'tableau.png',
-  //     badges: ['A/B Testing', 'Tableau'],
-  //   },
-  // ];
 
   try {
     return (
@@ -86,8 +44,8 @@ function Snapshot() {
         </div>
       </div>
     );
-  } catch (err) {
-    console.log(err);
+  } catch {
+    return <></>;
   }
 }
 

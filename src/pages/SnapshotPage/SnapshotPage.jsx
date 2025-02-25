@@ -1,5 +1,4 @@
 import Snapshot from '@/components/Snapshot/Snapshot';
-import SnapStatic from '@/components/SnapStatic/SnapStatic';
 import {
   Carousel,
   CarouselContent,
@@ -7,8 +6,38 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { useCards } from '@/context/AllSnapshotsContext';
 
 function SnapshotPage() {
+  const { cards, error, loading } = useCards();
+
+  const SnapshotWindow = () => {
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+    if (error) {
+      return <p>Error loading data: {error}</p>;
+    }
+    return (
+      <Carousel className="max-w-[1200px]">
+        <CarouselContent>
+          {cards.map(function (card) {
+            return (
+              <CarouselItem
+                key={card.cardId}
+                className="flex self-center justify-center"
+              >
+                <Snapshot info={card} />
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    );
+  };
+
   return (
     <>
       <div className="snapshotpage bg-amber-100 flex flex-col items-center pb-[13rem]">
@@ -48,18 +77,7 @@ function SnapshotPage() {
             </p>
           </div>
         </div>
-        <Carousel className="max-w-[1200px]">
-          <CarouselContent>
-            <CarouselItem className="flex self-center justify-center">
-              <SnapStatic />
-            </CarouselItem>
-            <CarouselItem className="flex self-center justify-center">
-              <Snapshot />
-            </CarouselItem>
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+        {SnapshotWindow()}
       </div>
     </>
   );

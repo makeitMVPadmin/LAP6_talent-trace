@@ -39,7 +39,6 @@ export const CardProvider = ({ children }) => {
   return (
     <CardContext.Provider value={{ card, error, loading }}>
       {children}
-      {console.log(card)}
     </CardContext.Provider>
   );
 };
