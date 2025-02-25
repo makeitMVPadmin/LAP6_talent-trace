@@ -5,22 +5,27 @@ import HardPanel from '../HardPanel/HardPanel';
 import ProjectPanel from '../ProjectPanel/ProjectPanel';
 import SoftPanel from '../SoftPanel/SoftPanel';
 import ToolPanel from '../ToolPanel/ToolPanel';
+// import ViewerPanel from '../ViewerPanel/ViewerPanel';
 
 function Profile() {
   return (
     <>
-      <div className="profile flex flex-row justify-center gap-[2rem] py-[4rem]">
-        <div className="profile__left w-[33rem]">
+      <div className="profile flex flex-col items-center md:flex-row md:justify-center md:items-start md:gap-[2rem] py-[4rem]">
+        <div className="profile__left w-[22rem] xl:w-[33rem]">
           <GreetingPanel /> {/* Picture and Intro Cards  */}
+          <CreatorPanel display={'md:hidden'} /> {/* Create my Snapshot  */}
+          {/* <ViewerPanel display={'md:hidden'} /> */}
           <SoftPanel /> {/* Soft Skills  */}
           <HardPanel /> {/* Hard Skills  */}
           <ToolPanel name={'Tools'} /> {/* Tools Card  */}
           <ToolPanel name={'Certifications'} /> {/* Certifications Card  */}
-          <ContactPanel /> {/* Contact Card  */}
+          <ContactPanel display={'max-md:hidden'} /> {/* Contact Card  */}
         </div>
-        <div className="profile__right w-[50rem] h-[1000px]">
-          <CreatorPanel /> {/* Create Snapshot Card  */}
+        <div className="profile__right w-[22rem] lg:w-[33rem] xl:w-[50rem]">
+          <CreatorPanel display={'max-md:hidden'} /> {/* Create my Snapshot  */}
+          {/* <ViewerPanel display={'max-md:hidden'} /> */}
           <ProjectPanel /> {/* What I'm Working On Card  */}
+          <ContactPanel display={'md:hidden'} /> {/* Contact Card  */}
         </div>
       </div>
     </>

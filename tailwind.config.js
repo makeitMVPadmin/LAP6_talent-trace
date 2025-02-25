@@ -10,14 +10,22 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      boxShadow: {
+        customShadow: '0px 2px 1px -1px rgba(0, 0, 0, 0.20)',
+      },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
+        fraunces: ['Fraunces', 'sans-serif'],
       },
       colors: {
         customYellow: '#FFC02C',
         customGray: '#D0DCE3',
         customBlue: '#003660',
         customDark: '#28363F',
+        customButtonBlue: '#0099FF',
+        customLightBlue: '#AABFCC',
+        customProgressYellow: '#FFC107',
+        customProgressGray: '#D9D9D9',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
