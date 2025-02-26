@@ -15,7 +15,7 @@ export default {
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
-        fraunces: ['Fraunces', 'sans-serif'],
+        fraunces: ['Fraunces', 'serif'],
       },
       colors: {
         customYellow: '#FFC02C',
