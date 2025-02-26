@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 /* Above line prevents eslint from triggering pre-commit errors */
 
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import image from '../../assets/images/Ellipse.png';
 
 function SnapMain({ id, content }) {
   return (
@@ -19,24 +18,49 @@ function SnapMain({ id, content }) {
           <div className="snapshot__skills--all flex flex-row gap-[6px] w-[380px] pt-[32px] justify-center flex-wrap">
             {id.skills.map(function (skill) {
               return (
-                <Badge
-                  className="snapshot__badge text-xs w-[119px] h-[33px] px-[10px] py-[4px] justify-center"
+                <div
                   key={skill}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '500px',
+                    borderTop: '1px solid #003660',
+                    borderLeft: '1px solid #003660',
+                    borderRight: '1px solid #003660',
+                    borderBottom: '2.5px solid #003660',
+                    padding: '4px 12px',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    backgroundColor: '#FACC15',
+                    color: '#1E293B',
+                    boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.15)',
+                    textAlign: 'center',
+                    minWidth: '119px',
+                    height: '33px',
+                    cursor: 'pointer',
+                  }}
                 >
                   {skill}
-                </Badge>
+                </div>
               );
             })}
           </div>
         </div>
         {/* Avatar Box  */}
-        <Avatar className="snapshot__avatar h-[234px] w-[234px]">
-          <AvatarImage
-            src="/src/assets/images/flower_girl.png"
-            className="object-cover"
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        <div className="relative flex h-[234px] w-[234px] shrink-0 overflow-hidden rounded-full">
+          {image ? (
+            <img
+              src={image}
+              alt="Avatar"
+              className="aspect-square h-full w-full object-cover"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center rounded-full bg-gray-200 text-gray-600 font-medium">
+              CN
+            </div>
+          )}
+        </div>
         {/* Center Bottom Box */}
         <div className="snapshot__bot w-[508px] h-[240px] mb-[32px] pb-[15px] px-[27px] flex flex-col text-card-foreground">
           <div className="snapshot__bot-header">
@@ -58,12 +82,31 @@ function SnapMain({ id, content }) {
           <div className="snapshot__skills flex flex-row gap-[9px]">
             {content.badges.map(function (badge) {
               return (
-                <Badge
-                  className="snapshot__badge text-xs h-[20px] border-b"
+                <div
                   key={badge}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '500px',
+                    borderTop: '1px solid #003660',
+                    borderLeft: '1px solid #003660',
+                    borderRight: '1px solid #003660',
+                    borderBottom: '2.5px solid #003660',
+                    padding: '4px',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    backgroundColor: 'rgba(255, 193, 60, 0.75)',
+                    color: '#1E293B',
+                    boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.15)',
+                    textAlign: 'center',
+                    minWidth: '110px',
+                    height: '30px',
+                    cursor: 'pointer',
+                  }}
                 >
                   {badge}
-                </Badge>
+                </div>
               );
             })}
           </div>
