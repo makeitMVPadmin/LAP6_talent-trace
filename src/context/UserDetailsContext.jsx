@@ -16,25 +16,27 @@ export const UserProvider = ({ children }) => {
   const { userId } = useParams(); // Get URL parameters
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserData = async () => {
+      setLoading(true);
       try {
         const data = await fetchUserDetail(userId);
         setUser(data);
       } catch (err) {
-        console.error(err);
         setError(err.message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUserData();
-  }, []);
+  }, [userId]);
 
   return (
-    <UserContext.Provider value={{ user, error }}>
+    <UserContext.Provider value={{ user, error, loading }}>
       {children}
-      {console.log(user)}
     </UserContext.Provider>
   );
 };
