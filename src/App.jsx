@@ -7,6 +7,7 @@ import CreateSnapshotPage from './pages/CreateSnapshotPage/CreateSnapshotPage';
 import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 import { SkillsProvider } from './context/AllSkillsContext';
 import { CardsProvider } from './context/AllSnapshotsContext';
+import { UsersProvider } from './context/AllUserDetailsContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+      <UsersProvider>
       <SkillsProvider>
         <Routes>
           <Route
@@ -47,6 +49,7 @@ function App() {
           />
         </Routes>
       </SkillsProvider>
+      </UsersProvider>
       <Footer />
     </BrowserRouter>
   );
