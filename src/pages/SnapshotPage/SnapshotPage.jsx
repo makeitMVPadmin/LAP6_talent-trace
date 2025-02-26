@@ -85,23 +85,9 @@ function SnapshotPage() {
             </p>
           </div>
         </div>
-        {SnapshotWindow()}
 
         {/* Attach ref to the Snapshot component */}
-        <div ref={snapshotRef}>
-          <Carousel className="max-w-[1200px]">
-            <CarouselContent>
-              <CarouselItem className="flex self-center justify-center">
-                <Snapshot />
-              </CarouselItem>
-              <CarouselItem className="flex self-center justify-center">
-                <Snapshot />
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+        <div ref={snapshotRef}>{SnapshotWindow()}</div>
       </div>
     </>
   );

@@ -43,7 +43,7 @@ function SnapBox({ content }) {
                   cursor: 'pointer',
                 }}
               >
-                {skill}
+                {skill.length <= 10 ? skill : skill.slice(10)}
               </div>
             );
           })}

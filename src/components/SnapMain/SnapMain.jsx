@@ -19,7 +19,7 @@ function SnapMain({ id, badges, content }) {
             {badges.map(function (skill) {
               return (
                 <div
-                  key={skill}
+                  key={skill.id}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -41,7 +41,7 @@ function SnapMain({ id, badges, content }) {
                     cursor: 'pointer',
                   }}
                 >
-                  {skill}
+                  {skill.skillName}
                 </div>
               );
             })}
@@ -105,7 +105,7 @@ function SnapMain({ id, badges, content }) {
                     cursor: 'pointer',
                   }}
                 >
-                  {skill}
+                  {skill.length <= 10 ? skill : skill.slice(10)}
                 </div>
               );
             })}
