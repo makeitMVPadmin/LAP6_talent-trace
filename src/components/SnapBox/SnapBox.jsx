@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 /* Above line prevents eslint from triggering pre-commit errors */
 
-import { Badge } from '@/components/ui/badge';
-
 function SnapBox({ content }) {
   return (
     <>
@@ -22,12 +20,31 @@ function SnapBox({ content }) {
         <div className="snapshot__skills mx-[20px] flex flex-row gap-[9px]">
           {content.badges.map(function (badge) {
             return (
-              <Badge
-                className="snapshot__badge text-xs h-[20px] border-b"
+              <div
                 key={badge}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '500px',
+                  borderTop: '1px solid #003660',
+                  borderLeft: '1px solid #003660',
+                  borderRight: '1px solid #003660',
+                  borderBottom: '2.5px solid #003660',
+                  padding: '4px',
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  backgroundColor: 'rgba(255, 193, 60, 0.75)',
+                  color: '#1E293B',
+                  boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.15)',
+                  textAlign: 'center',
+                  minWidth: '110px',
+                  height: '30px',
+                  cursor: 'pointer',
+                }}
               >
                 {badge}
-              </Badge>
+              </div>
             );
           })}
         </div>
