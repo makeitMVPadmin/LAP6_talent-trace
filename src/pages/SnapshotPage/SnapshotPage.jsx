@@ -9,9 +9,12 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { useCards } from '@/context/AllSnapshotsContext';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function SnapshotPage() {
   const snapshotRef = useRef(null);
+  const { userId } = useParams();
+  const navigate = useNavigate();
 
   const { cards, error, loading } = useCards();
 
@@ -45,13 +48,16 @@ function SnapshotPage() {
   return (
     <>
       <div className="snapshotpage bg-amber-100 flex flex-col items-center pb-[13rem]">
-        <div className="snapshotpage__back w-[1200px] flex flex-row my-[2.5rem] gap-[2px] justify-start">
+        <button
+          className="snapshotpage__back w-[1200px] flex flex-row my-[2.5rem] gap-[2px] justify-start"
+          onClick={() => navigate(`/users/${userId}/Profile`)}
+        >
           <img
             src="/src/assets/icons/chevron-left.svg"
             className="snapshotpage__icon"
           />
           <p className="font-medium text-[0.875rem] text-secondary">Previous</p>
-        </div>
+        </button>
         <div className="snapshotpage__banner w-[1200px] flex flex-row justify-end gap-[22px] mb-[1rem] items-baseline">
           {/* DOWNLOAD BUTTON */}
           <div
