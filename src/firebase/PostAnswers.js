@@ -3,6 +3,11 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const postMultipleAnswersAndCreateCard = async (answers, profileId, userId) => {
   try {
+    // Ensure exactly 5 answers are provided
+    if (answers.length !== 5) {
+      throw new Error('You must submit exactly 5 answers.');
+    }
+
     // Post all answers and get their IDs
     const answerPromises = answers.map(async (answer) => {
       const answerData = {
@@ -26,7 +31,7 @@ const postMultipleAnswersAndCreateCard = async (answers, profileId, userId) => {
     // Create a card using the extracted skillIds
     const cardData = {
       answerIds, // Store all answer IDs in the card
-      skillIds, //  skill IDs extracted from answers
+      skillIds, // Skill IDs extracted from answers
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
       profileId,
@@ -38,7 +43,7 @@ const postMultipleAnswersAndCreateCard = async (answers, profileId, userId) => {
     return { answerIds, cardId: cardRef.id };
   } catch (error) {
     console.error('Error posting answers and creating card:', error);
-    throw error;
+    throw error; // Ensure the error is handled in the calling function
   }
 };
 
