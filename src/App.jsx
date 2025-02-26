@@ -7,27 +7,28 @@ import CreateSnapshotPage from './pages/CreateSnapshotPage/CreateSnapshotPage';
 import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 import { SkillsProvider } from './context/AllSkillsContext';
 import { CardsProvider } from './context/AllSnapshotsContext';
-import { UsersProvider } from './context/AllUserDetailsContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import { UserProvider } from './context/UserDetailsContext';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <UsersProvider>
       <SkillsProvider>
         <Routes>
           <Route
             path="/"
-            element={<Navigate to={'/users/:userid/Profile'} replace />}
+            element={<Navigate to={'/users/:userId/Profile'} replace />}
           />
           <Route
             path="/users/:userId/Profile"
             element={
-              <CardsProvider>
-                <ProfilePage />
-              </CardsProvider>
+              <UserProvider>
+                <CardsProvider>
+                  <ProfilePage />
+                </CardsProvider>
+              </UserProvider>
             }
           />
           <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
@@ -49,7 +50,6 @@ function App() {
           />
         </Routes>
       </SkillsProvider>
-      </UsersProvider>
       <Footer />
     </BrowserRouter>
   );
