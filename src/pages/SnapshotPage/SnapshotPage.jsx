@@ -32,7 +32,7 @@ function SnapshotPage() {
       return <p>Error loading data: {error}</p>;
     }
     return (
-      <Carousel className="max-w-[1200px]">
+      <Carousel className="max-w-[1200px] max-xl:hidden">
         <CarouselContent>
           {cards.map(function (card) {
             return (
@@ -51,43 +51,77 @@ function SnapshotPage() {
     );
   };
 
+  const SnapshotScroll = () => {
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+    if (error) {
+      return <p>Error loading data: {error}</p>;
+    }
+    return (
+      <div className="xl:hidden">
+        <Snapshot info={cards[0]} profile={user} />
+      </div>
+    );
+  };
+
   return (
     <>
-      <div className="snapshotpage bg-amber-100 flex flex-col items-center pb-[13rem]">
+      <div className="snapshotpage bg-[#FFFAEE] flex flex-col items-center pb-[10rem] xl:pb-[13rem]">
+        {/* PREVIOUS BUTTON */}
         <button
-          className="snapshotpage__back w-[1200px] flex flex-row my-[2.5rem] gap-[2px] justify-start"
+          className="snapshotpage__back w-[353px] xl:w-[1200px] flex flex-row my-[1.25rem] xl:my-[2.5rem] gap-[2px] justify-start"
           onClick={() => navigate(`/users/${userId}/Profile`)}
         >
           <img src={chevronLeft} className="snapshotpage__icon" />
           <p className="font-medium text-[0.875rem] text-secondary">Previous</p>
         </button>
-        <div className="snapshotpage__banner w-[1200px] flex flex-row justify-end gap-[22px] mb-[1rem] items-baseline">
+        {/* MOBILE TABS */}
+        <div className="snapshotpage__tabs xl:hidden bg-[#FFF8E1] w-[203px] h-[29px] rounded-[15px] mb-[1.25rem] flex flex-row">
+          <div className="snapshotpage__active-tab w-[108px] bg-[#0264D4] rounded-[15px] text-white text-xs font-semibold flex justify-center items-center cursor-pointer">
+            Snapshot 1
+          </div>
+          <div className="snapshotpage__inactive-tab text-[#0264D4] text-xs font-semibold flex justify-center items-center grow cursor-pointer">
+            Snapshot 2
+          </div>
+        </div>
+        {/* BUTTON BANNER */}
+        <div className="snapshotpage__banner w-[353px] xl:w-[1200px] flex flex-row justify-end gap-[22px] mb-[0.5rem] xl:mb-[1rem] items-baseline">
           {/* DOWNLOAD BUTTON */}
           <div
-            className="snapshotpage__download flex flex-col items-center h-[50px] cursor-pointer"
+            className="snapshotpage__download flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer"
             onClick={() => downloadSnapshotAsPDF(snapshotRef)}
           >
-            <img src={downloadIcon} className="snapshotpage__icon" />
-            <p className="snapshotpage__label font-bold text-[0.875rem] text-secondary">
+            <img
+              src={downloadIcon}
+              className="snapshotpage__icon max-xl:h-[14px]"
+            />
+            <p className="snapshotpage__label font-bold text-[0.5rem] xl:text-[0.875rem] text-secondary">
               Download
             </p>
           </div>
-          <div className="snapshotpage__download flex flex-col items-center h-[50px]">
-            <img src={deleteIcon} className="snapshotpage__icon" />
-            <p className="snapshotpage__label font-bold text-[0.875rem] text-secondary">
+          <div className="snapshotpage__delte flex flex-col items-center h-[31px] xl:h-[50px]">
+            <img
+              src={deleteIcon}
+              className="snapshotpage__icon max-xl:h-[18px]"
+            />
+            <p className="snapshotpage__label font-bold text-[0.5rem] xl:text-[0.875rem] text-secondary">
               Delete
             </p>
           </div>
-          <div className="snapshotpage__download flex flex-col items-center h-[50px]">
-            <img src={addIcon} className="snapshotpage__icon" />
-            <p className="snapshotpage__label font-bold text-[0.875rem] text-secondary">
+          <div className="snapshotpage__add flex flex-col items-center h-[31px] xl:h-[50px]">
+            <img src={addIcon} className="snapshotpage__icon max-xl:h-[18px]" />
+            <p className="snapshotpage__label font-bold text-[0.5rem] xl:text-[0.875rem] text-secondary">
               Create
             </p>
           </div>
         </div>
 
         {/* Attach ref to the Snapshot component */}
-        <div ref={snapshotRef}>{SnapshotWindow()}</div>
+        <div ref={snapshotRef}>
+          {SnapshotWindow()}
+          {SnapshotScroll()}
+        </div>
       </div>
     </>
   );

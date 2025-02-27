@@ -6,7 +6,7 @@ import image from '../../assets/images/Ellipse.png';
 function SnapMain({ id, badges, content }) {
   return (
     <>
-      <div className="snapshot__center flex-1 bg-[url('/src/assets/images/snapshot_center_frame_3.png')] bg-no-repeat bg-center flex flex-col justify-between items-center">
+      <div className="snapshot__center max-xl:hidden flex-1 bg-[url('/src/assets/images/snapshot_center_frame_3.png')] bg-no-repeat bg-center flex flex-col justify-between items-center">
         {/* Center Top Box */}
         <div className="snapshot__top w-[508px] h-[240px] mt-[32px] pt-[15px] px-[45px] flex flex-col items-center">
           <h1 className="snapshot__name font-serif text-[28px] pt-[32px] text-card-foreground font-semibold">
