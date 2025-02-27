@@ -2,33 +2,15 @@ import { db } from './firebase';
 import {
   doc,
   getDoc,
-  collection,
-  query,
-  where,
-  getDocs,
+  //collection,
+  //query,
+  //where,
+  //getDocs,
 } from 'firebase/firestore';
 
-// Function to get questions based on category and skillId
-export const getQuestions = async (categoryId) => {
+// Function to get questions based on skillId
+export const getQuestions = async (skillIds, categoryId) => {
   try {
-    // Fetch all skills in the category
-    const skillsQuery = query(
-      collection(db, 'skills'),
-      where('categoryId', '==', categoryId)
-    );
-    const skillsSnapshot = await getDocs(skillsQuery);
-
-    if (skillsSnapshot.empty) {
-      console.log('No skills found in this category');
-      return [];
-    }
-
-    // Store all the skillIds in an array
-    const skillIds = [];
-    skillsSnapshot.forEach((doc) => {
-      skillIds.push(doc.id);
-    });
-
     // Fetch the category name for the given categoryId
     const categoryRef = doc(db, 'categories', categoryId);
     const categorySnap = await getDoc(categoryRef);
