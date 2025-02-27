@@ -1,18 +1,24 @@
 import { Question } from '../Question/Question';
-import { SelectedSkillsContext } from '@/context/SelectedSkillsContext';
-import { useContext } from 'react';
+import { useQuestion } from '@/context/QuestionsContext';
 
 function Questionnaire() {
-  const { selectedSkills } = useContext(SelectedSkillsContext);
+  const { questions, error, loading } = useQuestion();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!questions || questions.length === 0)
+    return <div>No questions available.</div>;
 
   return (
     <div>
-      {selectedSkills.map((skill, index) => {
-        <Question
-          key={index}
-          skillId={skill.id}
-          categoryId={skill.categoryId}
-        />;
+      {questions.map((questionData, index) => {
+        return (
+          <Question
+            key={index}
+            questionData={questionData}
+            questionNumber={index + 1}
+          />
+        );
       })}
     </div>
   );
