@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Snapshot from '@/components/Snapshot/Snapshot';
 import { downloadSnapshotAsPDF } from '@/utils/downloadSnapshot';
 import {
@@ -15,6 +15,7 @@ import chevronLeft from '../../assets/icons/chevron-left.svg';
 import downloadIcon from '../../assets/icons/download.svg';
 import deleteIcon from '../../assets/icons/delete.svg';
 import addIcon from '../../assets/icons/add.svg';
+import SnapshotTabs from '@/components/SnapshotTabs/SnapshotTabs';
 
 function SnapshotPage() {
   const snapshotRef = useRef(null);
@@ -23,6 +24,8 @@ function SnapshotPage() {
 
   const { cards, error, loading } = useCards();
   const { user } = useUser();
+
+  const [activeTab, setActiveTab] = useState(0);
 
   const SnapshotWindow = () => {
     if (loading) {
@@ -60,7 +63,7 @@ function SnapshotPage() {
     }
     return (
       <div className="xl:hidden">
-        <Snapshot info={cards[0]} profile={user} />
+        <Snapshot info={cards[activeTab]} profile={user} />
       </div>
     );
   };
@@ -70,21 +73,20 @@ function SnapshotPage() {
       <div className="snapshotpage bg-[#FFFAEE] flex flex-col items-center pb-[10rem] xl:pb-[13rem]">
         {/* PREVIOUS BUTTON */}
         <button
-          className="snapshotpage__back w-[353px] xl:w-[1200px] flex flex-row my-[1.25rem] xl:my-[2.5rem] gap-[2px] justify-start"
+          className="snapshotpage__back w-[353px] xl:w-[1200px] flex flex-row mt-[2rem] mb-[1.25rem] xl:my-[2.5rem] gap-[2px] justify-start"
           onClick={() => navigate(`/users/${userId}/Profile`)}
         >
           <img src={chevronLeft} className="snapshotpage__icon" />
           <p className="font-medium text-[0.875rem] text-secondary">Previous</p>
         </button>
         {/* MOBILE TABS */}
-        <div className="snapshotpage__tabs xl:hidden bg-[#FFF8E1] w-[203px] h-[29px] rounded-[15px] mb-[1.25rem] flex flex-row">
-          <div className="snapshotpage__active-tab w-[108px] bg-[#0264D4] rounded-[15px] text-white text-xs font-semibold flex justify-center items-center cursor-pointer">
-            Snapshot 1
-          </div>
-          <div className="snapshotpage__inactive-tab text-[#0264D4] text-xs font-semibold flex justify-center items-center grow cursor-pointer">
-            Snapshot 2
-          </div>
-        </div>
+        <SnapshotTabs
+          tab={activeTab}
+          change={setActiveTab}
+          cards={cards}
+          loading={loading}
+          error={error}
+        />
         {/* BUTTON BANNER */}
         <div className="snapshotpage__banner w-[353px] xl:w-[1200px] flex flex-row justify-end gap-[22px] mb-[0.5rem] xl:mb-[1rem] items-baseline">
           {/* DOWNLOAD BUTTON */}
