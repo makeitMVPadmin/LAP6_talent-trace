@@ -1,6 +1,5 @@
 import { getQuestions } from '@/firebase/GetQuestions';
 import PropTypes from 'prop-types';
-//import { useParams } from 'react-router-dom';
 import { SelectedSkillsContext } from './SelectedSkillsContext';
 import { createContext, useState, useContext, useEffect } from 'react';
 
@@ -26,8 +25,6 @@ export const QuestionProvider = ({ children }) => {
         if (!data || data.length === 0) throw new Error('No questions found');
 
         setQuestions(data);
-        //setCategoryName(data[0].categoryName); // Assuming all questions have the same category
-        //setSkillName(data[0].skillName); // Assuming all questions belong to the same skill
         setLoading(false);
       } catch (err) {
         setError(err.message);
