@@ -5,28 +5,28 @@ import SnapBox from '../SnapBox/SnapBox';
 function Snapshot({ info, profile }) {
   try {
     return (
-      <div className="snapshot h-[900px] w-[1200px] border border-b-2 border-r-2 border-slate-300 rounded-[20px] flex flex-row justify-between bg-primary">
+      <div className="snapshot h-[900px] w-[1200px] border border-b-2 border-r-2 border-[#AABFCC] rounded-[20px] flex flex-row justify-between bg-[#F6DD8A]">
         {/* Left Column */}
-        <div className="snapshot__left ml-[22px] flex flex-col justify-center">
+        <div className="snapshot__left ml-[32px] flex flex-col justify-center gap-[16px]">
           {/* Left Top Box */}
-          <div className="snapshot__frame h-[406px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_2.png')] flex flex-col">
+          <div className="snapshot__frame h-[415px] w-[289px] bg-[#FFF8E1] border border-b-4 border-r-4 border-[#CCB774] rounded-[24px] shadow-lg flex flex-col">
             <SnapBox content={info.answers[0]} />
           </div>
           {/* Left Bottom Box */}
-          <div className="snapshot__frame h-[416px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_3.png')] flex flex-col">
+          <div className="snapshot__frame h-[415px] w-[289px] bg-[#FFF8E1] border border-b-4 border-r-4 border-[#CCB774] rounded-[24px] shadow-lg flex flex-col">
             <SnapBox content={info.answers[1]} />
           </div>
         </div>
         {/* Center Columns */}
         <SnapMain id={profile} badges={info.skills} content={info.answers[2]} />
         {/* Right Column  */}
-        <div className="snapshot__right mr-[22px] flex flex-col justify-center">
+        <div className="snapshot__right mr-[32px] flex flex-col justify-center gap-[16px]">
           {/* Right Top Box */}
-          <div className="snapshot__frame h-[406px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_2.png')] flex flex-col">
+          <div className="snapshot__frame h-[415px] w-[289px] bg-[#FFF8E1] border border-b-4 border-r-4 border-[#CCB774] rounded-[24px] shadow-lg flex flex-col">
             <SnapBox content={info.answers[3]} />
           </div>
           {/* Right Bottom Box */}
-          <div className="snapshot__frame h-[416px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_3.png')] flex flex-col">
+          <div className="snapshot__frame h-[415px] w-[289px] bg-[#FFF8E1] border border-b-4 border-r-4 border-[#CCB774] rounded-[24px] shadow-lg flex flex-col">
             <SnapBox content={info.answers[4]} />
           </div>
         </div>

@@ -6,7 +6,7 @@ import image from '../../assets/images/Ellipse.png';
 function SnapMain({ id, badges, content }) {
   return (
     <>
-      <div className="snapshot__center flex-1 bg-[url('/src/assets/images/snapshot_center_frame_2.png')] bg-no-repeat bg-center flex flex-col justify-between items-center">
+      <div className="snapshot__center flex-1 bg-[url('/src/assets/images/snapshot_center_frame_3.png')] bg-no-repeat bg-center flex flex-col justify-between items-center">
         {/* Center Top Box */}
         <div className="snapshot__top w-[508px] h-[240px] mt-[32px] pt-[15px] px-[45px] flex flex-col items-center">
           <h1 className="snapshot__name font-serif text-[28px] pt-[32px] text-card-foreground font-semibold">
@@ -29,12 +29,11 @@ function SnapMain({ id, badges, content }) {
                     borderLeft: '1px solid #003660',
                     borderRight: '1px solid #003660',
                     borderBottom: '2.5px solid #003660',
-                    padding: '4px 12px',
+                    padding: '4px 10px',
                     fontSize: '12px',
                     fontWeight: '600',
-                    backgroundColor: '#FACC15',
-                    color: '#1E293B',
-                    boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.15)',
+                    backgroundColor: 'rgba(255, 193, 60, 0.75)',
+                    color: '#003660',
                     textAlign: 'center',
                     minWidth: '119px',
                     height: '33px',
@@ -48,7 +47,7 @@ function SnapMain({ id, badges, content }) {
           </div>
         </div>
         {/* Avatar Box  */}
-        <div className="relative flex h-[234px] w-[234px] shrink-0 overflow-hidden rounded-full">
+        <div className="relative flex h-[260px] w-[260px] shrink-0 overflow-hidden rounded-full mt-[10px]">
           {image ? (
             <img
               src={id[0].profilePhoto}
@@ -62,20 +61,20 @@ function SnapMain({ id, badges, content }) {
           )}
         </div>
         {/* Center Bottom Box */}
-        <div className="snapshot__bot w-[508px] h-[240px] mb-[32px] pb-[15px] px-[27px] flex flex-col text-card-foreground">
+        <div className="snapshot__bot w-[520px] h-[240px] mb-[25px] pb-[20px] px-[37px] flex flex-col text-card-foreground">
           <div className="snapshot__bot-header">
-            <h2 className="snapshot__heading font-serif font-semibold">
+            <h2 className="snapshot__heading font-serif font-semibold text-lg">
               {content.question.question}
             </h2>
           </div>
-          <div className="snapshot__bot-main flex flex-row py-[9px] gap-[20px]">
-            <p className="snapshot__text font-sans text-xs font-medium flex-1">
+          <div className="snapshot__bot-main flex flex-row pt-[10px] pb-[16px] gap-[20px]">
+            <p className="snapshot__text font-sans text-[0.625rem] font-medium flex-1">
               {content.answer}
             </p>
             <div className="snapshot__media w-[240px]">
               <img
                 src={content.image}
-                className="snapshot__img h-[118px] w-[240px] rounded-[10px] border border-black"
+                className="snapshot__img h-[118px] w-[240px] rounded-[10px] border border-black object-cover"
               />
             </div>
           </div>
@@ -89,19 +88,17 @@ function SnapMain({ id, badges, content }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderRadius: '500px',
-                    borderTop: '1px solid #003660',
-                    borderLeft: '1px solid #003660',
-                    borderRight: '1px solid #003660',
-                    borderBottom: '2.5px solid #003660',
-                    padding: '4px',
-                    fontSize: '12px',
-                    fontWeight: '600',
+                    borderTop: '0.5px solid #003660',
+                    borderLeft: '0.5px solid #003660',
+                    borderRight: '0.5px solid #003660',
+                    borderBottom: '1.5px solid #003660',
+                    padding: '2px 10px',
+                    fontSize: '10px',
+                    fontWeight: '500',
                     backgroundColor: 'rgba(255, 193, 60, 0.75)',
-                    color: '#1E293B',
-                    boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.15)',
+                    color: '#0F172A',
                     textAlign: 'center',
-                    minWidth: '110px',
-                    height: '30px',
+                    height: '20px',
                     cursor: 'pointer',
                   }}
                 >
