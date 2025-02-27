@@ -40,7 +40,7 @@ function App() {
             }
           />
           <Route
-            path="/users/:userId/cards/:cardId"
+            path="/users/:userId/cards"
             element={
               <UserProvider>
                 <CardsProvider>
