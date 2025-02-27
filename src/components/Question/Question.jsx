@@ -38,7 +38,7 @@ export function Question({ questionData, questionNumber }) {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <Card className="flex flex-col p-[33px] px-[64px] mb-16 gap-[10px] border border-[#003660] bg-white shadow-md rounded-[20px] w-[500px] mx-auto sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]">
+    <Card className="flex flex-col p-[33px] px-[64px] mb-16 gap-[10px] border border-[#003660] bg-white shadow-md rounded-[20px] w-full mx-auto sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]">
       <CardHeader>
         <CardDescription
           className="text-[#003660] font-montserrat text-[16px] font-normal leading-[24px] pb-4"
