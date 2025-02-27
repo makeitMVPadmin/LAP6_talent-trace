@@ -1,8 +1,9 @@
 import SkillsMenuCard from '@/components/SkillsMenu/SkillsMenu';
 import { SelectedSkillsProvider } from '@/context/SelectedSkillsContext';
-//import { Question } from '@/components/Question/Question';
 import { useState } from 'react';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
+import Questionnaire from '@/components/Questionnaire/Questionnaire';
+import { QuestionProvider } from '@/context/QuestionsContext';
 
 const CreateSnapshotPage = () => {
   const [isProgressing, setIsProgressing] = useState(false);
@@ -19,8 +20,13 @@ const CreateSnapshotPage = () => {
         </div>
         <div>
           <SelectedSkillsProvider>
-            <SkillsMenuCard onButtonClick={handleButtonClick} />
-            {/*<Question />*/}
+            {isProgressing ? (
+              <QuestionProvider>
+                <Questionnaire />
+              </QuestionProvider>
+            ) : (
+              <SkillsMenuCard onButtonClick={handleButtonClick} />
+            )}
           </SelectedSkillsProvider>
         </div>
       </div>

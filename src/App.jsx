@@ -2,7 +2,6 @@ import { CardProvider } from './context/SnapshotContext';
 import SnapshotInfoPage from './pages/SnapshotInfoPage/SnapshotInfoPage';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
-import { QuestionProvider } from './context/QuestionsContext';
 import CreateSnapshotPage from './pages/CreateSnapshotPage/CreateSnapshotPage';
 import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 import { SkillsProvider } from './context/AllSkillsContext';
@@ -34,11 +33,7 @@ function App() {
           <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
           <Route
             path="/users/:userid/CreateSnapshot"
-            element={
-              <QuestionProvider>
-                <CreateSnapshotPage />
-              </QuestionProvider>
-            }
+            element={<CreateSnapshotPage />}
           />
           <Route
             path="/users/:userId/cards/:cardId"
