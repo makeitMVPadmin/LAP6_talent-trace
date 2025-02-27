@@ -42,9 +42,11 @@ function App() {
           <Route
             path="/users/:userId/cards/:cardId"
             element={
-              <CardsProvider>
-                <SnapshotPage />
-              </CardsProvider>
+              <UserProvider>
+                <CardsProvider>
+                  <SnapshotPage />
+                </CardsProvider>
+              </UserProvider>
             }
           />
         </Routes>

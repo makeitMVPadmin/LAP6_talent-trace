@@ -10,10 +10,10 @@ function SnapMain({ id, badges, content }) {
         {/* Center Top Box */}
         <div className="snapshot__top w-[508px] h-[240px] mt-[32px] pt-[15px] px-[45px] flex flex-col items-center">
           <h1 className="snapshot__name font-serif text-[28px] pt-[32px] text-card-foreground font-semibold">
-            {id.name}
+            {id[0].firstName + ' ' + id[0].lastName}
           </h1>
           <h3 className="snapshot__role font-serif text-[20px] pt-[15px] text-card-foreground font-semibold">
-            {id.role}
+            {id[0].discipline}
           </h3>
           <div className="snapshot__skills--all flex flex-row gap-[6px] w-[380px] pt-[32px] justify-center flex-wrap">
             {badges.map(function (skill) {
@@ -51,7 +51,7 @@ function SnapMain({ id, badges, content }) {
         <div className="relative flex h-[234px] w-[234px] shrink-0 overflow-hidden rounded-full">
           {image ? (
             <img
-              src={image}
+              src={id[0].profilePhoto}
               alt="Avatar"
               className="aspect-square h-full w-full object-cover"
             />

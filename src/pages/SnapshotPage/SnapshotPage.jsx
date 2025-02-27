@@ -10,6 +10,11 @@ import {
 } from '@/components/ui/carousel';
 import { useCards } from '@/context/AllSnapshotsContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useUser } from '@/context/UserDetailsContext';
+import chevronLeft from '../../assets/icons/chevron-left.svg';
+import downloadIcon from '../../assets/icons/download.svg';
+import deleteIcon from '../../assets/icons/delete.svg';
+import addIcon from '../../assets/icons/add.svg';
 
 function SnapshotPage() {
   const snapshotRef = useRef(null);
@@ -17,6 +22,7 @@ function SnapshotPage() {
   const navigate = useNavigate();
 
   const { cards, error, loading } = useCards();
+  const { user } = useUser();
 
   const SnapshotWindow = () => {
     if (loading) {
@@ -34,7 +40,7 @@ function SnapshotPage() {
                 key={card.cardId}
                 className="flex self-center justify-center"
               >
-                <Snapshot info={card} />
+                <Snapshot info={card} profile={user} />
               </CarouselItem>
             );
           })}
@@ -52,10 +58,7 @@ function SnapshotPage() {
           className="snapshotpage__back w-[1200px] flex flex-row my-[2.5rem] gap-[2px] justify-start"
           onClick={() => navigate(`/users/${userId}/Profile`)}
         >
-          <img
-            src="/src/assets/icons/chevron-left.svg"
-            className="snapshotpage__icon"
-          />
+          <img src={chevronLeft} className="snapshotpage__icon" />
           <p className="font-medium text-[0.875rem] text-secondary">Previous</p>
         </button>
         <div className="snapshotpage__banner w-[1200px] flex flex-row justify-end gap-[22px] mb-[1rem] items-baseline">
@@ -64,28 +67,19 @@ function SnapshotPage() {
             className="snapshotpage__download flex flex-col items-center h-[50px] cursor-pointer"
             onClick={() => downloadSnapshotAsPDF(snapshotRef)}
           >
-            <img
-              src="/src/assets/icons/download.svg"
-              className="snapshotpage__icon"
-            />
+            <img src={downloadIcon} className="snapshotpage__icon" />
             <p className="snapshotpage__label font-bold text-[0.875rem] text-secondary">
               Download
             </p>
           </div>
           <div className="snapshotpage__download flex flex-col items-center h-[50px]">
-            <img
-              src="/src/assets/icons/delete.svg"
-              className="snapshotpage__icon"
-            />
+            <img src={deleteIcon} className="snapshotpage__icon" />
             <p className="snapshotpage__label font-bold text-[0.875rem] text-secondary">
               Delete
             </p>
           </div>
           <div className="snapshotpage__download flex flex-col items-center h-[50px]">
-            <img
-              src="/src/assets/icons/add.svg"
-              className="snapshotpage__icon"
-            />
+            <img src={addIcon} className="snapshotpage__icon" />
             <p className="snapshotpage__label font-bold text-[0.875rem] text-secondary">
               Create
             </p>

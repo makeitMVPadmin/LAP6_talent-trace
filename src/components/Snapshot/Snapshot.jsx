@@ -2,19 +2,7 @@ import './Snapshot.css';
 import SnapMain from '../SnapMain/SnapMain';
 import SnapBox from '../SnapBox/SnapBox';
 
-function Snapshot({ info }) {
-  const folio = {
-    name: 'Dianne Surname',
-    role: 'UX/UI Designer',
-    skills: [
-      'Communicative',
-      'Analytical',
-      'Collaborative',
-      'Adaptable',
-      'Fast Learner',
-    ],
-  };
-
+function Snapshot({ info, profile }) {
   try {
     return (
       <div className="snapshot h-[900px] w-[1200px] border border-b-2 border-r-2 border-slate-300 rounded-[20px] flex flex-row justify-between bg-primary">
@@ -30,7 +18,7 @@ function Snapshot({ info }) {
           </div>
         </div>
         {/* Center Columns */}
-        <SnapMain id={folio} badges={info.skills} content={info.answers[2]} />
+        <SnapMain id={profile} badges={info.skills} content={info.answers[2]} />
         {/* Right Column  */}
         <div className="snapshot__right mr-[22px] flex flex-col justify-center">
           {/* Right Top Box */}
