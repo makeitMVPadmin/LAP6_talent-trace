@@ -31,7 +31,7 @@ function Questionnaire() {
             personality
           </CardDescription>
         </CardHeader>
-        <CardContent className="Skills_Menu-content h-[90%] flex flex-col justify-center">
+        <CardContent className="Skills_Questionnaire-content h-[90%] flex flex-col justify-center">
           <div>
             {questions.map((questionData, index) => {
               return (
@@ -44,14 +44,14 @@ function Questionnaire() {
             })}
           </div>
         </CardContent>
-        <CardFooter className="Skills_Menu-footer flex justify-end">
+        <CardFooter className="Skills_Questionnaire-footer flex justify-end">
           <Button
-            className={`Skills_Menu-button w-32 h-10 pl-4 pr-4 rounded-[0.625rem] border-t border-l border-r-2 border-b-4 border-customBlue justify-center items-center gap-2 inline-flex `}
+            className={`Skills_Questionnaire-button w-32 h-10 pl-4 pr-4 rounded-[0.625rem] border-t border-l border-r-2 border-b-4 border-customBlue justify-center items-center gap-2 inline-flex `}
             variant="ghost"
             //disabled={selectedSkills.length != 5}
             //onClick={onButtonClick}
           >
-            <div className="Skills_Menu-button-text text-center text-white text-[1.125rem] font-montserrat font-semibold leading-[1.625rem]">
+            <div className="Skills_Questionnaire-button-text text-center text-white text-[1.125rem] font-montserrat font-semibold leading-[1.625rem]">
               Submit
             </div>
           </Button>
