@@ -33,7 +33,7 @@ const SelectSkills = React.memo(() => {
               <ul className="flex flex-wrap gap-y-4 gap-x-3 mb-6">
                 {categorySkills.map((skill) => {
                   const isSelected = selectedSkills.some(
-                    (s) => s.id === skill.id
+                    (s) => s.skillId === skill.id
                   );
                   return (
                     <li
