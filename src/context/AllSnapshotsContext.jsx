@@ -2,6 +2,7 @@ import { createContext, useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchUserSnapshots } from '../firebase/RetrieveAllSnapshots'; // Import the fetching function
+import { fetchUserCard } from '../firebase/GetSnapshot'; // Import the fetching function
 
 // Create Context
 const CardsContext = createContext();
@@ -16,15 +17,24 @@ export const CardsProvider = ({ children }) => {
   const { userId } = useParams(); // Get userID from URL
   const [cards, setCards] = useState(null); // useState for snapshots
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (userId) {
       const fetchCardsData = async () => {
+        setLoading(true);
         try {
           const data = await fetchUserSnapshots(userId);
-          setCards(data);
+          const deck = [];
+          for (let i = 0; i < data.length; i++) {
+            let draw = await fetchUserCard(userId, data[i].id);
+            deck.push(draw);
+          }
+          setCards(deck);
         } catch (err) {
           setError(err.message);
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -33,7 +43,7 @@ export const CardsProvider = ({ children }) => {
   }, [userId]);
 
   return (
-    <CardsContext.Provider value={{ cards, error }}>
+    <CardsContext.Provider value={{ cards, error, loading }}>
       {children}
     </CardsContext.Provider>
   );
