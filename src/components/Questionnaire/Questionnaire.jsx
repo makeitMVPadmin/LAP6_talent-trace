@@ -23,7 +23,6 @@ function Questionnaire() {
   //console.log(userId);
 
   if (!userId) {
-    console.log('user id not found');
     return <div>Loading...</div>;
   }
 
@@ -42,7 +41,6 @@ function Questionnaire() {
 
   //create handler for related skills
   const handleRelatedSkillsChange = (questionId, skillsList) => {
-    console.log('Received Skills List:', skillsList); // Log received skills list
     setRelatedSkills((prevRelatedSkills) => ({
       ...prevRelatedSkills,
       [questionId]: skillsList,
@@ -66,17 +64,9 @@ function Questionnaire() {
       (skillsList) => skillsList.length > 0 && skillsList.length <= 3
     );
 
-  console.log('Responses:', responses);
-  console.log('Related Skills:', relatedSkills);
-  console.log('Image URLs:', imageUrls);
-  console.log('Questions Length:', questions.length);
-  console.log('Is Submit Enabled:', isSubmitEnabled);
-
   //handle submit
   const handleSubmit = async () => {
-    console.log('Submit button clicked.');
     if (isSubmitEnabled) {
-      console.log('Submit button enabled.');
       //prepare the answers object
       const answers = questions.map((questionData) => {
         return {
