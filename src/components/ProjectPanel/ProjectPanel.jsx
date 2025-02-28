@@ -5,7 +5,7 @@ import currentProject from '../../assets/images/current_project.png';
 function ProjectPanel() {
   return (
     <>
-      <Card className="profile__current rounded-[1.5rem] px-[1rem] mt-[1rem]">
+      <Card className="profile__current rounded-[1.5rem] px-[1rem] mt-[1rem] border-b-[3px] border-r-[3px] xl:border-b-[5px] xl:border-r-[5px]">
         <CardHeader className="profile__current-header font-serif font-semibold xl:text-[2.25rem] max-xl:p-4">
           What I’m currently working on...
         </CardHeader>
@@ -27,7 +27,7 @@ function ProjectPanel() {
               marketing, printers, and colleagues as necessary
             </li>
           </ul>
-          <Badge className="profile__current-badge rounded-[500px] mt-4 xl:mt-6 xl:border-none shadow-none">
+          <Badge className="profile__current-badge rounded-[500px] max-xl:text-[0.5rem] mt-4 xl:mt-6 xl:border-none shadow-none">
             Web Development
           </Badge>
         </CardContent>

@@ -22,7 +22,7 @@ function ToolPanel({ name }) {
 
   return (
     <>
-      <Card className="profile__tools w-full mt-[1rem] pb-[1.5rem] rounded-[1.5rem] xl:h-[13.75rem]">
+      <Card className="profile__tools w-full mt-[1rem] pb-[1.5rem] rounded-[1.5rem] xl:h-[13.75rem] border-b-[3px] border-r-[3px] xl:border-b-[5px] xl:border-r-[5px]">
         <CardHeader>
           <CardTitle className="profile__card-title text-sm xl:text-[1.5rem]">
             {name}
@@ -36,7 +36,7 @@ function ToolPanel({ name }) {
             >
               Code
             </Badge>
-            <Card className="profile__code bg-primary border-card-foreground w-[8.75rem] h-[3.125rem] xl:w-[13.5rem] xl:h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
+            <Card className="profile__code bg-amber-50 border-card-foreground w-[8.75rem] h-[3.125rem] xl:w-[13.5rem] xl:h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
               <CardContent className="flex flex-row gap-[0.5rem] xl:gap-[0.75rem] max-xl:px-2 flex-wrap py-0">
                 {tools.map(function (tool) {
                   return (
@@ -57,7 +57,7 @@ function ToolPanel({ name }) {
             >
               Design
             </Badge>
-            <Card className="profile__design bg-primary border-card-foreground w-[8.75rem] h-[3.125rem] xl:w-[13.5rem] xl:h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
+            <Card className="profile__design bg-amber-50 border-card-foreground w-[8.75rem] h-[3.125rem] xl:w-[13.5rem] xl:h-[6.5rem] rounded-[1.25rem] flex justify-center items-center border-b-4">
               <CardContent className="flex flex-row gap-[0.5rem] xl:gap-[0.75rem] max-xl:px-2 flex-wrap py-0">
                 {tools.map(function (tool) {
                   return (
