@@ -16,6 +16,8 @@ function Profile() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading data: {error}</p>;
 
+  // If user has snapshots, they get View my Snapshot
+  // If user does not, they get Create my Snapshot
   const CoVcheck = (media) => {
     if (loading) return <></>;
 
@@ -36,8 +38,6 @@ function Profile() {
           <HardPanel /> {/* Hard Skills  */}
           <ToolPanel name={'Tools'} /> {/* Tools Card  */}
           <ToolPanel name={'Certifications'} /> {/* Certifications Card  */}
-          {/* <ContactPanel data={user} display={'max-md:hidden'} />{' '} */}
-          {/* Contact Card  */}
         </div>
         <div className="profile__right w-[22rem] lg:w-[33rem] xl:w-[50rem]">
           {CoVcheck('max-md:hidden')}
