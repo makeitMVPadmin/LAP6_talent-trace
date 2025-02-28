@@ -16,15 +16,19 @@ export const CardProvider = ({ children }) => {
   const { userId, cardId } = useParams(); // Get URL parameters
   const [card, setCard] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (userId && cardId) {
       const fetchCardData = async () => {
+        setLoading(true);
         try {
           const data = await fetchUserCard(userId, cardId);
           setCard(data);
         } catch (err) {
           setError(err.message);
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -33,7 +37,7 @@ export const CardProvider = ({ children }) => {
   }, [userId, cardId]);
 
   return (
-    <CardContext.Provider value={{ card, error }}>
+    <CardContext.Provider value={{ card, error, loading }}>
       {children}
     </CardContext.Provider>
   );

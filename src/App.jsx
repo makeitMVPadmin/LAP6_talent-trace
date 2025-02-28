@@ -1,4 +1,3 @@
-import { CardProvider } from './context/SnapshotContext';
 import SnapshotInfoPage from './pages/SnapshotInfoPage/SnapshotInfoPage';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
@@ -6,44 +5,56 @@ import CreateSnapshotPage from './pages/CreateSnapshotPage/CreateSnapshotPage';
 import SnapshotPage from './pages/SnapshotPage/SnapshotPage';
 import { SkillsProvider } from './context/AllSkillsContext';
 import { CardsProvider } from './context/AllSnapshotsContext';
-import { CategoriesProvider } from './context/AllCategoriesContext';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import { UserProvider } from './context/UserDetailsContext';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <CategoriesProvider>
-        <SkillsProvider>
+      <SkillsProvider>
+        <UserProvider>
           <Routes>
             <Route
               path="/"
-              element={<Navigate to={'/users/:userid/Profile'} replace />}
+              element={
+                <Navigate to={'/users/IbPgJFLGaHjp8kzIE63R/Profile'} replace />
+              }
             />
             <Route
               path="/users/:userId/Profile"
               element={
-                <CardsProvider>
-                  <ProfilePage />
-                </CardsProvider>
+                <UserProvider>
+                  <CardsProvider>
+                    <ProfilePage />
+                  </CardsProvider>
+                </UserProvider>
               }
             />
             <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
             <Route
-              path="/users/:userid/CreateSnapshot"
-              element={<CreateSnapshotPage />}
+              path="/users/:userId/CreateSnapshot"
+              element={
+                <UserProvider>
+                  <CreateSnapshotPage />
+                </UserProvider>
+              }
             />
             <Route
-              path="/users/:userId/cards/:cardId"
+              path="/users/:userId/cards"
               element={
-                <CardProvider>
-                  <SnapshotPage />
-                </CardProvider>
+                <UserProvider>
+                  <CardsProvider>
+                    <SnapshotPage />
+                  </CardsProvider>
+                </UserProvider>
               }
             />
           </Routes>
-        </SkillsProvider>
-      </CategoriesProvider>
+        </UserProvider>
+      </SkillsProvider>
+      <Footer />
     </BrowserRouter>
   );
 }

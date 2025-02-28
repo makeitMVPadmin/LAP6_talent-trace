@@ -1,0 +1,68 @@
+/* Above line prevents eslint from triggering pre-commit errors */
+
+import { CardContent } from '../ui/card';
+import logoWebsite from '../../assets/images/logo_website.png';
+import logoGmail from '../../assets/images/logo_gmail.png';
+import logoGithub from '../../assets/images/logo_github.png';
+import logoLinkedin from '../../assets/images/logo_linkedin.png';
+
+function ContactPanel({ data, display }) {
+  try {
+    return (
+      <>
+        <div
+          className={
+            'profile__contact rounded-3xl bg-[#FFF1C5] border-[#C3AF6F] border border-b-[3px] border-r-[3px] xl:border-b-[5px] xl:border-r-[5px] text-card-foreground shadow-md mt-[1rem] ' +
+            display
+          }
+        >
+          <CardContent className="max-xl:pb-3">
+            <h2 className="profile__subtitle font-serif font-semibold mt-[0.5rem] xl:text-[1.5rem]">
+              Let´s chat!
+            </h2>
+            <div className="profile__contact-bar flex flex-row mt-[0.5rem] items-center">
+              <img
+                src={logoWebsite}
+                className="profile__picture max-xl:h-[18px]"
+              />
+              <p className="profile__contact-detail text-[0.625rem] xl:text-[0.875rem] font-semibold">
+                {data[0].username + '.com'}
+              </p>
+            </div>
+            <div className="profile__contact-bar flex flex-row mt-[0.5rem] items-center">
+              <img
+                src={logoGmail}
+                className="profile__picture max-xl:h-[18px]"
+              />
+              <p className="profile__contact-detail text-[0.625rem] xl:text-[0.875rem] font-semibold">
+                {data[0].username + '@gmail.com'}
+              </p>
+            </div>
+            <div className="profile__contact-bar flex flex-row mt-[0.5rem] items-center">
+              <img
+                src={logoGithub}
+                className="profile__picture max-xl:h-[18px]"
+              />
+              <p className="profile__contact-detail text-[0.625rem] xl:text-[0.875rem] font-semibold">
+                {'github.com/' + data[0].username}
+              </p>
+            </div>
+            <div className="profile__contact-bar flex flex-row mt-[0.5rem] items-center">
+              <img
+                src={logoLinkedin}
+                className="profile__picture max-xl:h-[18px]"
+              />
+              <p className="profile__contact-detail text-[0.625rem] xl:text-[0.875rem] font-semibold">
+                {'linkedin.com/in/' + data[0].username}
+              </p>
+            </div>
+          </CardContent>
+        </div>
+      </>
+    );
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export default ContactPanel;
