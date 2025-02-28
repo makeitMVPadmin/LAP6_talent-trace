@@ -50,6 +50,7 @@ const fetchQuestion = async (skillId, categoryId) => {
           //return question along with the skillName Id, categorName, id
           return {
             question,
+            questionId,
             skillName,
             skillId,
             categoryName,
