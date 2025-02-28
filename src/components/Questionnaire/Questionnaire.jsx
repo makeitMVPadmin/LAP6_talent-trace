@@ -12,7 +12,7 @@ import { Button } from '../ui/button';
 import { useState } from 'react';
 import postMultipleAnswersAndCreateCard from '@/firebase/PostAnswers';
 import { useParams } from 'react-router-dom';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 //import SuccessModal from '../SuccessModal/SuccessModal';
 
 function Questionnaire() {
@@ -23,7 +23,7 @@ function Questionnaire() {
   //const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { userId } = useParams();
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   if (!userId) {
     return <div>Loading...</div>;
@@ -91,7 +91,7 @@ function Questionnaire() {
         console.log('Answers posted Successfully', result);
 
         // Navigate to the desired route
-        //navigate(`/users/${userId}/cards`);
+        navigate(`/users/${userId}/cards`);
 
         // Open the modal
         //setIsModalOpen(true);
