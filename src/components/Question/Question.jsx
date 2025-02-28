@@ -14,7 +14,13 @@ import { Badge } from '../ui/badge';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
-export function Question({ questionData, questionNumber }) {
+export function Question({
+  questionData,
+  questionNumber,
+  onResponseChange,
+  onRelatedSkillsChange,
+  onImageChange,
+}) {
   const { error, loading } = useContext(QuestionContext);
 
   const [relatedSkills, setRelatedSkills] = useState([]);
@@ -25,20 +31,38 @@ export function Question({ questionData, questionNumber }) {
 
   const handleAddSkill = () => {
     if (newSkill.trim() && relatedSkills.length < 3) {
-      setRelatedSkills([...relatedSkills, newSkill.trim()]);
+      const updatedSkills = [...relatedSkills, newSkill.trim()];
+      setRelatedSkills(updatedSkills);
       setNewSkill('');
+      onRelatedSkillsChange(questionData.questionId, updatedSkills); // Pass updated skills directly
     }
   };
 
   const handleRemoveSkill = (skillToRemove) => {
-    setRelatedSkills(relatedSkills.filter((skill) => skill !== skillToRemove));
+    const updatedSkills = relatedSkills.filter(
+      (skill) => skill !== skillToRemove
+    );
+    setRelatedSkills(updatedSkills);
+    onRelatedSkillsChange(questionData.questionId, updatedSkills); // Pass updated skills directly
+  };
+
+  //handler for local response
+  const handleResponseChange = (e) => {
+    setResponse(e.target.value);
+    onResponseChange(questionData.questionId, e.target.value);
+  };
+
+  //handler for image change
+  const handleImageChange = (e) => {
+    setImageUrl(e.target.value);
+    onImageChange(questionData.questionId, e.target.value);
   };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <Card className="flex flex-col p-[33px] px-[64px] mb-16 gap-[10px] border border-[#003660] bg-white shadow-md rounded-[20px] w-[500px] mx-auto sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]">
+    <Card className="flex flex-col p-[33px] px-[64px] mb-16 gap-[10px] border border-[#003660] bg-white shadow-md rounded-[20px] w-full mx-auto sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]">
       <CardHeader>
         <CardDescription
           className="text-[#003660] font-montserrat text-[16px] font-normal leading-[24px] pb-4"
@@ -70,7 +94,7 @@ export function Question({ questionData, questionNumber }) {
                 }}
                 placeholder="Type your response here."
                 value={response}
-                onChange={(e) => setResponse(e.target.value)}
+                onChange={handleResponseChange}
                 maxLength={maxLength}
               />
 
@@ -152,7 +176,7 @@ export function Question({ questionData, questionNumber }) {
                 type="text"
                 placeholder="Enter image URL"
                 value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
+                onChange={handleImageChange}
               />
             </div>
           </div>
