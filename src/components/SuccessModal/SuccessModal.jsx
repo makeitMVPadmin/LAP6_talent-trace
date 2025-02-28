@@ -25,14 +25,14 @@ export default function SuccessModal({ open, onClose }) {
 
         {/* Modal content */}
         <DialogHeader>
-          <DialogTitle className="text-[40px] font-fraunces leading-normal font-bold text-customBlue text-center mb-6">
+          <DialogTitle className="text-[42px] font-fraunces leading-normal font-bold text-customBlue text-center mb-6">
             Success, your Snapshot has been generated
           </DialogTitle>
-          <p className="font-montserrat text-customBlue text-center text-sm mt-4">
+          <p className="font-montserrat text-customBlue text-center text-sm mt-2">
             You can now view and download your snapshot!
           </p>
         </DialogHeader>
-        <DialogFooter className="w-full mt-10 overflow-hidden bg-customYellow h-[30px] rounded-b-full"></DialogFooter>
+        <DialogFooter className=" mt-9 overflow-hidden bg-customYellow h-[35px] rounded-b-full"></DialogFooter>
       </DialogContent>
     </Dialog>
   );
