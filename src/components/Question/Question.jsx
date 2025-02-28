@@ -9,6 +9,8 @@ import {
 } from '@/components/ui/cardForm';
 import { useContext, useState } from 'react';
 import QuestionContext from '@/context/QuestionsContext';
+import { updateImageUrls } from '@/firebase/RenderImage';
+
 import { Input } from '@/components/ui/input';
 import { Badge } from '../ui/badge';
 import { Label } from '@/components/ui/label';
@@ -32,6 +34,24 @@ export function Question({ questionData, questionNumber }) {
 
   const handleRemoveSkill = (skillToRemove) => {
     setRelatedSkills(relatedSkills.filter((skill) => skill !== skillToRemove));
+  };
+
+  const handleUploadImage = async () => {
+    if (!imageUrl?.trim()) {
+      alert('Please provide an image URL');
+      return;
+    }
+
+    try {
+      await updateImageUrls(
+        questionData.questionId,
+        questionData.skillId,
+        imageUrl
+      );
+      console.log('Image uploaded successfully!');
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
   };
 
   if (loading) return <p>Loading...</p>;
@@ -139,21 +159,33 @@ export function Question({ questionData, questionNumber }) {
                   (optional; URL link)
                 </span>
               </Label>
-
-              <Input
-                className="rounded-[8px] border-t border-l border-[#003660] border-r-2 border-b-2 bg-white"
-                style={{
-                  borderTop: '1px solid var(--Blue-Blue12, #003660)',
-                  borderRight: '2px solid var(--Blue-Blue12, #003660)',
-                  borderBottom: '2px solid var(--Blue-Blue12, #003660)',
-                  borderLeft: '1px solid var(--Blue-Blue12, #003660)',
-                  background: 'var(--White, #FFF)',
-                }}
-                type="text"
-                placeholder="Enter image URL"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
+              <div className="relative">
+                <Input
+                  className="rounded-[8px] border-t border-l border-[#003660] border-r-2 border-b-2 bg-white"
+                  style={{
+                    borderTop: '1px solid var(--Blue-Blue12, #003660)',
+                    borderRight: '2px solid var(--Blue-Blue12, #003660)',
+                    borderBottom: '2px solid var(--Blue-Blue12, #003660)',
+                    borderLeft: '1px solid var(--Blue-Blue12, #003660)',
+                    background: 'var(--White, #FFF)',
+                  }}
+                  type="text"
+                  placeholder="Enter image URL"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                />
+                <Plus
+                  className="w-5 h-5 absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
+                  onClick={() => imageUrl && handleUploadImage()} // Prevents calling function if no imageUrl
+                />
+              </div>
+              {imageUrl && (
+                <img
+                  src={imageUrl}
+                  alt="Preview"
+                  style={{ width: '200px', marginTop: '10px' }}
+                />
+              )}
             </div>
           </div>
         </form>
