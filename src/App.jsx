@@ -15,35 +15,35 @@ function App() {
     <BrowserRouter>
       <Header />
       <SkillsProvider>
-        <Routes>
-          <Route
-            path="/"
-            element={<Navigate to={'/users/:userId/Profile'} replace />}
-          />
-          <Route
-            path="/users/:userId/Profile"
-            element={
-              <UserProvider>
+        <UserProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={<Navigate to={'/users/:userId/Profile'} replace />}
+            />
+            <Route
+              path="/users/:userId/Profile"
+              element={
                 <CardsProvider>
                   <ProfilePage />
                 </CardsProvider>
-              </UserProvider>
-            }
-          />
-          <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
-          <Route
-            path="/users/:userid/CreateSnapshot"
-            element={<CreateSnapshotPage />}
-          />
-          <Route
-            path="/users/:userId/cards/:cardId"
-            element={
-              <CardProvider>
-                <SnapshotPage />
-              </CardProvider>
-            }
-          />
-        </Routes>
+              }
+            />
+            <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
+            <Route
+              path="/users/:userId/CreateSnapshot"
+              element={<CreateSnapshotPage />}
+            />
+            <Route
+              path="/users/:userId/cards/:cardId"
+              element={
+                <CardProvider>
+                  <SnapshotPage />
+                </CardProvider>
+              }
+            />
+          </Routes>
+        </UserProvider>
       </SkillsProvider>
       <Footer />
     </BrowserRouter>
