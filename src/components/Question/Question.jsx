@@ -18,7 +18,7 @@ import { Textarea } from '@/components/ui/textarea';
 
 export function Question({ questionData, questionNumber }) {
   const { error, loading } = useContext(QuestionContext);
-
+  const [uploadedImageUrl, setUploadedImageUrl] = useState('');
   const [relatedSkills, setRelatedSkills] = useState([]);
   const [newSkill, setNewSkill] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -49,6 +49,7 @@ export function Question({ questionData, questionNumber }) {
         imageUrl
       );
       console.log('Image uploaded successfully!');
+      setUploadedImageUrl(imageUrl);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
@@ -181,7 +182,7 @@ export function Question({ questionData, questionNumber }) {
               </div>
               {imageUrl && (
                 <img
-                  src={imageUrl}
+                  src={uploadedImageUrl || imageUrl}
                   alt="Preview"
                   style={{ width: '200px', marginTop: '10px' }}
                 />
