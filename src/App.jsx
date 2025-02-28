@@ -36,7 +36,7 @@ function App() {
             element={<CreateSnapshotPage />}
           />
           <Route
-            path="/users/:userId/cards/:cardId"
+            path="/users/:userId/cards"
             element={
               <CardProvider>
                 <SnapshotPage />

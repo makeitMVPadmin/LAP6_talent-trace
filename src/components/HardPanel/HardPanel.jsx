@@ -9,7 +9,7 @@ function HardPanel() {
 
   return (
     <>
-      <Card className="profile__hard-skills w-full mt-[1rem] rounded-[1.5rem] xl:h-[13.75rem]">
+      <Card className="profile__hard-skills w-full mt-[1rem] rounded-[1.5rem] xl:h-[13.75rem] border-b-[3px] border-r-[3px] xl:border-b-[5px] xl:border-r-[5px]">
         <CardHeader className="max-xl:pt-4 max-xl:px-4 max-xl:pb-4">
           <CardTitle className="profile__card-title text-sm xl:text-[1.5rem]">
             Hard Skills
@@ -27,7 +27,7 @@ function HardPanel() {
                 </p>
                 <div
                   className={
-                    'profile__skill-slider bg-amber-400 h-[0.5rem] xl:h-[0.75rem] rounded-[3px] border border-b-2 border-r-2 border-card-foreground self-center ' +
+                    'profile__skill-slider bg-[#FFCC52] h-[0.5rem] xl:h-[0.75rem] rounded-[3px] border border-b-2 border-r-2 border-card-foreground self-center ' +
                     skill.bar
                   }
                 ></div>

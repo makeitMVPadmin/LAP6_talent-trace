@@ -2,18 +2,20 @@
 /* Above line prevents eslint from triggering pre-commit errors */
 
 import cameraEnhance from '../../assets/images/camera_enhance.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function ViewerPanel({ display }) {
   const navigate = useNavigate();
+  const { userId } = useParams();
+
   return (
     <>
       <button
         className={
-          'profile__view w-full rounded-3xl border border-b-4 border-r-4 box-border border-sky-800 text-white shadow-md bg-[#0264d4] mt-[1rem] md:mt-0 ' +
+          'profile__view w-full rounded-2xl xl:rounded-3xl border border-b-2 border-r-2 xl:border-b-4 xl:border-r-4 box-border border-[#07548f] text-white shadow-md bg-[#0264d4] mt-[1rem] md:mt-0 ' +
           display
         }
-        onClick={() => navigate('/users/:userId/cards/:cardId')}
+        onClick={() => navigate(`/users/${userId}/cards`)}
       >
         <div className="profile__view-row flex flex-row p-[1rem] xl:p-[2.5rem] gap-[1.25rem]">
           <img
@@ -30,8 +32,11 @@ function ViewerPanel({ display }) {
                 className="profile__view-arrow h-[12px] xl:h-auto"
               />
             </div>
-            <p className="profile__view-body font-medium text-[0.625rem] xl:text-[1.125rem] text-left font-sans">
+            <p className="profile__view-body font-medium text-[0.625rem] xl:text-[1.125rem] text-left font-sans max-xl:hidden">
               share your snapshot to increase your hiring chances
+            </p>
+            <p className="profile__view-body font-medium text-[0.625rem] xl:text-[1.125rem] text-left font-sans xl:hidden">
+              Create connecitons by sharing your snapshot
             </p>
           </div>
         </div>

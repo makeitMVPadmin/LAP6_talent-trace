@@ -1,14 +1,51 @@
 /* eslint-disable react/prop-types */
 /* Above line prevents eslint from triggering pre-commit errors */
 
-import { Card, CardContent, CardHeader, CardFooter } from '../ui/card';
+import cameraEnhance from '../../assets/images/camera_enhance.png';
 import { useNavigate } from 'react-router-dom';
 
 function CreatorPanel({ display }) {
   const navigate = useNavigate();
+
   return (
     <>
-      <Card
+      <button
+        className={
+          'profile__view w-full rounded-2xl xl:rounded-3xl border border-b-2 border-r-2 xl:border-b-4 xl:border-r-4 box-border border-[#07548f] text-white shadow-md bg-[#0264d4] mt-[1rem] md:mt-0 ' +
+          display
+        }
+        onClick={() => navigate(`/SnapshotInfo`)}
+      >
+        <div className="profile__view-row flex flex-row p-[1rem] xl:p-[2rem] gap-[1rem] xl:gap-[2.25rem]">
+          <div className="min-w-[35px]  xl:min-w-[77px] flex flex-col justify-center">
+            <img
+              src={cameraEnhance}
+              className="profile__view-icon size-[35px] xl:size-[77px]"
+            />
+          </div>
+
+          <div className="profile__view-text flex flex-col xl:gap-[4px] grow">
+            <div className="profile__view-top flex flex-row justify-between items-center">
+              <h2 className="profile__view-title xl:text-4xl font-semibold font-sans">
+                Create my Snapshot
+              </h2>
+              <img
+                src="/src/assets/icons/chevron-right.svg"
+                className="profile__view-arrow h-[12px] xl:h-auto"
+              />
+            </div>
+            <p className="profile__view-body font-medium text-[0.625rem] xl:text-[1rem] xl:pr-[4rem] text-left font-sans max-xl:hidden">
+              Turn your skills and achievements into a standout snapshot, making
+              it effortless for employers to see what you’re all about!
+            </p>
+            <p className="profile__view-body font-medium text-[0.625rem] xl:text-[1rem] xl:pr-[4rem] text-left font-sans xl:hidden">
+              Turn your skills into a standout snapshot
+            </p>
+          </div>
+        </div>
+      </button>
+
+      {/* <Card
         className={
           'profile__creator rounded-[1.5rem] flex flex-col items-center mt-[1rem] md:mt-0 ' +
           display
@@ -34,7 +71,7 @@ function CreatorPanel({ display }) {
             Create my Snapshot
           </button>
         </CardFooter>
-      </Card>
+      </Card> */}
     </>
   );
 }
