@@ -11,7 +11,7 @@ import { Check } from 'lucide-react';
 export default function SuccessModal({ open, onClose }) {
   return (
     <Dialog open={open} onOpenChange={onClose} className="bg-[#FFF1C5]">
-      <DialogContent className="bg-[#FFF1C5] border-none shadow-lg w-[90%] h-[51%] rounded md:w-[700px] md:h-[300px]">
+      <DialogContent className="bg-[#FFF1C5] border-none shadow-lg w-[80%] h-[51%] rounded md:w-[700px] md:h-[300px]">
         {/* Close button */}
         <button
           onClick={onClose}
@@ -25,14 +25,14 @@ export default function SuccessModal({ open, onClose }) {
 
         {/* Modal content */}
         <DialogHeader>
-          <DialogTitle className="text-[40px] font-fraunces leading-normal font-bold text-customBlue text-center mb-6">
+          <DialogTitle className="text-[30px] md:text-[40px] font-fraunces leading-normal font-bold text-customBlue text-center mb-6">
             Success, your Snapshot has been generated
           </DialogTitle>
           <p className="font-montserrat text-customBlue text-center text-sm mt-2">
             You can now view and download your snapshot!
           </p>
         </DialogHeader>
-        <DialogFooter className="w-full mt-10 overflow-hidden bg-customYellow h-[30px] rounded-b-full"></DialogFooter>
+        <DialogFooter className="hidden sm:block mt-12 bg-customYellow h-[30px] rounded-b-full"></DialogFooter>
       </DialogContent>
     </Dialog>
   );
