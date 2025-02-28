@@ -1,87 +1,43 @@
 import './Snapshot.css';
 import SnapMain from '../SnapMain/SnapMain';
 import SnapBox from '../SnapBox/SnapBox';
+import SnapHead from '../SnapHead/SnapHead';
 
-function Snapshot() {
-  const folio = {
-    name: 'Dianne Surname',
-    role: 'UX/UI Designer',
-    skills: [
-      'Communicative',
-      'Analytical',
-      'Collaborative',
-      'Adaptable',
-      'Fast Learner',
-    ],
-  };
-
-  const data = [
-    {
-      question:
-        'Building Sleek, User-Friendly Websites that Work on Any Device',
-      answer:
-        'I use flexible layouts and media queries to ensure the site adapts seamlessly across devices. Accessibility is key—so I prioritize clear navigation and screen-reader compatibility for all users.',
-      image: 'css_grid_1.png',
-      badges: ['CSS Grid', 'WCAG'],
-    },
-    {
-      question: 'Maintaining Smooth Performance in Complex Backend Development',
-      answer:
-        'I optimise performance by streamlining database queries and using caching tools like Redis to speed up repetitive tasks. For scalability, I implement load balancing and monitor performance metrics regularly.',
-      image: 'redis_3.jpg',
-      badges: ['SQL', 'Redis/Memcahced'],
-    },
-    {
-      question: 'How I Stay on Top of My To-Do List When Time is Running Out',
-      answer:
-        'I break tasks into smaller, manageable chunks using Kanban boards like Trello to visualize my workflow. I prioritize high-impact tasks first and allocate specific time blocks for focus work.',
-      image: 'trello.png',
-      badges: ['Trello', 'Prioritzation'],
-    },
-    {
-      question: 'Staying Agile When a Project Takes an Unexpected Turn',
-      answer:
-        'I stay agile and quickly reassess the scope. Daily stand-ups with the team help ensure everyone is on the same page. I adapt my workflow, re-prioritise tasks, and communicate changes clearly.',
-      image: 'agile.png',
-      badges: ['Agile', 'Communicative'],
-    },
-    {
-      question: 'Using data to make developmental decisions',
-      answer:
-        'I dive into user behavior data from Google Analytics and run A/B tests to measure feature effectiveness. The data helps me identify areas for improvement and adjust features to solve user pain points.',
-      image: 'tableau.png',
-      badges: ['A/B Testing', 'Tableau'],
-    },
-  ];
-
-  return (
-    <div className="snapshot h-[900px] w-[1200px] border border-b-2 border-r-2 border-slate-300 rounded-[20px] flex flex-row justify-between bg-primary">
-      {/* Left Column */}
-      <div className="snapshot__left ml-[22px] flex flex-col justify-center">
-        {/* Left Top Box */}
-        <div className="snapshot__frame h-[406px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_2.png')] flex flex-col">
-          <SnapBox content={data[0]} />
+function Snapshot({ info, profile }) {
+  try {
+    return (
+      <div className="snapshot xl:h-[900px] xl:w-[1200px] xl:border xl:border-b-2 xl:border-r-2 xl:border-[#AABFCC] xl:rounded-[20px] flex flex-col max-xl:gap-[20px] xl:flex-row xl:justify-between xl:bg-[#F6DD8A]">
+        {/* Mobile Lead Column  */}
+        <SnapHead id={profile} badges={info.skills} content={info.answers[2]} />
+        {/* Left Column */}
+        <div className="snapshot__left xl:ml-[32px] flex flex-col gap-[20px] xl:justify-center xl:gap-[16px]">
+          {/* Left Top Box */}
+          <div className="snapshot__frame w-[353px] xl:h-[415px] xl:w-[289px] bg-[#FFF1C5] xl:bg-[#FFF8E1] border border-b-4 border-r-4 border-[#CCB774] rounded-[24px] shadow-lg flex flex-col">
+            <SnapBox content={info.answers[0]} />
+          </div>
+          {/* Left Bottom Box */}
+          <div className="snapshot__frame w-[353px] xl:h-[415px] xl:w-[289px] bg-[#FFF1C5] xl:bg-[#FFF8E1] border border-b-4 border-r-4 border-[#CCB774] rounded-[24px] shadow-lg flex flex-col">
+            <SnapBox content={info.answers[1]} />
+          </div>
         </div>
-        {/* Left Bottom Box */}
-        <div className="snapshot__frame h-[416px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_3.png')] flex flex-col">
-          <SnapBox content={data[1]} />
+        {/* Center Columns */}
+        <SnapMain id={profile} badges={info.skills} content={info.answers[2]} />
+        {/* Right Column  */}
+        <div className="snapshot__right xl:mr-[32px] flex flex-col justify-center gap-[16px]">
+          {/* Right Top Box */}
+          <div className="snapshot__frame w-[353px] xl:h-[415px] xl:w-[289px] bg-[#FFF1C5] xl:bg-[#FFF8E1] border border-b-4 border-r-4 border-[#CCB774] rounded-[24px] shadow-lg flex flex-col">
+            <SnapBox content={info.answers[3]} />
+          </div>
+          {/* Right Bottom Box */}
+          <div className="snapshot__frame w-[353px] xl:h-[415px] xl:w-[289px] bg-[#FFF1C5] xl:bg-[#FFF8E1] border border-b-4 border-r-4 border-[#CCB774] rounded-[24px] shadow-lg flex flex-col">
+            <SnapBox content={info.answers[4]} />
+          </div>
         </div>
       </div>
-      {/* Center Columns */}
-      <SnapMain id={folio} content={data[2]} />
-      {/* Right Column  */}
-      <div className="snapshot__right mr-[22px] flex flex-col justify-center">
-        {/* Right Top Box */}
-        <div className="snapshot__frame h-[406px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_2.png')] flex flex-col">
-          <SnapBox content={data[3]} />
-        </div>
-        {/* Right Bottom Box */}
-        <div className="snapshot__frame h-[416px] w-[309px] bg-[url('/src/assets/images/snapshot_box_frame_3.png')] flex flex-col">
-          <SnapBox content={data[4]} />
-        </div>
-      </div>
-    </div>
-  );
+    );
+  } catch {
+    return <></>;
+  }
 }
 
 export default Snapshot;

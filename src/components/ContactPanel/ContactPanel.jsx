@@ -12,7 +12,7 @@ function ContactPanel({ data, display }) {
       <>
         <div
           className={
-            'profile__contact rounded-3xl border-2 border-sky-600 text-card-foreground shadow-md bg-primary mt-[1rem] ' +
+            'profile__contact rounded-3xl bg-[#FFF1C5] border-[#C3AF6F] border border-b-[3px] border-r-[3px] xl:border-b-[5px] xl:border-r-[5px] text-card-foreground shadow-md mt-[1rem] ' +
             display
           }
         >

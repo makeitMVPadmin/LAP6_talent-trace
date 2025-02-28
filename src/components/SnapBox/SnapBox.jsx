@@ -4,46 +4,52 @@
 function SnapBox({ content }) {
   return (
     <>
-      <div className="snapshot__box flex flex-col mx-[10px] mt-[9px] mb-[11px] text-card-foreground">
-        <h5 className="snapshot__heading font-serif mt-[22px] mx-[20px] font-semibold">
-          {content.question}
-        </h5>
-        <p className="snapshot__text font-sans text-xs mx-[20px] mt-[9px] font-medium">
-          {content.answer}
-        </p>
-        <div className="snapshot__media my-[22px] flex flex-row justify-center">
+      <div className="snapshot__box flex flex-col m-[38px] xl:mx-[23px] xl:mt-[20px] gap-[22px] xl:gap-[30px] text-card-foreground">
+        <div className="snapshot__media max-xl:hidden flex flex-row justify-center">
           <img
-            src={'/src/assets/images/' + content.image}
-            className="snapshot__img h-[118px] w-[249px] rounded-[10px] border border-black object-cove"
+            src={content.image}
+            className="snapshot__img h-[121px] w-[243px] rounded-[10px] border border-secondary object-cover"
           />
         </div>
-        <div className="snapshot__skills mx-[20px] flex flex-row gap-[9px]">
-          {content.badges.map(function (badge) {
+        <div className="snapshot__body flex flex-col gap-[0.5rem]">
+          <h5 className="snapshot__heading font-serif font-semibold xl:text-lg">
+            {content.question.question}
+          </h5>
+          <p className="snapshot__text font-sans text-[0.625rem] font-medium">
+            {content.answer}
+          </p>
+        </div>
+        <div className="snapshot__media xl:hidden flex flex-row justify-center">
+          <img
+            src={content.image}
+            className="snapshot__img h-[118px] w-[272px] rounded-[10px] border border-secondary object-cover"
+          />
+        </div>
+        <div className="snapshot__skills flex flex-row flex-wrap gap-[6px] overflow-hidden">
+          {content.relatedSkills.map(function (skill) {
             return (
               <div
-                key={badge}
+                key={skill}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderRadius: '500px',
-                  borderTop: '1px solid #003660',
-                  borderLeft: '1px solid #003660',
-                  borderRight: '1px solid #003660',
-                  borderBottom: '2.5px solid #003660',
-                  padding: '4px',
-                  fontSize: '12px',
-                  fontWeight: '600',
+                  borderTop: '0.5px solid #003660',
+                  borderLeft: '0.5px solid #003660',
+                  borderRight: '0.5px solid #003660',
+                  borderBottom: '1.5px solid #003660',
+                  padding: '2px 10px',
+                  fontSize: '10px',
+                  fontWeight: '500',
                   backgroundColor: 'rgba(255, 193, 60, 0.75)',
-                  color: '#1E293B',
-                  boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.15)',
+                  color: '#0F172A',
                   textAlign: 'center',
-                  minWidth: '110px',
-                  height: '30px',
+                  height: '20px',
                   cursor: 'pointer',
                 }}
               >
-                {badge}
+                {skill.length <= 10 ? skill : skill.slice(10)}
               </div>
             );
           })}
