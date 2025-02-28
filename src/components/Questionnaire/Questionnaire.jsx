@@ -75,9 +75,9 @@ function Questionnaire() {
         return {
           questionId: questionData.questionId,
           skillId: questionData.skillId,
-          response: responses[questionData.questionId],
+          answer: responses[questionData.questionId],
           relatedSkills: relatedSkills[questionData.questionId] || [],
-          imageUrl: imageUrls[questionData.questionId] || '',
+          image: imageUrls[questionData.questionId] || '',
         };
       });
 
