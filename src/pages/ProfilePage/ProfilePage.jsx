@@ -3,7 +3,7 @@ import Profile from '@/components/Profile/Profile';
 function ProfilePage() {
   return (
     <>
-      <div className="profilePage bg-amber-100">
+      <div className="profilePage bg-amber-50">
         <Profile />
       </div>
     </>

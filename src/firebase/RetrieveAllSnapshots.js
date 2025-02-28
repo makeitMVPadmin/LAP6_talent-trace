@@ -21,7 +21,7 @@ export const fetchUserSnapshots = async (userId) => {
       ...doc.data(),
     }));
 
-    console.log('Fetched snapshots:', cards); // Log snapshots to console
+    // console.log('Fetched snapshots:', cards); // Log snapshots to console
 
     return cards;
   } catch (error) {

@@ -14,9 +14,8 @@ import { Badge } from '../ui/badge';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
-export function Question() {
-  const { questions, categoryName, skillName, error, loading } =
-    useContext(QuestionContext);
+export function Question({ questionData, questionNumber }) {
+  const { error, loading } = useContext(QuestionContext);
 
   const [relatedSkills, setRelatedSkills] = useState([]);
   const [newSkill, setNewSkill] = useState('');
@@ -25,7 +24,7 @@ export function Question() {
   const maxLength = 200;
 
   const handleAddSkill = () => {
-    if (newSkill.trim() && relatedSkills.length < 5) {
+    if (newSkill.trim() && relatedSkills.length < 3) {
       setRelatedSkills([...relatedSkills, newSkill.trim()]);
       setNewSkill('');
     }
@@ -39,7 +38,7 @@ export function Question() {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <Card className="flex flex-col p-[33px] px-[64px] gap-[10px] border border-[#003660] bg-white shadow-md rounded-[20px] w-[500px] mx-auto sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]">
+    <Card className="flex flex-col p-[33px] px-[64px] mb-16 gap-[10px] border border-[#003660] bg-white shadow-md rounded-[20px] w-[500px] mx-auto sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]">
       <CardHeader>
         <CardDescription
           className="text-[#003660] font-montserrat text-[16px] font-normal leading-[24px] pb-4"
@@ -49,10 +48,11 @@ export function Question() {
           }}
         >
           {' '}
-          Question 1 - {skillName} ({categoryName})
+          Question {questionNumber} - {questionData.skillName} (
+          {questionData.categoryName})
         </CardDescription>
         <CardTitle className="text-[#003660] font-[Fraunces] text-[24px] font-semibold leading-[133.4%]">
-          {questions.length > 0 ? questions[0] : 'No question available'}
+          {questionData.question}
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -90,7 +90,7 @@ export function Question() {
                 Additional skills & tools
                 <span className="font-normal text-[12px] italic">
                   {' '}
-                  (choose up to 5)
+                  (choose up to 3)
                 </span>
               </Label>
 

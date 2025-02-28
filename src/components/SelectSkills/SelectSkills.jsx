@@ -32,7 +32,9 @@ const SelectSkills = React.memo(() => {
               </h3>
               <ul className="flex flex-wrap gap-y-4 gap-x-3 mb-6">
                 {categorySkills.map((skill) => {
-                  const isSelected = selectedSkills.includes(skill.id);
+                  const isSelected = selectedSkills.some(
+                    (s) => s.skillId === skill.id
+                  );
                   return (
                     <li
                       key={skill.id}
@@ -41,7 +43,7 @@ const SelectSkills = React.memo(() => {
                           ? 'border-customBlue border-b-4 bg-customYellow' // Selected skill styling
                           : 'border border-gray-200 bg-customGray' // Unselected skill styling
                       }`}
-                      onClick={() => handleSkillClick(skill.id)} // Call handler when a skill is clicked
+                      onClick={() => handleSkillClick(skill)} // Call handler when a skill is clicked
                     >
                       {capitalizeFirstLetter(skill.skillName)}
                     </li>
