@@ -1,4 +1,3 @@
-import { CardProvider } from './context/SnapshotContext';
 import SnapshotInfoPage from './pages/SnapshotInfoPage/SnapshotInfoPage';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
@@ -38,9 +37,11 @@ function App() {
           <Route
             path="/users/:userId/cards"
             element={
-              <CardProvider>
-                <SnapshotPage />
-              </CardProvider>
+              <UserProvider>
+                <CardsProvider>
+                  <SnapshotPage />
+                </CardsProvider>
+              </UserProvider>
             }
           />
         </Routes>
