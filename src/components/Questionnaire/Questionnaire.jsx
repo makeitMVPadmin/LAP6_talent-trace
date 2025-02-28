@@ -9,14 +9,98 @@ import {
   CardContent,
 } from '../ui/card';
 import { Button } from '../ui/button';
+import { useState } from 'react';
+import postMultipleAnswersAndCreateCard from '@/firebase/PostAnswers';
+import { useParams } from 'react-router-dom';
 
 function Questionnaire() {
   const { questions, error, loading } = useQuestion();
+  const [responses, setResponses] = useState({});
+  const [relatedSkills, setRelatedSkills] = useState({});
+  const [imageUrls, setImageUrls] = useState({});
 
-  if (loading) return <div>Loading...</div>;
+  const { userId } = useParams();
+  //console.log(userId);
+
+  if (!userId) {
+    console.log('user id not found');
+    return <div>Loading...</div>;
+  }
+
+  if (loading) return <div>Questions Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!questions || questions.length === 0)
     return <div>No questions available.</div>;
+
+  //create handler for responses
+  const handleResponseChange = (questionId, response) => {
+    setResponses((prevResponses) => ({
+      ...prevResponses,
+      [questionId]: response,
+    }));
+  };
+
+  //create handler for related skills
+  const handleRelatedSkillsChange = (questionId, skillsList) => {
+    console.log('Received Skills List:', skillsList); // Log received skills list
+    setRelatedSkills((prevRelatedSkills) => ({
+      ...prevRelatedSkills,
+      [questionId]: skillsList,
+    }));
+  };
+
+  //create handler for image urls
+  const handleImageChange = (questionId, imageUrl) => {
+    setImageUrls((prevImageUrls) => ({
+      ...prevImageUrls,
+      [questionId]: imageUrl,
+    }));
+  };
+
+  //set conditions for enabling submit
+  const isSubmitEnabled =
+    Object.keys(responses).length === questions.length &&
+    Object.keys(relatedSkills).length === questions.length &&
+    Object.keys(imageUrls).length === questions.length &&
+    Object.values(relatedSkills).every(
+      (skillsList) => skillsList.length > 0 && skillsList.length <= 3
+    );
+
+  console.log('Responses:', responses);
+  console.log('Related Skills:', relatedSkills);
+  console.log('Image URLs:', imageUrls);
+  console.log('Questions Length:', questions.length);
+  console.log('Is Submit Enabled:', isSubmitEnabled);
+
+  //handle submit
+  const handleSubmit = async () => {
+    console.log('Submit button clicked.');
+    if (isSubmitEnabled) {
+      console.log('Submit button enabled.');
+      //prepare the answers object
+      const answers = questions.map((questionData) => {
+        return {
+          questionId: questionData.questionId,
+          skillId: questionData.skillId,
+          response: responses[questionData.questionId],
+          relatedSkills: relatedSkills[questionData.questionId] || [],
+          imageUrl: imageUrls[questionData.questionId] || '',
+        };
+      });
+
+      //call postAnswers function
+      try {
+        const result = await postMultipleAnswersAndCreateCard(
+          answers,
+          '',
+          userId
+        );
+        console.log('Answers posted Successfully', result);
+      } catch (error) {
+        console.error('Error posting answers:', error);
+      }
+    }
+  };
 
   return (
     <>
@@ -39,6 +123,9 @@ function Questionnaire() {
                   key={index}
                   questionData={questionData}
                   questionNumber={index + 1}
+                  onResponseChange={handleResponseChange}
+                  onRelatedSkillsChange={handleRelatedSkillsChange}
+                  onImageChange={handleImageChange}
                 />
               );
             })}
@@ -46,12 +133,12 @@ function Questionnaire() {
         </CardContent>
         <CardFooter className="Skills_Questionnaire-footer flex justify-end">
           <Button
-            className={`Skills_Questionnaire-button w-32 h-10 pl-4 pr-4 rounded-[0.625rem] border-t border-l border-r-2 border-b-4 border-customBlue justify-center items-center gap-2 inline-flex `}
+            className={`Skills_Questionnaire-button w-32 h-10 pl-4 pr-4 rounded-[0.625rem] border-t border-l border-r-2 border-b-4 border-customBlue justify-center items-center gap-2 inline-flex ${isSubmitEnabled ? 'button-enabled cursor-pointer' : 'button-disabled cursor-not-allowed'} disabled:opacity-100`}
             variant="ghost"
-            //disabled={selectedSkills.length != 5}
-            //onClick={onButtonClick}
+            disabled={!isSubmitEnabled}
+            onClick={handleSubmit}
           >
-            <div className="Skills_Questionnaire-button-text text-center text-white text-[1.125rem] font-montserrat font-semibold leading-[1.625rem]">
+            <div className="Skills_Questionnaire-button-text text-center text-white text-[1.125rem] font-montserrat font-semibold leading-[1.625rem] ">
               Submit
             </div>
           </Button>
