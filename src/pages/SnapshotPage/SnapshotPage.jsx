@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import Snapshot from '@/components/Snapshot/Snapshot';
-import { downloadSnapshotAsPDF } from '@/utils/downloadSnapshot';
+import { downloadSnapshotAsPNG } from '@/utils/downloadSnapshot';
 import {
   Carousel,
   CarouselContent,
@@ -92,7 +92,7 @@ function SnapshotPage() {
           {/* DOWNLOAD BUTTON */}
           <div
             className="snapshotpage__download flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer"
-            onClick={() => downloadSnapshotAsPDF(snapshotRef)}
+            onClick={() => downloadSnapshotAsPNG(snapshotRef)}
           >
             <img
               src={downloadIcon}
