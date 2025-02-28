@@ -1,11 +1,10 @@
 import { db } from './firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
-// Function to get questions based on skillId
 export const getQuestions = async (skillIds, categoryIds) => {
   try {
     const promises = skillIds.map((skillId, index) => {
-      return fetchQuestion(skillId, categoryIds[index]); //fetches each question, categoryId is provided to fetch the name of the category
+      return fetchQuestion(skillId, categoryIds[index]);
     });
 
     const questions = await Promise.all(promises);
@@ -18,7 +17,6 @@ export const getQuestions = async (skillIds, categoryIds) => {
 
 const fetchQuestion = async (skillId, categoryId) => {
   try {
-    // Fetch the category name for the given categoryId
     const categoryRef = doc(db, 'categories', categoryId);
     const categorySnap = await getDoc(categoryRef);
 
@@ -29,8 +27,6 @@ const fetchQuestion = async (skillId, categoryId) => {
 
     const categoryName = categorySnap.data().name;
 
-    // Fetch the question related to the skillId
-
     const skillRef = doc(db, 'skills', skillId);
     const skillSnap = await getDoc(skillRef);
 
@@ -38,7 +34,6 @@ const fetchQuestion = async (skillId, categoryId) => {
       const skillData = skillSnap.data();
       const { questionId, skillName } = skillData;
 
-      //check if questionId exists and retrive the question
       if (questionId) {
         const questionRef = doc(db, 'questions', questionId);
         const questionSnap = await getDoc(questionRef);
@@ -47,7 +42,6 @@ const fetchQuestion = async (skillId, categoryId) => {
           const questionData = questionSnap.data();
           const question = questionData.question;
 
-          //return question along with the skillName Id, categorName, id
           return {
             question,
             questionId,

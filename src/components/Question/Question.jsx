@@ -177,7 +177,7 @@ export function Question({ questionData, questionNumber }) {
                 />
                 <Plus
                   className="w-5 h-5 absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
-                  onClick={() => imageUrl && handleUploadImage()} // Prevents calling function if no imageUrl
+                  onClick={() => imageUrl && handleUploadImage()}
                 />
               </div>
               {imageUrl && (

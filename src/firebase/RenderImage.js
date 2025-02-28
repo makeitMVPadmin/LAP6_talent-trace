@@ -9,7 +9,7 @@ import {
 
 export const updateImageUrls = async (questionId, skillId, imageUrl) => {
   const validateUrl = (url) => {
-    if (!url) return false; // Check for null or undefined
+    if (!url) return false;
     if (url.startsWith('https://imgur.com/')) return true;
     try {
       new URL(url);
@@ -24,18 +24,14 @@ export const updateImageUrls = async (questionId, skillId, imageUrl) => {
   }
 
   try {
-    // Create a reference to the specific answer document
     const answerRef = doc(db, 'answers', `${questionId}_${skillId}`);
 
-    // Check if the document exists
     const answerDoc = await getDoc(answerRef);
 
     if (answerDoc.exists()) {
-      // Update the existing document
       await updateDoc(answerRef, { image: imageUrl });
       console.log('Image URL updated successfully');
     } else {
-      // Create a new document if it doesn't exist
       await setDoc(answerRef, {
         questionId: questionId,
         skillId: skillId,
