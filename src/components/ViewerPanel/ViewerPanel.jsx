@@ -2,10 +2,12 @@
 /* Above line prevents eslint from triggering pre-commit errors */
 
 import cameraEnhance from '../../assets/images/camera_enhance.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function ViewerPanel({ display }) {
   const navigate = useNavigate();
+  const { userId } = useParams();
+
   return (
     <>
       <button
@@ -13,7 +15,7 @@ function ViewerPanel({ display }) {
           'profile__view w-full rounded-2xl xl:rounded-3xl border border-b-2 border-r-2 xl:border-b-4 xl:border-r-4 box-border border-[#07548f] text-white shadow-md bg-[#0264d4] mt-[1rem] md:mt-0 ' +
           display
         }
-        onClick={() => navigate('/users/:userId/cards/:cardId')}
+        onClick={() => navigate(`/users/${userId}/cards`)}
       >
         <div className="profile__view-row flex flex-row p-[1rem] xl:p-[2.5rem] gap-[1.25rem]">
           <img
