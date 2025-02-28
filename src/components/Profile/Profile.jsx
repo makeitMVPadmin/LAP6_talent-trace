@@ -1,27 +1,37 @@
 import { useUser } from '@/context/UserDetailsContext';
 import ContactPanel from '../ContactPanel/ContactPanel';
-// import CreatorPanel from '../CreatorPanel/CreatorPanel';
+import CreatorPanel from '../CreatorPanel/CreatorPanel';
 import GreetingPanel from '../GreetingPanel/GreetingPanel';
 import HardPanel from '../HardPanel/HardPanel';
 import ProjectPanel from '../ProjectPanel/ProjectPanel';
 import SoftPanel from '../SoftPanel/SoftPanel';
 import ToolPanel from '../ToolPanel/ToolPanel';
 import ViewerPanel from '../ViewerPanel/ViewerPanel';
-// import ViewerPanel from '../ViewerPanel/ViewerPanel';
+import { useCards } from '@/context/AllSnapshotsContext';
 
 function Profile() {
   const { user, error, loading } = useUser();
+  const { cards } = useCards();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading data: {error}</p>;
+
+  const CoVcheck = (media) => {
+    if (loading) return <></>;
+
+    if (cards) {
+      return <ViewerPanel display={media} />;
+    } else {
+      return <CreatorPanel display={media} />;
+    }
+  };
 
   return (
     <>
       <div className="profile flex flex-col items-center md:flex-row md:justify-center md:items-start md:gap-[2rem] py-[4rem] xl:py-[6rem]">
         <div className="profile__left w-[22rem] xl:w-[33rem]">
           <GreetingPanel data={user} /> {/* Picture and Intro Cards  */}
-          {/* <CreatorPanel display={'md:hidden'} /> */}
-          <ViewerPanel display={'md:hidden'} />
+          {CoVcheck('md:hidden')}
           <SoftPanel /> {/* Soft Skills  */}
           <HardPanel /> {/* Hard Skills  */}
           <ToolPanel name={'Tools'} /> {/* Tools Card  */}
@@ -30,8 +40,7 @@ function Profile() {
           {/* Contact Card  */}
         </div>
         <div className="profile__right w-[22rem] lg:w-[33rem] xl:w-[50rem]">
-          {/* <CreatorPanel display={'max-md:hidden'} /> */}
-          <ViewerPanel display={'max-md:hidden'} />
+          {CoVcheck('max-md:hidden')}
           <ProjectPanel /> {/* What I'm Working On Card  */}
           <ContactPanel data={user} display={''} /> {/* Contact Card  */}
         </div>
