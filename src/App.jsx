@@ -18,27 +18,37 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Navigate to={'/users/:userId/Profile'} replace />}
+              element={
+                <Navigate to={'/users/IbPgJFLGaHjp8kzIE63R/Profile'} replace />
+              }
             />
             <Route
               path="/users/:userId/Profile"
               element={
-                <CardsProvider>
-                  <ProfilePage />
-                </CardsProvider>
+                <UserProvider>
+                  <CardsProvider>
+                    <ProfilePage />
+                  </CardsProvider>
+                </UserProvider>
               }
             />
             <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
             <Route
               path="/users/:userId/CreateSnapshot"
-              element={<CreateSnapshotPage />}
+              element={
+                <UserProvider>
+                  <CreateSnapshotPage />
+                </UserProvider>
+              }
             />
             <Route
               path="/users/:userId/cards"
               element={
-                <CardsProvider>
-                  <SnapshotPage />
-                </CardsProvider>
+                <UserProvider>
+                  <CardsProvider>
+                    <SnapshotPage />
+                  </CardsProvider>
+                </UserProvider>
               }
             />
           </Routes>
