@@ -1,19 +1,24 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logo from '../../assets/logos/logo.svg';
 import profile from '../../assets/icons/profile.svg';
 import home from '../../assets/icons/house.svg';
 import communities from '../../assets/icons/groups.svg';
 import coffeeChat from '../../assets/icons/group.svg';
+import { useUser } from '@/context/UserDetailsContext';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { userId } = useParams(); // Get userId from URL parameters
+  // Use useMatch to check if the current URL matches the profile pattern
+  const match = useMatch('/users/:userId/*');
+  const userIdFromMatch = match?.params.userId;
 
-  // Ensure there's always a valid profile URL
-  const profileUrl = userId ? `/users/${userId}/Profile` : '/';
+  const { user } = useUser(); // Logged-in user
+  // If there's a userId in the URL, use that; otherwise, fall back to the logged-in user's id
+  const profileUserId = userIdFromMatch || user?.id;
+  const profileUrl = profileUserId ? `/users/${profileUserId}/Profile` : '/';
 
   return (
     <header className="w-full flex justify-between items-center pl-[41px] pr-[41px] py-[35px] bg-[#fbfdff] border border-gray-400 shadow-[0px_1px_3px_rgba(0,0,0,0.2),0px_1px_1px_rgba(0,0,0,0.14),0px_2px_1px_-1px_rgba(0,0,0,0.2)] relative">
@@ -86,7 +91,6 @@ const NavItem = ({ icon, text, onClick }) => (
   </button>
 );
 
-// Define prop types for NavItem to prevent ESLint warnings
 NavItem.propTypes = {
   icon: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
