@@ -88,8 +88,8 @@ function Questionnaire() {
         );
         console.log('Answers posted Successfully', result);
 
-        // Navigate to the desired route
-        navigate(`/users/${userId}/cards`);
+        // Navigate to the cards route and add a query param which is a flag
+        navigate(`/users/${userId}/cards?showModal=true`);
       } catch (error) {
         console.error('Error posting answers:', error);
       }
