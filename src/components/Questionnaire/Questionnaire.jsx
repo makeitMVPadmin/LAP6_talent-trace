@@ -70,7 +70,7 @@ function Questionnaire() {
   //handle submit
   const handleSubmit = async () => {
     if (isSubmitEnabled) {
-      //prepare the answers object
+      //prepare the answers object - update to correct structure
       const answers = questions.map((questionData) => {
         return {
           questionId: questionData.questionId,
