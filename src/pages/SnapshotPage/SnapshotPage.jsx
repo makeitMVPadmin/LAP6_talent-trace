@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Snapshot from '@/components/Snapshot/Snapshot';
 import { downloadSnapshotAsPNG } from '@/utils/downloadSnapshot';
 import {
@@ -20,9 +20,13 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { Toaster } from '@/components/ui/sonner';
 import { toast } from 'sonner';
-import { useEffect } from 'react';
+import SuccessModal from '@/components/SuccessModal/SuccessModal';
+import { useLocation } from 'react-router-dom';
 
 function SnapshotPage() {
+  //adding modal to the SnapshotPage
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const snapshotRef = useRef(null);
   const { userId } = useParams();
   const navigate = useNavigate();
@@ -32,13 +36,20 @@ function SnapshotPage() {
 
   const [activeTab, setActiveTab] = useState(0);
 
+  //checks for the query param in the url and card length to manage navigation active tab
   useEffect(() => {
+    const showModal = location.search.includes('showModal=true');
+    if (showModal) {
+      setIsModalOpen(true);
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+
     if (cards !== null && cards.length === 0) {
       navigate(`/users/${userId}/Profile`);
     } else if (cards !== null && activeTab >= cards.length) {
       setActiveTab(cards.length - 1);
     }
-  }, [cards, activeTab, navigate, userId]);
+  }, [location.search, cards, activeTab, navigate, userId]);
 
   const SnapshotWindow = () => {
     if (loading) {
@@ -204,6 +215,7 @@ function SnapshotPage() {
           {SnapshotScroll()}
         </div>
       </div>
+      <SuccessModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }
