@@ -13,6 +13,8 @@ import { useState } from 'react';
 import postMultipleAnswersAndCreateCard from '@/firebase/PostAnswers';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Toaster } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 
 function Questionnaire() {
   const { questions, error, loading } = useQuestion();
@@ -92,12 +94,22 @@ function Questionnaire() {
         navigate(`/users/${userId}/cards?showModal=true`);
       } catch (error) {
         console.error('Error posting answers:', error);
+        toast('Failed to submit questionnaire. Please try again.', {
+          description: 'An error occurred during submission.',
+          level: 'error',
+          duration: 5000,
+          action: {
+            label: 'Try Again',
+            onClick: () => console.log('Retry clicked'),
+          },
+        });
       }
     }
   };
 
   return (
     <>
+      <Toaster />
       <Card className="Skills_Questionnaire flex flex-col bg-inherit w-[38.813rem] h-full border-none shadow-none">
         <CardHeader>
           <CardTitle className="Skills_Questionnaire-title w-[27.938rem] mb-4 font-fraunces font-semibold text-[1.75rem] leading-[2.993rem] tracking-[0.016rem] text-customBlue">
