@@ -18,6 +18,9 @@ import addIcon from '../../assets/icons/add.svg';
 import SnapshotTabs from '@/components/SnapshotTabs/SnapshotTabs';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { Toaster } from '@/components/ui/sonner';
+import { toast } from 'sonner';
+import { useEffect } from 'react';
 
 function SnapshotPage() {
   const snapshotRef = useRef(null);
@@ -28,6 +31,14 @@ function SnapshotPage() {
   const { user } = useUser();
 
   const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    if (cards !== null && cards.length === 0) {
+      navigate(`/users/${userId}/Profile`);
+    } else if (cards !== null && activeTab >= cards.length) {
+      setActiveTab(cards.length - 1);
+    }
+  }, [cards, activeTab, navigate, userId]);
 
   const SnapshotWindow = () => {
     if (loading) {
@@ -119,13 +130,18 @@ function SnapshotPage() {
         await handleDeleteCard(cardId);
       } catch (error) {
         console.error(`Error deleting card with Id: ${cardId}`, error);
-        //need to add toast here
+        toast('Failed to delete snapshot. Please try again.', {
+          description: 'An error occurred while deleting.',
+          level: 'error',
+          duration: 5000,
+        });
       }
     }
   };
 
   return (
     <>
+      <Toaster />
       <div className="snapshotpage bg-[#FFFAEE] flex flex-col items-center pb-[10rem] xl:pb-[13rem]">
         {/* PREVIOUS BUTTON */}
         <button
@@ -159,11 +175,13 @@ function SnapshotPage() {
             </p>
           </div>
           {/* DELETE BUTTON */}
-          <div className="snapshotpage__delete flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer">
+          <div
+            className="snapshotpage__delete flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer"
+            onClick={() => handleDeleteConfirmation(cards[activeTab].cardId)}
+          >
             <img
               src={deleteIcon}
               className="snapshotpage__icon max-xl:h-[18px]"
-              onClick={() => handleDeleteConfirmation(cards[activeTab].cardId)}
             />
             <p className="snapshotpage__label font-bold text-[0.5rem] xl:text-[0.875rem] text-secondary">
               Delete

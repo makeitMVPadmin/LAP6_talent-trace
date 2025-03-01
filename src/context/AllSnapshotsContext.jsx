@@ -47,7 +47,8 @@ export const CardsProvider = ({ children }) => {
   const handleDeleteCard = async (cardId) => {
     try {
       await deleteUserCard(cardId);
-      setCards(cards.filter((card) => card.id !== cardId));
+      const updatedCards = cards.filter((card) => card.cardId !== cardId);
+      setCards(updatedCards);
     } catch (err) {
       setError(err.message);
     }
