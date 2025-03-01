@@ -24,7 +24,6 @@ export function Question({
   onImageChange,
 }) {
   const { error, loading } = useContext(QuestionContext);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState('');
   const [relatedSkills, setRelatedSkills] = useState([]);
   const [newSkill, setNewSkill] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -57,7 +56,6 @@ export function Question({
   //handler for image change
   const handleImageChange = (e) => {
     setImageUrl(e.target.value);
-    onImageChange(questionData.questionId, e.target.value);
   };
 
   const handleUploadImage = async () => {
@@ -73,7 +71,7 @@ export function Question({
         imageUrl
       );
       console.log('Image uploaded successfully!');
-      setUploadedImageUrl(imageUrl);
+      onImageChange(questionData.questionId, imageUrl);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
@@ -206,7 +204,7 @@ export function Question({
               </div>
               {imageUrl && (
                 <img
-                  src={uploadedImageUrl || imageUrl}
+                  src={imageUrl}
                   alt="Preview"
                   style={{ width: '200px', marginTop: '10px' }}
                 />
