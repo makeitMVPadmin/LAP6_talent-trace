@@ -181,7 +181,7 @@ export function Question({
                 Link a photo that best represents your answer
                 <span className="font-normal text-[12px] italic">
                   {' '}
-                  (optional; URL link)
+                  (URL link)
                 </span>
               </Label>
               <div className="relative">

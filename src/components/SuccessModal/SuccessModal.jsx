@@ -26,7 +26,7 @@ export default function SuccessModal({ open, onClose }) {
         {/* Modal content */}
         <DialogHeader>
           <DialogTitle className="text-[30px] md:text-[40px] font-fraunces leading-normal font-bold text-customBlue text-center mb-6">
-            Success, your Snapshot has been generated
+            Success, your Snapshot has been created!
           </DialogTitle>
           <p className="font-montserrat text-customBlue text-center text-sm mt-2">
             You can now view and download your snapshot!

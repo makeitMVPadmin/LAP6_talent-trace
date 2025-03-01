@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Snapshot from '@/components/Snapshot/Snapshot';
 import { downloadSnapshotAsPNG } from '@/utils/downloadSnapshot';
 import {
@@ -16,8 +16,23 @@ import downloadIcon from '../../assets/icons/download.svg';
 import deleteIcon from '../../assets/icons/delete.svg';
 import addIcon from '../../assets/icons/add.svg';
 import SnapshotTabs from '@/components/SnapshotTabs/SnapshotTabs';
+import SuccessModal from '@/components/SuccessModal/SuccessModal';
+import { useLocation } from 'react-router-dom';
 
 function SnapshotPage() {
+  //adding modal to the SnapshotPage
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  //checks for the query param in the url
+  useEffect(() => {
+    const showModal = location.search.includes('showModal=true');
+    if (showModal) {
+      setIsModalOpen(true);
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, [location.search]);
+
   const snapshotRef = useRef(null);
   const { userId } = useParams();
   const navigate = useNavigate();
@@ -154,6 +169,7 @@ function SnapshotPage() {
           {SnapshotScroll()}
         </div>
       </div>
+      <SuccessModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }
