@@ -4,10 +4,12 @@ import question1 from '@/assets/images/questions_page.jpg';
 import girlinglasses from '@/assets/images/girl_in_glasses.png';
 import question2 from '@/assets/images/questions_page_2.jpg';
 import girlinwhite from '@/assets/images/girl_in_white_girl.png';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Hero({ scrollToTarget }) {
+  const { userId } = useParams();
+
   return (
     <>
       <main className="flex items-center gap-12 px-12 md:px-6 justify-center  ">
@@ -22,7 +24,7 @@ function Hero({ scrollToTarget }) {
             for employers to see your value.
           </p>
           <div className="flex gap-4">
-            <Link to="/users/:userid/CreateSnapshot">
+            <Link to={`/users/${userId}/CreateSnapshot`}>
               <Button variant="secondary" className="shadow-lg bg-blue  ">
                 Start
               </Button>
