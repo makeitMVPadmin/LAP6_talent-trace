@@ -70,14 +70,14 @@ function Questionnaire() {
   //handle submit
   const handleSubmit = async () => {
     if (isSubmitEnabled) {
-      //prepare the answers object
+      //prepare the answers object - update to correct structure
       const answers = questions.map((questionData) => {
         return {
           questionId: questionData.questionId,
           skillId: questionData.skillId,
-          response: responses[questionData.questionId],
+          answer: responses[questionData.questionId],
           relatedSkills: relatedSkills[questionData.questionId] || [],
-          imageUrl: imageUrls[questionData.questionId] || '',
+          image: imageUrls[questionData.questionId] || '',
         };
       });
 
