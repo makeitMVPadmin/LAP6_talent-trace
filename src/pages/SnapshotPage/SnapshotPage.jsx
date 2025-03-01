@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Snapshot from '@/components/Snapshot/Snapshot';
 import { downloadSnapshotAsPNG } from '@/utils/downloadSnapshot';
 import {
@@ -16,8 +16,23 @@ import downloadIcon from '../../assets/icons/download.svg';
 import deleteIcon from '../../assets/icons/delete.svg';
 import addIcon from '../../assets/icons/add.svg';
 import SnapshotTabs from '@/components/SnapshotTabs/SnapshotTabs';
+import SuccessModal from '@/components/SuccessModal/SuccessModal';
+import { useLocation } from 'react-router-dom';
 
 function SnapshotPage() {
+  //adding modal to the SnapshotPage
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  //checks for the query param in the url
+  useEffect(() => {
+    const showModal = location.search.includes('showModal=true');
+    if (showModal) {
+      setIsModalOpen(true);
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, [location.search]);
+
   const snapshotRef = useRef(null);
   const { userId } = useParams();
   const navigate = useNavigate();
@@ -68,6 +83,31 @@ function SnapshotPage() {
     );
   };
 
+  // Create Button doesn't display if user already has 2 Snapshots
+  const CreateButton = () => {
+    if (loading) {
+      return <></>;
+    }
+    if (error) {
+      return <></>;
+    }
+    if (cards.length >= 2) {
+      return <></>;
+    } else {
+      return (
+        <div
+          className="snapshotpage__add flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer"
+          onClick={() => navigate(`/users/${userId}/CreateSnapshot`)}
+        >
+          <img src={addIcon} className="snapshotpage__icon max-xl:h-[18px]" />
+          <p className="snapshotpage__label font-bold text-[0.5rem] xl:text-[0.875rem] text-secondary">
+            Create
+          </p>
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <div className="snapshotpage bg-[#FFFAEE] flex flex-col items-center pb-[10rem] xl:pb-[13rem]">
@@ -102,7 +142,8 @@ function SnapshotPage() {
               Download
             </p>
           </div>
-          <div className="snapshotpage__delte flex flex-col items-center h-[31px] xl:h-[50px]">
+          {/* DELETE BUTTON */}
+          <div className="snapshotpage__delete flex flex-col items-center h-[31px] xl:h-[50px]">
             <img
               src={deleteIcon}
               className="snapshotpage__icon max-xl:h-[18px]"
@@ -111,12 +152,15 @@ function SnapshotPage() {
               Delete
             </p>
           </div>
-          <div className="snapshotpage__add flex flex-col items-center h-[31px] xl:h-[50px]">
+          {/* CREATE BUTTON */}
+          {CreateButton()}
+          {/* <div className="snapshotpage__add flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer"
+            onClick={() => navigate(`/users/${userId}/CreateSnapshot`)}>
             <img src={addIcon} className="snapshotpage__icon max-xl:h-[18px]" />
             <p className="snapshotpage__label font-bold text-[0.5rem] xl:text-[0.875rem] text-secondary">
               Create
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Attach ref to the Snapshot component */}
@@ -125,6 +169,7 @@ function SnapshotPage() {
           {SnapshotScroll()}
         </div>
       </div>
+      <SuccessModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }

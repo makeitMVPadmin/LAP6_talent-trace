@@ -32,7 +32,10 @@ function App() {
                 </UserProvider>
               }
             />
-            <Route path="/SnapshotInfo" element={<SnapshotInfoPage />} />
+            <Route
+              path="/SnapshotInfo/:userId"
+              element={<SnapshotInfoPage />}
+            />
             <Route
               path="/users/:userId/CreateSnapshot"
               element={
