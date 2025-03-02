@@ -35,13 +35,18 @@ function SnapshotPage() {
   const { user } = useUser();
 
   const [activeTab, setActiveTab] = useState(0);
+  const [isCardDeleted, setIsCardDeleted] = useState(false);
 
   //checks for the query param in the url and card length to manage navigation active tab
   useEffect(() => {
     const showModal = location.search.includes('showModal=true');
-    if (showModal) {
+    if (showModal && !isCardDeleted) {
       setIsModalOpen(true);
-      window.history.replaceState({}, '', window.location.pathname);
+      navigate(location.pathname, { replace: true });
+    }
+
+    if (isCardDeleted) {
+      setIsCardDeleted(false); // Reset the delete flag
     }
 
     if (cards !== null && cards.length === 0) {
@@ -50,7 +55,7 @@ function SnapshotPage() {
     } else if (cards !== null && activeTab >= cards.length) {
       setActiveTab(cards.length - 1);
     }
-  }, [location.search, cards, activeTab, navigate, userId]);
+  }, [location.search, cards, activeTab, navigate, userId, isCardDeleted]);
 
   const SnapshotWindow = () => {
     if (loading) {
@@ -140,6 +145,8 @@ function SnapshotPage() {
     if (confirmed) {
       try {
         await handleDeleteCard(cardId);
+        setIsCardDeleted(true);
+        navigate(location.pathname, { replace: true });
       } catch (error) {
         console.error(`Error deleting card with Id: ${cardId}`, error);
         toast('Failed to delete snapshot. Please try again.', {
