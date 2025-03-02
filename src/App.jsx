@@ -19,7 +19,7 @@ function App() {
             <Route
               path="/"
               element={
-                <Navigate to={'/users/IbPgJFLGaHjp8kzIE63R/Profile'} replace />
+                <Navigate to={'/users/YBkt2uL3tGxFwhW0Ryrc/Profile'} replace />
               }
             />
             <Route
