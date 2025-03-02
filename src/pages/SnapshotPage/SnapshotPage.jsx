@@ -46,6 +46,7 @@ function SnapshotPage() {
 
     if (cards !== null && cards.length === 0) {
       navigate(`/users/${userId}/Profile`);
+      window.location.reload();
     } else if (cards !== null && activeTab >= cards.length) {
       setActiveTab(cards.length - 1);
     }
