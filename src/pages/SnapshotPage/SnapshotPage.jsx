@@ -16,6 +16,10 @@ import downloadIcon from '../../assets/icons/download.svg';
 import deleteIcon from '../../assets/icons/delete.svg';
 import addIcon from '../../assets/icons/add.svg';
 import SnapshotTabs from '@/components/SnapshotTabs/SnapshotTabs';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { Toaster } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 import SuccessModal from '@/components/SuccessModal/SuccessModal';
 import { useLocation } from 'react-router-dom';
 
@@ -23,24 +27,30 @@ function SnapshotPage() {
   //adding modal to the SnapshotPage
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const snapshotRef = useRef(null);
+  const { userId } = useParams();
+  const navigate = useNavigate();
 
-  //checks for the query param in the url
+  const { cards, error, loading, handleDeleteCard } = useCards();
+  const { user } = useUser();
+
+  const [activeTab, setActiveTab] = useState(0);
+
+  //checks for the query param in the url and card length to manage navigation active tab
   useEffect(() => {
     const showModal = location.search.includes('showModal=true');
     if (showModal) {
       setIsModalOpen(true);
       window.history.replaceState({}, '', window.location.pathname);
     }
-  }, [location.search]);
 
-  const snapshotRef = useRef(null);
-  const { userId } = useParams();
-  const navigate = useNavigate();
-
-  const { cards, error, loading } = useCards();
-  const { user } = useUser();
-
-  const [activeTab, setActiveTab] = useState(0);
+    if (cards !== null && cards.length === 0) {
+      navigate(`/users/${userId}/Profile`);
+      window.location.reload();
+    } else if (cards !== null && activeTab >= cards.length) {
+      setActiveTab(cards.length - 1);
+    }
+  }, [location.search, cards, activeTab, navigate, userId]);
 
   const SnapshotWindow = () => {
     if (loading) {
@@ -108,8 +118,42 @@ function SnapshotPage() {
     }
   };
 
+  //handleDeleteConfirmation function
+  const handleDeleteConfirmation = async (cardId) => {
+    const confirmed = await new Promise((resolve) => {
+      confirmAlert({
+        title: 'Confirm to Delete',
+        message: 'Are you sure you want to delete this card?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => resolve(true),
+          },
+          {
+            label: 'No',
+            onClick: () => resolve(false),
+          },
+        ],
+      });
+    });
+
+    if (confirmed) {
+      try {
+        await handleDeleteCard(cardId);
+      } catch (error) {
+        console.error(`Error deleting card with Id: ${cardId}`, error);
+        toast('Failed to delete snapshot. Please try again.', {
+          description: 'An error occurred while deleting.',
+          level: 'error',
+          duration: 5000,
+        });
+      }
+    }
+  };
+
   return (
     <>
+      <Toaster />
       <div className="snapshotpage bg-[#FFFAEE] flex flex-col items-center pb-[10rem] xl:pb-[13rem]">
         {/* PREVIOUS BUTTON */}
         <button
@@ -143,7 +187,10 @@ function SnapshotPage() {
             </p>
           </div>
           {/* DELETE BUTTON */}
-          <div className="snapshotpage__delete flex flex-col items-center h-[31px] xl:h-[50px]">
+          <div
+            className="snapshotpage__delete flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer"
+            onClick={() => handleDeleteConfirmation(cards[activeTab].cardId)}
+          >
             <img
               src={deleteIcon}
               className="snapshotpage__icon max-xl:h-[18px]"
