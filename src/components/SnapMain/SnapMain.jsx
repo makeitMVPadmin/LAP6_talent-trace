@@ -63,12 +63,12 @@ function SnapMain({ id, badges, content }) {
         {/* Center Bottom Box */}
         <div className="snapshot__bot w-[520px] h-[240px] mb-[25px] pb-[20px] px-[37px] flex flex-col text-card-foreground">
           <div className="snapshot__bot-header">
-            <h2 className="snapshot__heading font-serif font-semibold text-lg">
+            <h2 className="snapshot__heading font-serif font-semibold">
               {content.question.question}
             </h2>
           </div>
           <div className="snapshot__bot-main flex flex-row pt-[10px] pb-[16px] gap-[20px]">
-            <p className="snapshot__text font-sans text-[0.625rem] font-medium flex-1">
+            <p className="snapshot__text font-sans text-[0.75rem] font-medium flex-1">
               {content.answer}
             </p>
             <div className="snapshot__media w-[240px]">
