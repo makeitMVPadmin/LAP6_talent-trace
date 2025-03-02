@@ -20,7 +20,7 @@ function GreetingPanel({ data }) {
               </p>
               <div className="profile__titlebox">
                 <h2 className="profile__name xl:text-4xl font-semibold font-serif">
-                  {data[0].firstName + ' ' + data[0].lastName[0]}
+                  {data[0].firstName + ' ' + data[0].lastName[0] + '.'}
                 </h2>
                 <h4 className="profile__role text-xs xl:text-xl font-normal font-serif pt-[0.5rem]">
                   {data[0].discipline}
