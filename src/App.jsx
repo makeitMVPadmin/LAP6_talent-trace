@@ -12,9 +12,9 @@ import { UserProvider } from './context/UserDetailsContext';
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <SkillsProvider>
         <UserProvider>
+          <Header />
           <Routes>
             <Route
               path="/"

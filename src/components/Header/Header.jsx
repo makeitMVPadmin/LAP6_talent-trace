@@ -1,14 +1,24 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { Link, useMatch } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logo from '../../assets/logos/logo.svg';
 import profile from '../../assets/icons/profile.svg';
 import home from '../../assets/icons/house.svg';
 import communities from '../../assets/icons/groups.svg';
 import coffeeChat from '../../assets/icons/group.svg';
+import { useUser } from '@/context/UserDetailsContext';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  // Use useMatch to check if the current URL matches the profile pattern
+  const match = useMatch('/users/:userId/*');
+  const userIdFromMatch = match?.params.userId;
+
+  const { user } = useUser(); // Logged-in user
+  // If there's a userId in the URL, use that; otherwise, fall back to the logged-in user's id
+  const profileUserId = userIdFromMatch || user?.id;
+  const profileUrl = profileUserId ? `/users/${profileUserId}/Profile` : '/';
 
   return (
     <header className="w-full flex justify-between items-center pl-[41px] pr-[41px] py-[35px] bg-[#fbfdff] border border-gray-400 shadow-[0px_1px_3px_rgba(0,0,0,0.2),0px_1px_1px_rgba(0,0,0,0.14),0px_2px_1px_-1px_rgba(0,0,0,0.2)] relative">
@@ -20,13 +30,13 @@ function Header() {
         <NavItem icon={home} text="Home" />
         <NavItem icon={communities} text="Communities" />
         <NavItem icon={coffeeChat} text="Coffee Chat" />
-        <a
-          href="/"
+        <Link
+          to={profileUrl}
           className="flex flex-col items-center text-black text-[16px] font-semibold leading-[24px] gap-[4px]"
         >
           <img className="w-[24px] h-[24px]" src={profile} alt="Profile" />
           Profile
-        </a>
+        </Link>
       </nav>
 
       {/* Mobile Menu Button */}
@@ -57,14 +67,14 @@ function Header() {
             text="Coffee Chat"
             onClick={() => setMenuOpen(false)}
           />
-          <a
-            href="/"
+          <Link
+            to={profileUrl}
             className="flex flex-col items-center text-black text-[16px] font-semibold leading-[24px] gap-[4px]"
             onClick={() => setMenuOpen(false)}
           >
             <img className="w-[24px] h-[24px]" src={profile} alt="Profile" />
             Profile
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
@@ -81,7 +91,6 @@ const NavItem = ({ icon, text, onClick }) => (
   </button>
 );
 
-//Define prop types for NavItem to prevent ESLint warnings
 NavItem.propTypes = {
   icon: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
