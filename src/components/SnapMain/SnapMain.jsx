@@ -8,14 +8,14 @@ function SnapMain({ id, badges, content }) {
     <>
       <div className="snapshot__center max-xl:hidden flex-1 bg-[url('/src/assets/images/snapshot_center_frame_3.png')] bg-no-repeat bg-center flex flex-col justify-between items-center">
         {/* Center Top Box */}
-        <div className="snapshot__top w-[508px] h-[240px] mt-[32px] pt-[15px] px-[45px] flex flex-col items-center">
+        <div className="snapshot__top w-full h-[240px] mt-[0px] pt-[15px] px-[45px] flex flex-col items-center">
           <h1 className="snapshot__name font-serif text-[28px] pt-[32px] text-card-foreground font-semibold">
             {id[0].firstName + ' ' + id[0].lastName}
           </h1>
-          <h3 className="snapshot__role font-serif text-[20px] pt-[15px] text-card-foreground font-semibold">
+          <h3 className="snapshot__role font-serif text-[20px] pt-[15px] text-card-foreground font-normal">
             {id[0].discipline}
           </h3>
-          <div className="snapshot__skills--all flex flex-row gap-[6px] w-[380px] pt-[32px] justify-center flex-wrap">
+          <div className="snapshot__skills--all flex flex-row gap-[6px] w-full pt-[32px] justify-center flex-wrap">
             {badges.map(function (skill) {
               return (
                 <div
