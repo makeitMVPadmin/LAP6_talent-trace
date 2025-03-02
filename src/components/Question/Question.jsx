@@ -174,7 +174,7 @@ export function Question({
               </div>
             </div>
 
-            <div className="flex flex-col space-y-1.5 mb-4">
+            <div className="flex flex-col space-y-1.5 mb-4 ">
               <Label className="text-[#003660] font-montserrat text-[14px] font-medium leading-[20px] pb-2">
                 Link a photo that best represents your answer
                 <span className="font-normal text-[12px] italic">
@@ -202,13 +202,16 @@ export function Question({
                   onClick={() => imageUrl && handleUploadImage()}
                 />
               </div>
-              {imageUrl && (
-                <img
-                  src={imageUrl}
-                  alt="Preview"
-                  style={{ width: '200px', marginTop: '10px' }}
-                />
-              )}
+
+              <div>
+                {imageUrl && (
+                  <img
+                    src={imageUrl}
+                    alt="Preview"
+                    style={{ width: '200px', marginTop: '10px' }}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </form>
