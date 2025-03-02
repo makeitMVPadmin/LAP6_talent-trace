@@ -4,7 +4,7 @@
 function SnapBox({ content }) {
   return (
     <>
-      <div className="snapshot__box flex flex-col m-[38px] xl:mx-[23px] xl:mt-[20px] gap-[22px] xl:gap-[30px] text-card-foreground">
+      <div className="snapshot__box flex flex-col m-[38px] xl:mx-[23px] xl:mt-[20px] gap-[22px] text-card-foreground">
         <div className="snapshot__media max-xl:hidden flex flex-row justify-center">
           <img
             src={content.image}
@@ -12,10 +12,10 @@ function SnapBox({ content }) {
           />
         </div>
         <div className="snapshot__body flex flex-col gap-[0.5rem]">
-          <h5 className="snapshot__heading font-serif font-semibold xl:text-lg">
+          <h5 className="snapshot__heading font-serif font-semibold">
             {content.question.question}
           </h5>
-          <p className="snapshot__text font-sans text-[0.625rem] font-medium">
+          <p className="snapshot__text font-sans text-[0.75rem] font-medium">
             {content.answer}
           </p>
         </div>
