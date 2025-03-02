@@ -12,10 +12,10 @@ function SnapBox({ content }) {
           />
         </div>
         <div className="snapshot__body flex flex-col gap-[0.5rem]">
-          <h5 className="snapshot__heading font-serif font-semibold">
+          <h5 className="snapshot__heading font-serif font-semibold xl:text-[0.75rem]">
             {content.question.question}
           </h5>
-          <p className="snapshot__text font-sans text-[0.75rem] font-medium">
+          <p className="snapshot__text font-sans text-[0.7rem] xl:text-[0.65rem] font-medium">
             {content.answer}
           </p>
         </div>

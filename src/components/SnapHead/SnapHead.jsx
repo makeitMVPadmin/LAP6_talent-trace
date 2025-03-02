@@ -12,7 +12,7 @@ function SnapHead({ id, badges, content }) {
           <h1 className="snapshot__name font-serif text-[24px] pt-[24px] text-card-foreground font-semibold">
             {id[0].firstName + ' ' + id[0].lastName}
           </h1>
-          <h3 className="snapshot__role font-serif text-[16px] pt-[4px] text-card-foreground font-semibold">
+          <h3 className="snapshot__role font-serif text-[16px] pt-[4px] text-card-foreground font-normal">
             {id[0].discipline}
           </h3>
           <div className="relative flex h-[125px] w-[125px] shrink-0 overflow-hidden rounded-full mt-[24px]">
@@ -71,7 +71,7 @@ function SnapHead({ id, badges, content }) {
               <h5 className="snapshot__heading font-serif font-semibold xl:text-lg">
                 {content.question.question}
               </h5>
-              <p className="snapshot__text font-sans text-[0.625rem] font-medium">
+              <p className="snapshot__text font-sans text-[0.7rem] font-medium">
                 {content.answer}
               </p>
             </div>
