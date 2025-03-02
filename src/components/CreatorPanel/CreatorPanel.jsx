@@ -2,6 +2,7 @@
 /* Above line prevents eslint from triggering pre-commit errors */
 
 import cameraEnhance from '../../assets/images/camera_enhance.png';
+import chevronRight from '../../assets/icons/chevron-right.svg';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function CreatorPanel({ display }) {
@@ -31,7 +32,7 @@ function CreatorPanel({ display }) {
                 Create my Snapshot
               </h2>
               <img
-                src="/src/assets/icons/chevron-right.svg"
+                src={chevronRight}
                 className="profile__view-arrow h-[12px] xl:h-auto"
               />
             </div>
