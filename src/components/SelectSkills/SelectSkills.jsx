@@ -26,7 +26,10 @@ const SelectSkills = React.memo(() => {
           const categorySkills = skillsByCategory[category.id].skills;
 
           return (
-            <div className="flex flex-col mb-6" key={category.id}>
+            <div
+              className="flex flex-col pl-6 pr-6 md:pl-0 md:pr-0 mb-2 md:mb-6"
+              key={category.id}
+            >
               <h3 className="text-customBlue font-montserrat text-lg font-medium leading-6 mb-6 mt-2">
                 {capitalizeFirstLetter(category.name)}
               </h3>

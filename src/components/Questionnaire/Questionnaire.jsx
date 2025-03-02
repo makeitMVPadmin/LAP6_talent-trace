@@ -110,12 +110,12 @@ function Questionnaire() {
   return (
     <>
       <Toaster />
-      <Card className="Skills_Questionnaire flex flex-col bg-inherit w-[38.813rem] h-full border-none shadow-none">
+      <Card className="Skills_Questionnaire flex flex-col bg-inherit w-full md:w-[38.813rem] h-full border-none shadow-none">
         <CardHeader>
           <CardTitle className="Skills_Questionnaire-title w-[27.938rem] mb-4 font-fraunces font-semibold text-[1.75rem] leading-[2.993rem] tracking-[0.016rem] text-customBlue">
             Skill Questionnaire
           </CardTitle>
-          <CardDescription className="Skills_Questionnaire-description  mt-[5rem] text-base font-montserrat font-normal !text-customBlue leading-6">
+          <CardDescription className="Skills_Questionnaire-description  mt-[5rem] pb-6 text-base font-montserrat font-normal !text-customBlue leading-6">
             Complete the questionnaire and highlight your top skills in the
             selected categories to showcase your technical strengths and
             personality

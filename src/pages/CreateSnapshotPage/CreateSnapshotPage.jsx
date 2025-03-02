@@ -14,8 +14,8 @@ const CreateSnapshotPage = () => {
 
   return (
     <>
-      <div className="flex flex-col m-32 items-center">
-        <div className="mb-32">
+      <div className="flex flex-col m-12 md:m-32 items-center justify-center">
+        <div className="mb-6 md:mb-32">
           <ProgressBar isProgressing={isProgressing} />
         </div>
         <div>
