@@ -83,6 +83,31 @@ function SnapshotPage() {
     );
   };
 
+  // Create Button doesn't display if user already has 2 Snapshots
+  const CreateButton = () => {
+    if (loading) {
+      return <></>;
+    }
+    if (error) {
+      return <></>;
+    }
+    if (cards.length >= 2) {
+      return <></>;
+    } else {
+      return (
+        <div
+          className="snapshotpage__add flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer"
+          onClick={() => navigate(`/users/${userId}/CreateSnapshot`)}
+        >
+          <img src={addIcon} className="snapshotpage__icon max-xl:h-[18px]" />
+          <p className="snapshotpage__label font-bold text-[0.5rem] xl:text-[0.875rem] text-secondary">
+            Create
+          </p>
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <div className="snapshotpage bg-[#FFFAEE] flex flex-col items-center pb-[10rem] xl:pb-[13rem]">
@@ -117,7 +142,8 @@ function SnapshotPage() {
               Download
             </p>
           </div>
-          <div className="snapshotpage__delte flex flex-col items-center h-[31px] xl:h-[50px]">
+          {/* DELETE BUTTON */}
+          <div className="snapshotpage__delete flex flex-col items-center h-[31px] xl:h-[50px]">
             <img
               src={deleteIcon}
               className="snapshotpage__icon max-xl:h-[18px]"
@@ -126,12 +152,15 @@ function SnapshotPage() {
               Delete
             </p>
           </div>
-          <div className="snapshotpage__add flex flex-col items-center h-[31px] xl:h-[50px]">
+          {/* CREATE BUTTON */}
+          {CreateButton()}
+          {/* <div className="snapshotpage__add flex flex-col items-center h-[31px] xl:h-[50px] cursor-pointer"
+            onClick={() => navigate(`/users/${userId}/CreateSnapshot`)}>
             <img src={addIcon} className="snapshotpage__icon max-xl:h-[18px]" />
             <p className="snapshotpage__label font-bold text-[0.5rem] xl:text-[0.875rem] text-secondary">
               Create
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Attach ref to the Snapshot component */}
